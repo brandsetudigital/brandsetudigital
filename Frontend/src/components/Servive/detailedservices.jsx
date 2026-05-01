@@ -257,12 +257,12 @@ const DetailedServices = () => {
   return (
     <section className="py-5">
       <div className="container text-center mb-5">
-        <h1 className="text-brand display-3 fw-bold mb-3">
+        <h2 className="text-brand display-3 fw-bold mb-3">
           BrandSetu<span className="text-danger"> Marketing</span> Services
-        </h1>
-        <h5 className="text-dark opacity-75 fw-semibold">
+        </h2>
+        <p className="text-dark opacity-75 fw-semibold lead">
           Best Digital marketing services that help your brand grow
-        </h5>
+        </p>
 
         <div className="d-flex justify-content-center gap-3 mt-4 flex-wrap">
           {categories.map((cat) => (
@@ -288,15 +288,19 @@ const DetailedServices = () => {
                 <div className="service-img-box shadow flex-shrink-0">
                   <img
                     src={post.img}
-                    alt={post.title}
+                    alt={`${post.title} — BrandSetu Digital service`}
                     className="service-img"
+                    width="400"
+                    height="300"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
 
                 {/* TEXT */}
                 <div className="d-flex flex-column justify-content-between w-100">
                   <div>
-                    <h4 className="fw-bold">{post.title}</h4>
+                    <h3 className="fw-bold fs-5">{post.title}</h3>
                     <p className="text-dark fw-semibold ">{post.desc}</p>
                   </div>
 

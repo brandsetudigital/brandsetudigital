@@ -63,13 +63,17 @@ const MissionValues = () => {
               >
                 <img
                   src={item.img}
-                  alt={item.title}
+                  alt={`${item.title} — BrandSetu Digital`}
                   className="card-img-top p-3"
+                  width="180"
+                  height="180"
+                  loading="lazy"
+                  decoding="async"
                   style={{ height: "180px", objectFit: "contain" }}
                 />
 
                 <div className="card-body">
-                  <h5 className="fw-bold">{item.title}</h5>
+                  <h3 className="fw-bold fs-5">{item.title}</h3>
                   <p className="text-muted" style={{ fontSize: "0.9rem" }}>
                     {item.desc}
                   </p>

@@ -68,6 +68,11 @@ export default function Navbar() {
                 src={logo}
                 alt="BrandSetu Digital logo"
                 className="logo-img"
+                width="160"
+                height="48"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
               />
               <div className="logo-text">
                 <div className="logo-title">BRANDSETU</div>

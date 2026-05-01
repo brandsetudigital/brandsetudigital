@@ -10,6 +10,7 @@ import Brands from "../../components/Home/brands";
 import Reviews from "../../components/Home/review";
 import WhySetu from "./whyus";
 import FounderPage from "./founder";
+import Seo from "../Seo";
 
 export function Hero() {
   const stats = [
@@ -34,6 +35,11 @@ export function Hero() {
 
   return (
     <>
+      <Seo
+        title="Digital Marketing & SEO Agency in Indore"
+        description="BrandSetu Digital is a top digital marketing agency in Indore offering SEO, branding, social media marketing, web development, and performance ads to help businesses grow online."
+        path="/"
+      />
       <section
         id="home"
         className="hero-section d-flex align-items-center position-relative overflow-hidden"
@@ -86,9 +92,15 @@ export function Hero() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="mb-4"
               >
-                <h1 className="hero-title">BUILD</h1>
-                <h1 className="hero-title text-white">YOUR</h1>
-                <h1 className="hero-title">BRAND</h1>
+                <h1 className="hero-title">
+                  <span className="d-block">BUILD</span>
+                  <span className="d-block text-white">YOUR</span>
+                  <span className="d-block">BRAND</span>
+                </h1>
+                <p className="visually-hidden">
+                  BrandSetu Digital — a digital marketing and SEO agency in
+                  Indore helping businesses build their brand online.
+                </p>
               </motion.div>
 
               <motion.p
@@ -119,7 +131,7 @@ export function Hero() {
                   </motion.button>
                 </Link>
 
-                <Link to="/testimonials#work-section">
+                <Link to="/work#work-section">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -183,6 +195,10 @@ export function Hero() {
                             muted
                             loop
                             playsInline
+                            preload="metadata"
+                            aria-label="BrandSetu Digital marketing agency showreel"
+                            width="500"
+                            height="500"
                             style={{
                               width: "100%",
                               height: "100%",

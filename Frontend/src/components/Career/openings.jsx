@@ -7,6 +7,7 @@ import CareerHero from "./careerHero";
 import Culture from "./culture";
 
 import "../../Style/Career.css";
+import Seo from "../Seo";
 
 const jobs = [
   {
@@ -64,6 +65,29 @@ export default function JobListings() {
 
   return (
     <>
+      <Seo
+        title="Careers at BrandSetu Digital — Digital Marketing Jobs in Indore"
+        description="Join BrandSetu Digital in Indore. Open roles in design, engineering, marketing, and DevOps. Build work that actually matters with a team that ships."
+        path="/career"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://brandsetudigital.com/",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Careers",
+              item: "https://brandsetudigital.com/career",
+            },
+          ],
+        }}
+      />
       <CareerHero />
 
       {/* ================= JOB LISTINGS ================= */}
@@ -149,7 +173,7 @@ export default function JobListings() {
                     onClick={() => handleApply(job.title)}
                   >
                     <div className="job-rail-top">
-                      <h5>{job.title}</h5>
+                      <h3 className="fs-5 mb-0">{job.title}</h3>
                       <ArrowUpRight size={18} />
                     </div>
 

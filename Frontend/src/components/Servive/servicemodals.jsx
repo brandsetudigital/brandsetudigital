@@ -30,8 +30,12 @@ const PostModal = ({ show, onHide, post }) => {
             <div className="h-100 overflow-hidden">
               <img
                 src={post.img}
-                alt={post.title}
+                alt={`${post.title} — BrandSetu Digital service detail`}
                 className="img-fluid h-100 w-100 modal-img"
+                width="500"
+                height="600"
+                loading="lazy"
+                decoding="async"
                 style={{ objectFit: "cover" }}
               />
             </div>

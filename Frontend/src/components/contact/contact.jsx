@@ -20,6 +20,7 @@ import "../../Style/Home.css";
 import PromoImg from "../../assets/Marketing-agency.png";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Seo from "../Seo";
 
 const ContactPage = () => {
   /* ===================== STATE ===================== */
@@ -141,10 +142,57 @@ const ContactPage = () => {
 
   return (
     <>
+      <Seo
+        title="Contact BrandSetu Digital in Indore — Free Strategy Call"
+        description="Contact BrandSetu Digital in Indore for SEO, branding, web development, and performance marketing. Email Brandsetudigital@gmail.com or call +91 6232363639."
+        path="/contact"
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://brandsetudigital.com/",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Contact",
+                item: "https://brandsetudigital.com/contact",
+              },
+            ],
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "@id": "https://brandsetudigital.com/contact#webpage",
+            url: "https://brandsetudigital.com/contact",
+            name: "Contact BrandSetu Digital",
+            isPartOf: { "@id": "https://brandsetudigital.com/#organization" },
+            about: { "@id": "https://brandsetudigital.com/#organization" },
+            mainEntity: {
+              "@type": "Organization",
+              "@id": "https://brandsetudigital.com/#organization",
+              contactPoint: [
+                {
+                  "@type": "ContactPoint",
+                  contactType: "customer support",
+                  telephone: "+91-6232363639",
+                  email: "Brandsetudigital@gmail.com",
+                  areaServed: "IN",
+                  availableLanguage: ["English", "Hindi"],
+                },
+              ],
+            },
+          },
+        ]}
+      />
       <section
         className="hero-section position-relative overflow-hidden py-5 pt-5"
-        role="region"
-        aria-label="Contact section"
+        aria-labelledby="contact-page-heading"
       >
         {/* BACKGROUND SHAPES (DECORATIVE) */}
         <div
@@ -180,7 +228,10 @@ const ContactPage = () => {
           <Row className="align-items-center pt-5 mb-5">
             {/* MAP */}
             <Col lg={6} className="mb-4 mb-lg-0" data-aos="fade-right">
-              <h1 className="fw-bold text-center mb-3 display-3 text-dark">
+              <h1
+                id="contact-page-heading"
+                className="fw-bold text-center mb-3 display-3 text-dark"
+              >
                 You can Visit Us
               </h1>
               <p className="text-center text-dark">
@@ -208,9 +259,9 @@ const ContactPage = () => {
                   className="p-4 position-relative"
                   style={{ zIndex: 2 }}
                 >
-                  <h3 className="fw-bold mb-3 text-white text-center display-5">
+                  <h2 className="fw-bold mb-3 text-white text-center display-5">
                     Setu Enquiry Form
-                  </h3>
+                  </h2>
 
                   <Form onSubmit={handleEnquirySubmit}>
                     <Row className="mb-3 mt-3 pt-3">
@@ -353,72 +404,74 @@ const ContactPage = () => {
           </Row>
 
           {/* CONTACT INFO */}
-          <Row className="text-center g-4" data-aos="fade-up">
-            <Col md={3} sm={6}>
-              <a
-                href="mailto:brandsetudigital@gmail.com"
-                className="text-decoration-none text-dark"
-              >
-                <div className="contact-info-card p-4 shadow-sm bg-light-blue rounded-4 h-100">
-                  <BsEnvelope
+          <address className="not-italic">
+            <Row className="text-center g-4" data-aos="fade-up">
+              <Col md={3} sm={6}>
+                <a
+                  href="mailto:brandsetudigital@gmail.com"
+                  className="text-decoration-none text-dark"
+                >
+                  <div className="contact-info-card p-4 shadow-sm bg-light-blue rounded-4 h-100">
+                    <BsEnvelope
+                      size={30}
+                      className="text-primary mb-2"
+                      aria-hidden="true"
+                    />
+                    <h3 className="fw-bold text-primary fs-6">Email</h3>
+                    <p className="small mb-0">info@brandsetudigital.com</p>
+                  </div>
+                </a>
+              </Col>
+
+              <Col md={3} sm={6}>
+                <a
+                  href="tel:+916232363639"
+                  className="text-decoration-none text-dark"
+                >
+                  <div className="contact-info-card p-4 shadow-sm bg-light-green rounded-4 h-100">
+                    <BsTelephone
+                      size={30}
+                      className="text-success mb-2"
+                      aria-hidden="true"
+                    />
+                    <h3 className="fw-bold text-success fs-6">Phone</h3>
+                    <p className="small mb-0">+91 6232363639</p>
+                  </div>
+                </a>
+              </Col>
+
+              <Col md={3} sm={6}>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Indore+Madhya+Pradesh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-decoration-none text-dark"
+                >
+                  <div className="contact-info-card p-4 shadow-sm bg-light-red rounded-4 h-100">
+                    <BsGeoAlt
+                      size={30}
+                      className="text-danger mb-2"
+                      aria-hidden="true"
+                    />
+                    <h3 className="fw-bold text-danger fs-6">Location</h3>
+                    <p className="small mb-0">Indore, Madhya Pradesh</p>
+                  </div>
+                </a>
+              </Col>
+
+              <Col md={3} sm={6}>
+                <div className="contact-info-card p-4 shadow-sm bg-light-yellow rounded-4 h-100">
+                  <BsClock
                     size={30}
-                    className="text-primary mb-2"
+                    className="text-warning mb-2"
                     aria-hidden="true"
                   />
-                  <h6 className="fw-bold text-primary">Email</h6>
-                  <p className="small mb-0">info@brandsetudigital.com</p>
+                  <h3 className="fw-bold text-warning fs-6">Working Hours</h3>
+                  <p className="small mb-0">Mon - Sat, 10:00am - 7:00pm</p>
                 </div>
-              </a>
-            </Col>
-
-            <Col md={3} sm={6}>
-              <a
-                href="tel:+916232363639"
-                className="text-decoration-none text-dark"
-              >
-                <div className="contact-info-card p-4 shadow-sm bg-light-green rounded-4 h-100">
-                  <BsTelephone
-                    size={30}
-                    className="text-success mb-2"
-                    aria-hidden="true"
-                  />
-                  <h6 className="fw-bold text-success">Phone</h6>
-                  <p className="small mb-0">+91 6232363639</p>
-                </div>
-              </a>
-            </Col>
-
-            <Col md={3} sm={6}>
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=Indore+Madhya+Pradesh"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-decoration-none text-dark"
-              >
-                <div className="contact-info-card p-4 shadow-sm bg-light-red rounded-4 h-100">
-                  <BsGeoAlt
-                    size={30}
-                    className="text-danger mb-2"
-                    aria-hidden="true"
-                  />
-                  <h6 className="fw-bold text-danger">Location</h6>
-                  <p className="small mb-0">Indore, Madhya Pradesh</p>
-                </div>
-              </a>
-            </Col>
-
-            <Col md={3} sm={6}>
-              <div className="contact-info-card p-4 shadow-sm bg-light-yellow rounded-4 h-100">
-                <BsClock
-                  size={30}
-                  className="text-warning mb-2"
-                  aria-hidden="true"
-                />
-                <h6 className="fw-bold text-warning">Working Hours</h6>
-                <p className="small mb-0">Mon - Sat, 10:00am - 7:00pm</p>
-              </div>
-            </Col>
-          </Row>
+              </Col>
+            </Row>
+          </address>
 
           {/* SUBSCRIBE */}
           <Row
@@ -428,9 +481,12 @@ const ContactPage = () => {
             <Col md={6} className="p-0">
               <img
                 src={PromoImg}
-                alt="BrandSetu promotional offer"
+                alt="BrandSetu Digital promotional offer banner"
                 className="img-fluid w-100 h-100"
+                width="800"
+                height="600"
                 loading="lazy"
+                decoding="async"
                 style={{ objectFit: "cover" }}
               />
             </Col>

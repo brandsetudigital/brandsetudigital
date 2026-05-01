@@ -11,6 +11,7 @@ import DetailedServices from "../Servive/detailedservices";
 import Brands from "../Home/brands";
 import WhatOurBrandsSay from "../Servive/BrandSays";
 import HeroImg from "../../assets/Performance-marketing-agency.jpg";
+import Seo from "../Seo";
 
 const Services = () => {
   useEffect(() => {
@@ -30,6 +31,95 @@ const Services = () => {
   const heroImage = HeroImg;
 
   return (
+    <>
+      <Seo
+        title="Digital Marketing Services in Indore — SEO, Branding, Web & Social"
+        description="Explore BrandSetu Digital's services in Indore: SEO, branding, social media marketing, web design & development, performance ads, content production, and shoot/editing."
+        path="/services"
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://brandsetudigital.com/",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Services",
+                item: "https://brandsetudigital.com/services",
+              },
+            ],
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "@id": "https://brandsetudigital.com/services#webpage",
+            name: "Digital Marketing Services in Indore",
+            url: "https://brandsetudigital.com/services",
+            isPartOf: { "@id": "https://brandsetudigital.com/#organization" },
+            about: { "@id": "https://brandsetudigital.com/#organization" },
+            mainEntity: {
+              "@type": "ItemList",
+              itemListElement: [
+                {
+                  "@type": "Service",
+                  position: 1,
+                  name: "SEO Services",
+                  description:
+                    "On-page, technical, and local SEO to rank higher on Google and bring consistent organic traffic.",
+                  provider: { "@id": "https://brandsetudigital.com/#organization" },
+                  areaServed: { "@type": "Country", name: "India" },
+                },
+                {
+                  "@type": "Service",
+                  position: 2,
+                  name: "Branding & Brand Strategy",
+                  description:
+                    "Brand identity, logo design, and creative collateral that communicate your brand story with clarity and consistency.",
+                  provider: { "@id": "https://brandsetudigital.com/#organization" },
+                },
+                {
+                  "@type": "Service",
+                  position: 3,
+                  name: "Social Media Marketing",
+                  description:
+                    "Content strategy, reels, creatives, and audience growth campaigns across Instagram, Facebook, LinkedIn, and YouTube.",
+                  provider: { "@id": "https://brandsetudigital.com/#organization" },
+                },
+                {
+                  "@type": "Service",
+                  position: 4,
+                  name: "Web Design & Development",
+                  description:
+                    "High-performing, mobile-first websites and apps built for speed, UX, SEO readiness, and conversion.",
+                  provider: { "@id": "https://brandsetudigital.com/#organization" },
+                },
+                {
+                  "@type": "Service",
+                  position: 5,
+                  name: "Performance Marketing (Google & Meta Ads)",
+                  description:
+                    "ROI-focused paid campaigns on Google and Meta that generate qualified leads and measurable revenue.",
+                  provider: { "@id": "https://brandsetudigital.com/#organization" },
+                },
+                {
+                  "@type": "Service",
+                  position: 6,
+                  name: "Content, Shoots & Editing",
+                  description:
+                    "Reels, product shoots, ad video editing, and CGI ads built for engagement on social platforms.",
+                  provider: { "@id": "https://brandsetudigital.com/#organization" },
+                },
+              ],
+            },
+          },
+        ]}
+      />
     <section className="hero-section position-relative overflow-hidden py-3 pt-5">
       {/* ================= FLOATING SHAPES ================= */}
       <div className="hero-background">
@@ -89,9 +179,9 @@ const Services = () => {
           <Row className="justify-content-center text-center g-5">
             <Col md={3} sm={6}>
               <div className="highlight-stat">
-                <h1>
+                <span className="stat-number d-block">
                   <CountUp end={500} duration={2.5} />+
-                </h1>
+                </span>
                 <div className="stat-line"></div>
                 <p>Successful Projects</p>
               </div>
@@ -99,9 +189,9 @@ const Services = () => {
 
             <Col md={3} sm={6}>
               <div className="highlight-stat">
-                <h1>
+                <span className="stat-number d-block">
                   <CountUp end={350} duration={2.8} />+
-                </h1>
+                </span>
                 <div className="stat-line"></div>
                 <p>Happy Clients</p>
               </div>
@@ -109,9 +199,9 @@ const Services = () => {
 
             <Col md={3} sm={6}>
               <div className="highlight-stat">
-                <h1>
+                <span className="stat-number d-block">
                   <CountUp end={4.5} decimals={1} duration={2.3} />+
-                </h1>
+                </span>
                 <div className="stat-line"></div>
                 <p>Average Rating</p>
               </div>
@@ -119,9 +209,9 @@ const Services = () => {
 
             <Col md={3} sm={6}>
               <div className="highlight-stat">
-                <h1>
+                <span className="stat-number d-block">
                   <CountUp end={20} duration={2.2} />+
-                </h1>
+                </span>
                 <div className="stat-line"></div>
                 <p>Cities Covered</p>
               </div>
@@ -135,6 +225,7 @@ const Services = () => {
       <WhatOurBrandsSay />
       <Brands />
     </section>
+    </>
   );
 };
 

@@ -161,12 +161,12 @@ export default function Reviews() {
           <span className="reviews-label rounded-pill fw-bold text-dark">
             CLIENT LOVE
           </span>
-          <h1 className="brands-title display-2 fw-bold">
+          <h2 className="brands-title display-2 fw-bold">
             What <span>Our Clients Say</span>
-          </h1>
-          <h5 className="fw-bold  text-danger pt-2">
+          </h2>
+          <p className="fw-bold text-danger pt-2 mb-0">
             Real feedback from real clients
-          </h5>
+          </p>
         </motion.div>
 
         <div
@@ -193,14 +193,18 @@ export default function Reviews() {
                   <div className="review-top">
                     <img
                       src={item.image}
-                      alt={item.name}
+                      alt={`${item.name} — ${item.role}`}
                       className="review-logo"
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <span className="quote-icon">“</span>
                   </div>
                   <p className="review-text">{item.review}</p>
                   <div className="reviewer-info">
-                    <h6>{item.name}</h6>
+                    <p className="fw-bold mb-0">{item.name}</p>
                     <span>{item.role}</span>
                   </div>
                 </motion.div>

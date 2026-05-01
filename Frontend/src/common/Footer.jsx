@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 import Logo from "../assets/Logo.png";
@@ -42,8 +43,11 @@ const Footer = () => {
             <div className="footer-brand d-flex align-items-center gap-2 mb-3">
               <img
                 src={Logo}
-                alt="BrandSetu Digital Logo"
+                alt="BrandSetu Digital logo"
+                width="232"
                 height="70"
+                loading="lazy"
+                decoding="async"
               />
               <div className="logo-text d-flex flex-column">
                 <div className="logo-title">BRANDSETU</div>
@@ -61,13 +65,13 @@ const Footer = () => {
             className="col-lg-3 col-md-6"
             aria-label="Footer quick links"
           >
-            <h6 className="footer-title text-light mb-3">Quick Links</h6>
+            <h2 className="footer-title text-light mb-3 fs-6">Quick Links</h2>
             <ul className="list-unstyled footer-links">
-              <li><a href="/">Home</a></li>
-              <li><a href="/services">Services</a></li>
-              <li><a href="/contact">Contact</a></li>
-              <li><a href="/testimonials">Portfolio</a></li>
-              <li><a href="/about">Our Story</a></li>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/services">Services</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
+              <li><Link to="/work">Portfolio</Link></li>
+              <li><Link to="/about">Our Story</Link></li>
             </ul>
           </div>
 
@@ -76,19 +80,19 @@ const Footer = () => {
             className="col-lg-3 col-md-6"
             aria-label="Footer services"
           >
-            <h6 className="footer-title text-light mb-3">Services</h6>
+            <h2 className="footer-title text-light mb-3 fs-6">Services</h2>
             <ul className="list-unstyled footer-links">
-              <li><a href="/services#web">Web Design & Development</a></li>
-              <li><a href="/services#seo">SEO & Marketing</a></li>
-              <li><a href="/services#branding">Brand Strategy</a></li>
-              <li><a href="/services#social">Social Media Marketing</a></li>
-              <li><a href="/services#social">Shoots & Editing</a></li>
+              <li><Link to="/services#web">Web Design & Development</Link></li>
+              <li><Link to="/services#seo">SEO & Marketing</Link></li>
+              <li><Link to="/services#branding">Brand Strategy</Link></li>
+              <li><Link to="/services#social">Social Media Marketing</Link></li>
+              <li><Link to="/services#social">Shoots & Editing</Link></li>
             </ul>
           </div>
 
           {/* Contact & Social (UI UNCHANGED) */}
           <div className="col-lg-3 col-md-6">
-            <h6 className="footer-title text-light mb-3">Contact Us</h6>
+            <h2 className="footer-title text-light mb-3 fs-6">Contact Us</h2>
 
             <p className="text-light-50 mb-2">
               📧{" "}

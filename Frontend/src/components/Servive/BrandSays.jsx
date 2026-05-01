@@ -96,8 +96,8 @@ const BrandCard = memo(({ brand, reverse, dark }) => (
     transition={{ duration: 0.6 }}
   >
     <div className="brand-text">
-      <img src={brand.logo} alt={brand.name} loading="lazy" />
-      <h2 className="text-warning">{brand.name}</h2>
+      <img src={brand.logo} alt={`${brand.name} logo`} width="160" height="160" loading="lazy" decoding="async" />
+      <h3 className="text-warning fs-4">{brand.name}</h3>
       <p className="brand-says">“{brand.says}”</p>
       <span className="brand-work fw-bold">
         WORK WE DID -- <strong>{brand.work}</strong>
@@ -110,9 +110,11 @@ const BrandCard = memo(({ brand, reverse, dark }) => (
           key={i}
           src={imgUrl}
           className={`img${i + 1}`}
+          width="400"
+          height="400"
           loading="lazy"
           decoding="async"
-          alt="work"
+          alt={`Work BrandSetu Digital did for ${brand.name}`}
         />
       ))}
     </div>
@@ -146,9 +148,9 @@ const WhatOurBrandsSay = () => {
 
       <div className="container position-relative" style={{ zIndex: 2 }}>
         <div className="brand-wall-header text-center mb-5 text-white">
-          <h1>
+          <h2>
             What Our <span className="text-warning">Brands</span> Say
-          </h1>
+          </h2>
           <p className="fw-semibold text-danger">
             Not testimonials. Brand experiences.
           </p>

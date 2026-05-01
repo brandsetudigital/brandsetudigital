@@ -18,6 +18,7 @@ import "../../Style/OurStory.css";
 import "../../App.css";
 import "../../Style/Contact.css";
 import "../../Style/Home.css";
+import Seo from "../Seo";
 
 const values = [
   {
@@ -98,6 +99,57 @@ const About = () => {
   );
 
   return (
+    <>
+    <Seo
+      title="About BrandSetu Digital — Digital Marketing Experts in Indore"
+      description="Learn the BrandSetu Digital story: an Indore-based digital marketing agency. Our mission, vision, leadership, and the values driving our work in branding and SEO."
+      path="/about"
+      jsonLd={[
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://brandsetudigital.com/",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Our Story",
+              item: "https://brandsetudigital.com/about",
+            },
+          ],
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "@id": "https://brandsetudigital.com/about#webpage",
+          url: "https://brandsetudigital.com/about",
+          name: "About BrandSetu Digital",
+          isPartOf: { "@id": "https://brandsetudigital.com/#organization" },
+          mainEntity: { "@id": "https://brandsetudigital.com/#organization" },
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Soumitra Bajpai",
+          jobTitle: "Founder & CEO",
+          worksFor: { "@id": "https://brandsetudigital.com/#organization" },
+          url: "https://brandsetudigital.com/about",
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Devesh Jain",
+          jobTitle: "Co-Founder & COO",
+          worksFor: { "@id": "https://brandsetudigital.com/#organization" },
+          url: "https://brandsetudigital.com/about",
+        },
+      ]}
+    />
     <section className="hero-section position-relative overflow-hidden hero-full">
       {/* FLOATING BACKGROUND */}
       <div className="hero-background position-absolute w-100 h-100">
@@ -167,14 +219,22 @@ const About = () => {
         <div className="row align-items-center mb-5">
           <div className="col-md-6 mb-4" data-aos="fade-right">
             <div className="about-img-wrap rounded-4 shadow overflow-hidden">
-              <img src={StartImg} alt="BrandSetu" className="w-100" />
+              <img
+                src={StartImg}
+                alt="BrandSetu Digital — building digital brands in Indore"
+                className="w-100"
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </div>
 
           <div className="col-md-6 ps-md-5" data-aos="fade-left">
-            <h3 className="fw-bold display-6 mb-4 text-center text-md-start">
+            <h1 className="fw-bold display-6 mb-4 text-center text-md-start">
               Building <span className="text-danger"> BEST </span>Digital Brands
-            </h3>
+            </h1>
 
             <p className="text-dark text-justify" style={{ lineHeight: 1.8 }}>
               <span className="text-danger fw-bold fs-4">BrandSetu</span> is a Top digital growth partner that helps brands
@@ -230,12 +290,16 @@ const About = () => {
                     >
                       <img
                         src={item.img}
-                        alt={item.title}
+                        alt={`${item.title} — BrandSetu Digital`}
                         className="card-img-top p-3"
+                        width="180"
+                        height="180"
+                        loading="lazy"
+                        decoding="async"
                         style={{ height: "180px", objectFit: "contain" }}
                       />
                       <div className="card-body text-center">
-                        <h5 className="fw-bold text-white">{item.title}</h5>
+                        <h3 className="fw-bold text-white fs-5">{item.title}</h3>
                         <p className="text-white" style={{ lineHeight: 1.7 }}>
                           {item.desc}
                         </p>
@@ -252,6 +316,7 @@ const About = () => {
       <CEO />
       <Prblmsol />
     </section>
+    </>
   );
 };
 

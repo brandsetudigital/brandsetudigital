@@ -1,0 +1,25 @@
+# BrandSetu Digital
+
+> BrandSetu Digital is a digital marketing agency based in Indore, Madhya Pradesh, India. We help businesses grow online through SEO, branding, social media marketing, web design and development, performance advertising, and content production.
+
+## Pages
+- [Home](https://brandsetudigital.com/): Overview of services, brands, and the BrandSetu approach to digital growth.
+- [Services](https://brandsetudigital.com/services): SEO, branding, social media marketing, web design & development, performance ads, and shoot/editing.
+- [Our Work](https://brandsetudigital.com/work): Portfolio of brands we've helped grow, plus team members and case studies.
+- [About / Our Story](https://brandsetudigital.com/about): Mission, vision, leadership, and the values driving our work.
+- [Careers](https://brandsetudigital.com/career): Open roles in design, engineering, marketing, and DevOps.
+- [Contact](https://brandsetudigital.com/contact): Email, phone, location, and an enquiry form.
+
+## Services
+- SEO and organic growth
+- Branding and brand strategy
+- Social media marketing
+- Web design and development
+- Performance marketing and paid ads
+- Content production, shoots, and editing
+- AI automation and maintenance
+
+## Contact
+- Email: Brandsetudigital@gmail.com
+- Phone: +91 6232363639
+- Location: Indore, Madhya Pradesh, India

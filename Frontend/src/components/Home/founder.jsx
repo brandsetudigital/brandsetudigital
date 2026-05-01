@@ -30,9 +30,9 @@ const FounderPage = () => {
       {/* ===== HERO ===== */}
       <section className="founder-hero text-center d-flex align-items-center">
         <div className="container-fluid px-3 px-md-5">
-          <h1 className="display-3 fw-bold text-dark mb-4">
+          <h2 className="display-3 fw-bold text-dark mb-4">
             Meet Our <span className="text-danger">Founders</span>
-          </h1>
+          </h2>
 
           <p className="lead text-dark fw-bold mx-auto col-lg-8 mb-4">
             The visionaries behind BRANDSETU who made exploring the market
@@ -54,8 +54,12 @@ const FounderPage = () => {
                   <div className="position-relative z-2">
                     <img
                       src={founder.img}
-                      alt={founder.name}
+                      alt={`${founder.name}, ${founder.role} of BrandSetu Digital`}
                       className="rounded-circle shadow founder-img"
+                      width="320"
+                      height="320"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
 

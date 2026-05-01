@@ -57,10 +57,14 @@ export default function Culture() {
               <div className="culture-image large">
                 <img
                   src="https://images.unsplash.com/photo-1662469567531-9ae8356d3788"
-                  alt="Team work"
+                  alt="BrandSetu team collaborating in a modern Indore office"
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="image-overlay">
-                  <h4>We Build Together</h4>
+                  <h3 className="fs-5">We Build Together</h3>
                   <p>Collaboration over hierarchy</p>
                 </div>
               </div>
@@ -70,10 +74,14 @@ export default function Culture() {
               <div className="culture-image small">
                 <img
                   src="https://images.unsplash.com/photo-1716703370285-d7ff2960abb4"
-                  alt="Office culture"
+                  alt="BrandSetu office culture and creative workspace"
+                  width="400"
+                  height="600"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="image-overlay">
-                  <h5>We Enjoy the Process</h5>
+                  <h3 className="fs-5">We Enjoy the Process</h3>
                   <p>Work with purpose & fun</p>
                 </div>
               </div>
@@ -91,7 +99,7 @@ export default function Culture() {
               <Col md={3} key={i}>
                 <Card className="culture-card text-center h-100">
                   <Card.Body>
-                    <h5>{item.title}</h5>
+                    <h3 className="fs-5">{item.title}</h3>
                     <p>{item.desc}</p>
                   </Card.Body>
                 </Card>
@@ -107,7 +115,7 @@ export default function Culture() {
                   <Card.Body>
                     <Quote size={28} className="quote-icon" />
                     <p className="testimonial-text">"{t.quote}"</p>
-                    <h6 className="mt-3 mb-0">{t.name}</h6>
+                    <p className="mt-3 mb-0 fw-bold">{t.name}</p>
                     <small>{t.role}</small>
                   </Card.Body>
                 </Card>
@@ -152,7 +160,7 @@ export default function Culture() {
               <Col xs={12} sm={6} md={4}>
                 <div className="life-item text-center">
                   <div className="life-icon">☕</div>
-                  <h5 className="text-warning">Unlimited Coffee</h5>
+                  <h3 className="text-warning fs-5">Unlimited Coffee</h3>
                   <p>Fuel your creativity, anytime</p>
                 </div>
               </Col>
@@ -160,7 +168,7 @@ export default function Culture() {
               <Col xs={12} sm={6} md={4}>
                 <div className="life-item text-center">
                   <div className="life-icon">🎮</div>
-                  <h5 className="text-warning">Game Fridays</h5>
+                  <h3 className="text-warning fs-5">Game Fridays</h3>
                   <p>Unwind with friendly competition</p>
                 </div>
               </Col>
@@ -168,7 +176,7 @@ export default function Culture() {
               <Col xs={12} sm={6} md={4}>
                 <div className="life-item text-center">
                   <div className="life-icon">✈️</div>
-                  <h5 className="text-warning">Team Retreats</h5>
+                  <h3 className="text-warning fs-5">Team Retreats</h3>
                   <p>Build bonds beyond work</p>
                 </div>
               </Col>
