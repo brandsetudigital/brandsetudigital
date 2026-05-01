@@ -51,7 +51,7 @@
   position: relative;
 }
 
-.highlight-stat h1 {
+.highlight-stat .stat-number {
   font-size: 4.5rem;
   font-weight: 900;
   margin-bottom: 10px;
@@ -72,7 +72,7 @@
   transition: transform 0.4s ease;
 }
 
-.highlight-stat:hover h1 {
+.highlight-stat:hover .stat-number {
   transform: translateY(-6px);
 }
 
@@ -94,7 +94,7 @@
 }
 
 /* Responsive number scaling */
-.highlight-stat h1 {
+.highlight-stat .stat-number {
   font-size: clamp(1.9rem, 4.2vw, 4.5rem);
   font-weight: 900;
   margin-bottom: 10px;
@@ -124,7 +124,7 @@
 }
 
 /* Hover remains unchanged */
-.highlight-stat:hover h1 {
+.highlight-stat:hover .stat-number {
   transform: translateY(-6px);
 }
 
@@ -134,7 +134,7 @@
 
 /* Extra safety for very small devices */
 @media (max-width: 420px) {
-  .highlight-stat h1 {
+  .highlight-stat .stat-number {
     font-size: 1.7rem;
   }
 

@@ -18,6 +18,7 @@ import StrategyImg from "../../assets/best-Video-editor-agency.png";
 import SolutionImg from "../../assets/Ai-automation-services.png";
 import HeroSection from "./Testimonialmain";
 import Brandsetu from "../../assets/Brandsetu-digital-agency-about-us.jpg";
+import Seo from "../Seo";
 
 export default function WhoAreWe() {
   useEffect(() => {
@@ -34,6 +35,51 @@ export default function WhoAreWe() {
 
   return (
     <>
+      <Seo
+        title="Our Work — Portfolio of Brands by BrandSetu Digital, Indore"
+        description="See the brands BrandSetu Digital (Indore) has helped grow with branding, SEO, web development, and performance marketing — plus meet the team behind the work."
+        path="/work"
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://brandsetudigital.com/",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Our Work",
+                item: "https://brandsetudigital.com/work",
+              },
+            ],
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "@id": "https://brandsetudigital.com/work#webpage",
+            url: "https://brandsetudigital.com/work",
+            name: "Portfolio — BrandSetu Digital",
+            isPartOf: { "@id": "https://brandsetudigital.com/#organization" },
+            mainEntity: {
+              "@type": "ItemList",
+              name: "BrandSetu Digital Portfolio",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Blue Tokai Studio", url: "https://bluetokaicoffee.com" },
+                { "@type": "ListItem", position: 2, name: "Cafe Peter" },
+                { "@type": "ListItem", position: 3, name: "Chaayos" },
+                { "@type": "ListItem", position: 4, name: "Zouk" },
+                { "@type": "ListItem", position: 5, name: "Suta" },
+                { "@type": "ListItem", position: 6, name: "Slurrp Farm", url: "https://slurrpfarm.com" },
+              ],
+            },
+          },
+        ]}
+      />
       <HeroSection />
       <section className="hero-section position-relative overflow-hidden py-5">
         {/* Floating shapes */}
@@ -70,9 +116,9 @@ export default function WhoAreWe() {
           {/* Header */}
           <Row className="mb-5 text-center">
             <Col>
-              <h1 className="display-2 fw-bold mb-3 text-dark">
+              <h2 className="display-2 fw-bold mb-3 text-dark">
                 <span className="text-danger">Who</span> Are We?
-              </h1>
+              </h2>
               <p className="fs-5 text-dark fw-semibold opacity-85 mx-auto col-lg-8">
                 We are a forward-thinking top marketing company driven by
                 innovation, creativity, and excellence.
@@ -85,12 +131,16 @@ export default function WhoAreWe() {
             <Col lg={6}>
               <img
                 src={Brandsetu}
-                alt="About Us"
+                alt="The BrandSetu Digital team at our agency office in Indore"
                 className="img-fluid rounded-4 shadow-lg"
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
               />
             </Col>
             <Col lg={6}>
-              <h1 className="fw-bold mb-3 text-dark">Why<span className="text-danger"> We </span>Exist!!!</h1>
+              <h2 className="fw-bold mb-3 text-dark">Why<span className="text-danger"> We </span>Exist!!!</h2>
               <p className="fs-5 text-dark text-justify fw-semibold opacity-85">
                 We help brands grow through clear strategy, smart execution, and
                 measurable results. Our focus is on building long-term value by
@@ -127,13 +177,17 @@ export default function WhoAreWe() {
                   <div className="mvv-circle-bg"></div>
                   <motion.img
                     src={item.img}
-                    alt={item.title}
+                    alt={`${item.title} — BrandSetu Digital approach`}
                     className="mvv-modern-icon"
+                    width="200"
+                    height="200"
+                    loading="lazy"
+                    decoding="async"
                     whileHover={{ scale: 1.2, rotate: 10 }}
                   />
-                  <h4 className="fw-bold mt-4 text-dark display-6">
+                  <h3 className="fw-bold mt-4 text-dark display-6">
                     {item.title}
-                  </h4>
+                  </h3>
                   <p className="text-dark opacity-85  mt-2">{item.text}</p>
                 </div>
               </Col>
@@ -144,10 +198,10 @@ export default function WhoAreWe() {
           <Row className="team-section">
             <Row className="mb-3 text-center">
               <Col>
-                <h1 className="fw-bold text-dark display-3">
+                <h2 className="fw-bold text-dark display-3">
                   The <span className="text-danger">Minds</span> Behind{" "}
                   <span className="text-danger">BrandSetu</span>
-                </h1>
+                </h2>
                 <p className="text-dark fs-5 fw-semibold opacity-85">
                   Passionate people shaping powerful brands.
                 </p>
@@ -174,10 +228,10 @@ export default function WhoAreWe() {
                 <Col lg={4} md={6} className="mb-4" key={i}>
                   <div className="team-member founder">
                     <div className="team-image">
-                      <img src={founder.img} alt={founder.name} />
+                      <img src={founder.img} alt={`${founder.name}, ${founder.role} at BrandSetu Digital`} width="400" height="500" loading="lazy" decoding="async" />
                     </div>
                     <div className="team-info">
-                      <h5>{founder.name}</h5>
+                      <h4 className="fs-5">{founder.name}</h4>
                       <span className="text-danger fw-semibold">
                         {founder.role}
                       </span>
@@ -190,9 +244,9 @@ export default function WhoAreWe() {
             {/* Core Team */}
             <Row>
               <Col xs={12} className="text-center mb-5 mt-3">
-                <h4 className="fw-bold display-6 text-danger">
+                <h3 className="fw-bold display-6 text-danger">
                   Pillars Of <span className="text-dark">BrandSetu</span>
-                </h4>
+                </h3>
               </Col>
               {[
                 {
@@ -219,10 +273,10 @@ export default function WhoAreWe() {
                 <Col lg={3} md={6} className="mb-4" key={i}>
                   <div className="team-member">
                     <div className="team-image">
-                      <img src={member.img} alt={member.name} />
+                      <img src={member.img} alt={`${member.name}, ${member.role} at BrandSetu Digital`} width="400" height="500" loading="lazy" decoding="async" />
                     </div>
                     <div className="team-info">
-                      <h5>{member.name}</h5>
+                      <h4 className="fs-5">{member.name}</h4>
                       <span className="text-danger fw-semibold">
                         {member.role}
                       </span>
@@ -237,9 +291,9 @@ export default function WhoAreWe() {
           <Row id="work-section" className="work-section my-5 pt-3   mt-5">
             <Row className="text-center mb-5">
               <Col>
-                <h1 className="fw-bold display-4">
+                <h2 className="fw-bold display-4">
                   Our <span className="text-danger">Work</span>
-                </h1>
+                </h2>
                 <p className="text-muted fs-5 col-lg-7 mx-auto">
                   We collaborate with businesses, restaurants, and fashion
                   brands to create impactful digital experiences.
@@ -353,7 +407,7 @@ export default function WhoAreWe() {
                       <Col lg={4} md={6} key={i}>
                         <div className="work-card">
                           <div className="work-card-img">
-                            <img src={item.img} alt={item.title} />
+                            <img src={item.img} alt={`${item.title} — ${item.tag}`} width="600" height="450" loading="lazy" decoding="async" />
                           </div>
                           <div className="work-card-content">
                             <span className="work-tag">{item.tag}</span>

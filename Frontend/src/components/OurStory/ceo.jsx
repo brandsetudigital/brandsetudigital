@@ -51,13 +51,17 @@ const VisionariesPage = () => {
               <div className="visionary-image-container">
                 <img
                   src={customBoyImage}
-                  alt="Vaibhav Singh Baghel"
+                  alt="Soumitra Bajpai, Co-Founder of BrandSetu Digital"
                   className="img-fluid w-100"
+                  width="600"
+                  height="600"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 
               <Card.Body className="p-4">
-                <h4 className="fw-bold mb-1">SOUMITRA BAJPAI</h4>
+                <h3 className="fw-bold mb-1 fs-5">SOUMITRA BAJPAI</h3>
                 <p className="text-warning  fw-semibold mb-3">
                   Co-Founder & Visionary
                 </p>
@@ -80,13 +84,17 @@ const VisionariesPage = () => {
               <div className="visionary-image-container">
                 <img
                   src={customGirlImage}
-                  alt="Mansi Gupta"
+                  alt="Devesh Jain, Co-Founder of BrandSetu Digital"
                   className="img-fluid w-100"
+                  width="600"
+                  height="600"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 
               <Card.Body className="p-4">
-                <h4 className="fw-bold mb-1">DEVESH JAIN</h4>
+                <h3 className="fw-bold mb-1 fs-5">DEVESH JAIN</h3>
                 <p className="text-warning fw-semibold mb-3">
                   Co-Founder & Strategist
                 </p>
@@ -110,7 +118,7 @@ const VisionariesPage = () => {
             <div className="icon-circle bg-success bg-opacity-75 mb-3 mx-auto">
               <BsHeart size={26} className="text-white" />
             </div>
-            <h5 className="fw-bold">Friendship First</h5>
+            <h3 className="fw-bold fs-5">Friendship First</h3>
             <p className="text-dark px-3">
               Built on trust, respect, and years of friendship that transformed
               into a shared mission.
@@ -121,7 +129,7 @@ const VisionariesPage = () => {
             <div className="icon-circle bg-dark bg-opacity-75 mb-3 mx-auto">
               <BsLightbulb size={26} className="text-white" />
             </div>
-            <h5 className="fw-bold">Purpose-Driven Innovation</h5>
+            <h3 className="fw-bold fs-5">Purpose-Driven Innovation</h3>
             <p className="text-dark px-3">
               Every feature is designed to solve real Businesses problems with
               simplicity and clarity.
@@ -132,7 +140,7 @@ const VisionariesPage = () => {
             <div className="icon-circle bg-danger bg-opacity-75 mb-3 mx-auto">
               <BsPeople size={26} className="text-white" />
             </div>
-            <h5 className="fw-bold">People-Centric Thinking</h5>
+            <h3 className="fw-bold fs-5">People-Centric Thinking</h3>
             <p className="text-dark px-3">
               designing strategies and digital experiences that prioritize real
               human needs.

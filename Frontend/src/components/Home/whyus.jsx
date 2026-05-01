@@ -45,10 +45,10 @@ const WhySetu = () => {
     <section className="why-travelbuff py-5 pt-5 mt-5">
       <Container>
         <div className="text-center mb-5 header-section">
-          <h1 className="display-2 fw-bold">
+          <h2 className="display-2 fw-bold">
             Why <span className="text-danger">Choose </span>
             <span className="gradient-text">BRANDSETU?</span>
-          </h1>
+          </h2>
           <p className="lead text-muted fw-semibold">
             Because we focus on real growth, not just marketing
           </p>
@@ -68,7 +68,7 @@ const WhySetu = () => {
                   >
                     <feature.icon size={32} />
                   </div>
-                  <Card.Title className="text-white mt-3">
+                  <Card.Title as="h3" className="text-white mt-3 fs-5">
                     {feature.title}
                   </Card.Title>
                   <Card.Text className="text-white">

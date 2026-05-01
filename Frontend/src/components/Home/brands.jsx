@@ -129,7 +129,7 @@ export default function Brands() {
                 className={`brand-card ${brand.className}`}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                <img src={brand.logo} alt={brand.name} />
+                <img src={brand.logo} alt={`${brand.name} logo`} width="120" height="120" loading="lazy" decoding="async" />
                 <span>{brand.name}</span>
               </a>
             ))}
@@ -152,7 +152,7 @@ export default function Brands() {
                 className={`brand-card ${brand.className}`}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                <img src={brand.logo} alt={brand.name} />
+                <img src={brand.logo} alt={`${brand.name} logo`} width="120" height="120" loading="lazy" decoding="async" />
                 <span>{brand.name}</span>
               </a>
             ))}

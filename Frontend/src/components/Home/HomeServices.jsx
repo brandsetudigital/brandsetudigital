@@ -164,9 +164,9 @@ export default function Services() {
         {/* HEADER */}
         <div className="text-center mb-5">
           <span className="services-badge">OUR SERVICES</span>
-          <h1 className="display-3 fw-bold text-white mt-3">
+          <h2 className="display-3 fw-bold text-white mt-3">
             Powerful Digital Solutions
-          </h1>
+          </h2>
           <p className="text-light opacity-75 fs-5 mt-2">
             Everything your brand needs to grow digitally
           </p>
@@ -186,11 +186,15 @@ export default function Services() {
                 >
                   <img
                     src={activeService.image}
-                    alt={activeService.title}
+                    alt={`${activeService.title} — BrandSetu Digital service preview`}
                     className="img-fluid preview-image mb-4"
+                    width="800"
+                    height="600"
+                    loading="lazy"
+                    decoding="async"
                   />
 
-                  <h2 className="fw-bold text-white">{activeService.title}</h2>
+                  <h3 className="fw-bold text-white">{activeService.title}</h3>
 
                   <p className="preview-desc mt-3">{activeService.desc}</p>
 
@@ -223,7 +227,7 @@ export default function Services() {
                       <Icon size={26} />
                     </div>
                     <div>
-                      <h4 className="fw-bold mb-1">{service.title}</h4>
+                      <h3 className="fw-bold mb-1 fs-5">{service.title}</h3>
                       <p className="mb-0">{service.subtitle}</p>
                     </div>
                   </motion.div>

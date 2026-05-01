@@ -301,9 +301,19 @@
 }
 @media (max-width: 768px) {
   .hero-title {
-    font-size: clamp(6.4rem, 9vw, 9rem);
+    font-size: clamp(3.5rem, 14vw, 9rem);
     line-height: 1;
     text-align: center;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    padding-inline: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(2.75rem, 16vw, 5rem);
+    letter-spacing: -1px;
   }
 }
 
@@ -512,7 +522,7 @@
   border: 1px solid transparent;
 }
 
-.service-item h4 {
+.service-item h3 {
   color: #ffffff;
   margin-bottom: 4px;
 }
