@@ -209,7 +209,7 @@ export default function WhoAreWe() {
             </Row>
 
             {/* Founders */}
-            <Row id="team-section" className="justify-content-center mb-5">
+            {/* <Row id="team-section" className="justify-content-center mb-5">
               <Col xs={12} className="text-center mb-4">
                 <h3 className="fw-bold text-danger display-5">Founders</h3>
               </Col>
@@ -239,7 +239,7 @@ export default function WhoAreWe() {
                   </div>
                 </Col>
               ))}
-            </Row>
+            </Row> */}
 
             {/* Core Team */}
             <Row>

@@ -96,6 +96,7 @@ export function Hero() {
                   <span className="d-block">BUILD</span>
                   <span className="d-block text-white">YOUR</span>
                   <span className="d-block">BRAND</span>
+                  <span className="visually-hidden">With BrandSetu Digital</span>
                 </h1>
                 <p className="visually-hidden">
                   BrandSetu Digital — a digital marketing and SEO agency in

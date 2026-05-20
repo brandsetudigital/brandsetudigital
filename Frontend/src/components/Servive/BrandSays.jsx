@@ -128,6 +128,9 @@ const WhatOurBrandsSay = () => {
   const totalBatches = Math.ceil(brands.length / batchSize);
 
   useEffect(() => {
+    if (typeof navigator !== "undefined" && navigator.userAgent === "ReactSnap") {
+      return;
+    }
     const interval = setInterval(() => {
       setCurrentBatch((prev) => (prev + 1) % totalBatches);
     }, 9000); // show next batch every 4 seconds

@@ -14,6 +14,8 @@ import HeroImg from "../../assets/Performance-marketing-agency.jpg";
 import Seo from "../Seo";
 
 const Services = () => {
+  const isPrerender = typeof navigator !== "undefined" && navigator.userAgent === "ReactSnap";
+
   useEffect(() => {
     AOS.init({ duration: 1200, once: true });
   }, []);
@@ -180,7 +182,7 @@ const Services = () => {
             <Col md={3} sm={6}>
               <div className="highlight-stat">
                 <span className="stat-number d-block">
-                  <CountUp end={500} duration={2.5} />+
+                  {isPrerender ? "500" : <CountUp end={500} duration={2.5} />}+
                 </span>
                 <div className="stat-line"></div>
                 <p>Successful Projects</p>
@@ -190,7 +192,7 @@ const Services = () => {
             <Col md={3} sm={6}>
               <div className="highlight-stat">
                 <span className="stat-number d-block">
-                  <CountUp end={350} duration={2.8} />+
+                  {isPrerender ? "350" : <CountUp end={350} duration={2.8} />}+
                 </span>
                 <div className="stat-line"></div>
                 <p>Happy Clients</p>
@@ -200,7 +202,7 @@ const Services = () => {
             <Col md={3} sm={6}>
               <div className="highlight-stat">
                 <span className="stat-number d-block">
-                  <CountUp end={4.5} decimals={1} duration={2.3} />+
+                  {isPrerender ? "4.5" : <CountUp end={4.5} decimals={1} duration={2.3} />}+
                 </span>
                 <div className="stat-line"></div>
                 <p>Average Rating</p>
@@ -210,7 +212,7 @@ const Services = () => {
             <Col md={3} sm={6}>
               <div className="highlight-stat">
                 <span className="stat-number d-block">
-                  <CountUp end={20} duration={2.2} />+
+                  {isPrerender ? "20" : <CountUp end={20} duration={2.2} />}+
                 </span>
                 <div className="stat-line"></div>
                 <p>Cities Covered</p>

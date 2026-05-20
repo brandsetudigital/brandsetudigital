@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 import StartImg from "../../assets/digital-marketing-services.jpg";
-import CEO from "../OurStory/ceo";
+// import CEO from "../OurStory/ceo";
 import Prblmsol from "../OurStory/prblmsol";
 
 import Strategy from "../../assets/strategic-digital-growth-brandsetu.png";
@@ -313,7 +313,7 @@ const About = () => {
         </div>
       </div>
 
-      <CEO />
+      {/* <CEO /> */}
       <Prblmsol />
     </section>
     </>

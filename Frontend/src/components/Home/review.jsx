@@ -136,6 +136,9 @@ export default function Reviews() {
   const totalPages = Math.ceil(reviews.length / pageSize);
 
   useEffect(() => {
+    if (typeof navigator !== "undefined" && navigator.userAgent === "ReactSnap") {
+      return;
+    }
     if (hovered) return;
     const interval = setInterval(() => {
       setPage((prev) => (prev + 1) % totalPages);

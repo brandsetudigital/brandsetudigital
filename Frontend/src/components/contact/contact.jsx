@@ -20,6 +20,8 @@ import "../../Style/Home.css";
 import PromoImg from "../../assets/Marketing-agency.png";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import emailjs from "emailjs-com";
+import { API_BASE_URL } from "../../config";
 import Seo from "../Seo";
 
 const ContactPage = () => {
@@ -71,7 +73,8 @@ const ContactPage = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/contact/enquiry", {
+      // 1. Submit to backend API first
+      const res = await fetch(`${API_BASE_URL}/api/contact/enquiry`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(enquiryData),
@@ -79,23 +82,46 @@ const ContactPage = () => {
 
       const data = await res.json();
 
-      if (res.ok) {
-        toast.success("Enquiry submitted successfully!");
-        setEnquiryData({
-          name: "",
-          email: "",
-          phone: "",
-          city: "",
-          domain: "",
-          service: "",
-          message: "",
-        });
-        setShowFollowModal(true);
-      } else {
-        toast.error(data.message || "Something went wrong!");
+      if (!res.ok) {
+        throw new Error(data.message || "Failed to submit enquiry to server");
       }
-    } catch {
-      toast.error("Server error! Please try again later.");
+
+      // 2. Try sending email via EmailJS (optional / fallback)
+      try {
+        const templateParams = {
+          name: enquiryData.name,
+          email: enquiryData.email,
+          phone: enquiryData.phone,
+          city: enquiryData.city,
+          domain: enquiryData.domain,
+          service: enquiryData.service,
+          message: enquiryData.message,
+        };
+
+        await emailjs.send(
+          "service_r2lvfha",
+          "YOUR_TEMPLATE_ID",
+          templateParams,
+          "Lv5WJmYXNAkP0Fg9Z"
+        );
+      } catch (emailError) {
+        console.error("EmailJS notification failed:", emailError);
+      }
+
+      toast.success("Enquiry submitted successfully!");
+      setEnquiryData({
+        name: "",
+        email: "",
+        phone: "",
+        city: "",
+        domain: "",
+        service: "",
+        message: "",
+      });
+      setShowFollowModal(true);
+    } catch (error) {
+      console.error(error);
+      toast.error(error.message || "Server error! Please try again later.");
     }
   };
 
@@ -108,7 +134,8 @@ const ContactPage = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/contact/subscribe", {
+      // 1. Submit to backend API first
+      const res = await fetch(`${API_BASE_URL}/api/contact/subscribe`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: subscribeEmail.trim() }),
@@ -116,14 +143,31 @@ const ContactPage = () => {
 
       const data = await res.json();
 
-      if (res.ok) {
-        toast.success("Subscribed successfully!");
-        setSubscribeEmail("");
-      } else {
-        toast.error(data.message || "Subscription failed!");
+      if (!res.ok) {
+        throw new Error(data.message || "Subscription failed!");
       }
-    } catch {
-      toast.error("Server error! Please try again later.");
+
+      // 2. Try sending email via EmailJS (optional / fallback)
+      try {
+        const templateParams = {
+          subscriber_email: subscribeEmail,
+        };
+
+        await emailjs.send(
+          "service_r2lvfha",
+          "YOUR_SUBSCRIBE_TEMPLATE_ID",
+          templateParams,
+          "Lv5WJmYXNAkP0Fg9Z"
+        );
+      } catch (emailError) {
+        console.error("EmailJS subscription notification failed:", emailError);
+      }
+
+      toast.success("Subscribed successfully!");
+      setSubscribeEmail("");
+    } catch (error) {
+      console.error(error);
+      toast.error(error.message || "Server error! Please try again later.");
     }
   };
 
@@ -435,7 +479,7 @@ const ContactPage = () => {
                       aria-hidden="true"
                     />
                     <h3 className="fw-bold text-success fs-6">Phone</h3>
-                    <p className="small mb-0">+91 6232363639</p>
+                    <p className="small mb-0"> +91 7389824231 | +91 96697 65911</p>
                   </div>
                 </a>
               </Col>

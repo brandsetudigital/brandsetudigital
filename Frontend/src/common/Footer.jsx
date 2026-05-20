@@ -104,7 +104,7 @@ const Footer = () => {
             <p className="text-light-50 mb-3">
               📞{" "}
               <span aria-label="Phone number">
-                +91 6232363639
+                +91 7389824231 | +91 96697 65911
               </span>
             </p>
 

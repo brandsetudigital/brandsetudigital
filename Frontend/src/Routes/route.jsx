@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 import Navbar from "../common/Navbar";
 import Footer from "../common/Footer";
 import { Hero } from "../components/Home/Hero";
@@ -10,23 +10,29 @@ import Portfolio from "../components/Testimonials/whowe";
 import Career from "../components/Career/openings";
 import NotFound from "../components/NotFound";
 
+const MainLayout = () => (
+  <>
+    <Navbar />
+    <main>
+      <Outlet />
+    </main>
+    <Footer />
+  </>
+);
+
 const AppRoutes = () => {
   return (
-    <>
-      <Navbar />
-      <main>
-        <Routes>
-          <Route path="/" element={<Hero />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/about" element={<OurStory />} />
-          <Route path="/work" element={<Portfolio />} />
-          <Route path="/career" element={<Career />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
-      <Footer />
-    </>
+    <Routes>
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<Hero />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/about" element={<OurStory />} />
+        <Route path="/work" element={<Portfolio />} />
+        <Route path="/career" element={<Career />} />
+      </Route>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 };
 

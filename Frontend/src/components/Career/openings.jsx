@@ -221,7 +221,7 @@ export default function JobListings() {
       <ApplyJobModal
         show={showModal}
         onHide={() => setShowModal(false)}
-        jobTitle={selectedJob}
+        job={selectedJob}
       />
 
       <Culture />

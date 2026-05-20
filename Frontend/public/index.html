@@ -1,56 +1,99 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
+    <!-- ================= BASIC META ================= -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0d0d0d" />
 
-    <!-- Favicons (Google SERP uses these to render the site logo) -->
-    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="%PUBLIC_URL%/logo512.png" />
-    <link rel="apple-touch-icon" sizes="192x192" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title data-rh="true">
+      BrandSetu Digital — Digital Marketing &amp; SEO Agency in Indore
+    </title>
 
-    <!-- Primary SEO -->
-    <title>BrandSetu Digital — Digital Marketing &amp; SEO Agency in Indore</title>
     <meta
+      data-rh="true"
       name="description"
       content="BrandSetu Digital is a top digital marketing agency in Indore offering SEO, branding, social media marketing, web development, and performance ads to help businesses grow online."
     />
+    <meta data-rh="true" name="author" content="BrandSetu Digital" />
     <meta
+      data-rh="true"
       name="keywords"
       content="digital marketing agency Indore, SEO services Indore, branding agency Indore, social media marketing, web development, performance marketing, BrandSetu, BrandSetu Digital"
     />
-    <meta name="author" content="BrandSetu Digital" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <link rel="canonical" href="https://brandsetudigital.com/" />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="BrandSetu Digital" />
-    <meta property="og:url" content="https://brandsetudigital.com/" />
-    <meta property="og:title" content="BrandSetu Digital — Digital Marketing &amp; SEO Agency in Indore" />
     <meta
+      data-rh="true"
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+
+    <!-- ================= THEME ================= -->
+    <meta name="theme-color" content="#0d0d0d" />
+
+    <!-- ================= CANONICAL ================= -->
+    <!-- Canonical is managed dynamically per route via React Helmet -->
+    <noscript>
+      <link rel="canonical" href="https://brandsetudigital.com" />
+    </noscript>
+
+    <!-- ================= ICONS & PWA ================= -->
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon-192x192.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- ================= OPEN GRAPH ================= -->
+    <meta data-rh="true" property="og:type" content="website" />
+    <meta data-rh="true" property="og:site_name" content="BrandSetu Digital" />
+    <meta
+      data-rh="true"
+      property="og:title"
+      content="BrandSetu Digital — Digital Marketing &amp; SEO Agency in Indore"
+    />
+    <meta
+      data-rh="true"
       property="og:description"
       content="Top digital marketing agency in Indore offering SEO, branding, social media marketing, web development, and performance ads."
     />
-    <meta property="og:image" content="https://brandsetudigital.com/logo512.png" />
-    <meta property="og:image:width" content="512" />
-    <meta property="og:image:height" content="512" />
-    <meta property="og:locale" content="en_IN" />
+    <meta
+      data-rh="true"
+      property="og:image"
+      content="https://brandsetudigital.com/favicon-512x512.png"
+    />
+    <meta
+      data-rh="true"
+      property="og:url"
+      content="https://brandsetudigital.com/"
+    />
+    <meta data-rh="true" property="og:image:width" content="512" />
+    <meta data-rh="true" property="og:image:height" content="512" />
+    <meta data-rh="true" property="og:locale" content="en_IN" />
 
-    <!-- Twitter -->
+    <!-- ================= TWITTER ================= -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="BrandSetu Digital — Digital Marketing &amp; SEO Agency in Indore" />
+    <meta
+      name="twitter:title"
+      content="BrandSetu Digital — Digital Marketing &amp; SEO Agency in Indore"
+    />
     <meta
       name="twitter:description"
       content="Top digital marketing agency in Indore offering SEO, branding, social media marketing, web development, and performance ads."
     />
-    <meta name="twitter:image" content="https://brandsetudigital.com/logo512.png" />
+    <meta
+      name="twitter:image"
+      content="https://brandsetudigital.com/favicon-512x512.png"
+    />
 
-    <!-- LocalBusiness JSON-LD (sitewide; per-route schemas added via react-helmet-async) -->
+    <!-- ================= STRUCTURED DATA : WEBSITE ================= -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "BrandSetu Digital",
+        "alternateName": ["BrandSetu"],
+        "url": "https://brandsetudigital.com/"
+      }
+    </script>
+
+    <!-- ================= STRUCTURED DATA : LOCAL BUSINESS ================= -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -58,8 +101,8 @@
         "@id": "https://brandsetudigital.com/#organization",
         "name": "BrandSetu Digital",
         "url": "https://brandsetudigital.com/",
-        "logo": "https://brandsetudigital.com/logo512.png",
-        "image": "https://brandsetudigital.com/logo512.png",
+        "logo": "https://brandsetudigital.com/favicon-512x512.png",
+        "image": "https://brandsetudigital.com/favicon-512x512.png",
         "description": "BrandSetu Digital is a digital marketing agency in Indore offering SEO, branding, social media marketing, web development, and performance ads.",
         "email": "Brandsetudigital@gmail.com",
         "telephone": "+91-6232363639",
@@ -78,7 +121,14 @@
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday"
+            ],
             "opens": "10:00",
             "closes": "19:00"
           }
@@ -87,12 +137,45 @@
           "@type": "OfferCatalog",
           "name": "Digital Marketing Services",
           "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO Services" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Branding & Brand Strategy" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Social Media Marketing" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Design & Development" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Performance Marketing" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Content, Shoots & Editing" } }
+            {
+              "@type": "Offer",
+              "itemOffered": { "@type": "Service", "name": "SEO Services" }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Branding & Brand Strategy"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Social Media Marketing"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Web Design & Development"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Performance Marketing"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Content, Shoots & Editing"
+              }
+            }
           ]
         },
         "sameAs": [
@@ -102,9 +185,75 @@
         ]
       }
     </script>
+
+    <!-- ================= STRUCTURED DATA : BREADCRUMB ================= -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "@id": "https://brandsetudigital.com/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://brandsetudigital.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Services",
+            "item": "https://brandsetudigital.com/services"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Our Work",
+            "item": "https://brandsetudigital.com/work"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "About",
+            "item": "https://brandsetudigital.com/about"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Career",
+            "item": "https://brandsetudigital.com/career"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "Contact",
+            "item": "https://brandsetudigital.com/contact"
+          }
+        ]
+      }
+    </script>
   </head>
+
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <h1>BrandSetu Digital — Digital Marketing &amp; SEO Agency in Indore</h1>
+      <p>
+        BrandSetu Digital is a top digital marketing agency in Indore offering
+        SEO, branding, social media marketing, web development, and performance
+        ads to help businesses grow online.
+      </p>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/work">Our Work</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/career">Careers</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+      <p>You need to enable JavaScript to run this app.</p>
+    </noscript>
     <div id="root"></div>
   </body>
 </html>

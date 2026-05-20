@@ -9,6 +9,7 @@ import {
   ToastContainer,
 } from "react-bootstrap";
 import emailjs from "emailjs-com";
+import { API_BASE_URL } from "../../config";
 import "../../Style/Career.css";
 
 export default function ApplyModal({ show, onHide, job }) {
@@ -49,7 +50,7 @@ export default function ApplyModal({ show, onHide, job }) {
       Object.keys(formData).forEach((key) => data.append(key, formData[key]));
       data.append("jobTitle", job);
 
-      const response = await fetch("http://localhost:5000/api/careers", {
+      const response = await fetch(`${API_BASE_URL}/api/careers`, {
         method: "POST",
         body: data,
       });
