@@ -10,6 +10,7 @@ import Brands from "../../components/Home/brands";
 import Reviews from "../../components/Home/review";
 import WhySetu from "./whyus";
 import FounderPage from "./founder";
+import ProcessSection from "./ProcessSection";
 import Seo from "../Seo";
 
 export function Hero() {
@@ -246,6 +247,7 @@ export function Hero() {
           {/* Home Sections */}
           <Brands />
           <Services />
+          <ProcessSection />
           <WhySetu />
           <FounderPage />
           <Reviews />
