@@ -1,0 +1,619 @@
+/* Hero Section Background */
+.career-hero-section {
+  min-height: 100vh;
+  background-color: #f7f9fa; /* brand background */
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0;
+}
+
+/* Blobs */
+.career-hero-blobs .blob-top,
+.career-hero-blobs .blob-bottom {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(250, 204, 21, 0.2);
+  filter: blur(120px);
+  animation: pulse 4s infinite alternate;
+}
+
+.blob-top {
+  width: 18rem;
+  height: 18rem;
+  top: 5rem;
+  left: 2rem;
+}
+
+.blob-bottom {
+  width: 24rem;
+  height: 24rem;
+  bottom: 5rem;
+  right: 2rem;
+  opacity: 0.15;
+  animation-delay: 0.7s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Hiring Badge */
+.badge-hiring {
+  background-color: rgba(250, 204, 21, 0.1);
+  border: 1px solid rgba(250, 204, 21, 0.3);
+  border-radius: 50px;
+}
+
+/* Subtitle */
+.career-hero-subtitle {
+  font-size: 1.25rem;
+  max-width: 700px;
+  margin: 0 auto;
+  color: #9297a2;
+}
+
+/* Button base */
+.btn-yellow {
+  background: linear-gradient(135deg, #facc15, #fcd34d);
+  color: black;
+  border-radius: 50px;
+  border: none;
+  box-shadow: 0 8px 20px rgba(250, 204, 21, 0.4);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+/* Arrow icon animation */
+.arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+/* Keywords Marquee */
+.keywords-marquee-wrapper {
+  overflow: hidden;
+}
+
+.keywords-marquee {
+  display: flex;
+  gap: 1rem;
+  animation: marquee 20s linear infinite;
+  white-space: nowrap;
+}
+
+.keyword-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  background: rgba(250, 204, 21, 0.1);
+  border: 1px solid rgba(250, 204, 21, 0.3);
+  border-radius: 50px;
+  font-size: 1rem;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ================= JOBS SECTION ================= */
+
+.job-section {
+  background-color: #f7f9fa;
+  position: relative;
+}
+
+/* ================= LEFT EDITORIAL ================= */
+
+.jobs-editorial {
+  position: sticky;
+  top: 120px;
+}
+
+.jobs-eyebrow {
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #a16207;
+}
+
+.jobs-heading {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 1rem 0;
+}
+
+.jobs-heading span {
+  color: #facc15;
+}
+
+.jobs-lead {
+  font-size: 1.05rem;
+  color: #4b5563;
+  max-width: 420px;
+  margin-bottom: 1.5rem;
+}
+
+.jobs-points {
+  padding-left: 1rem;
+  color: #374151;
+  margin-bottom: 2rem;
+}
+
+.jobs-points li {
+  margin-bottom: 0.5rem;
+}
+
+/* Stats */
+.jobs-stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.jobs-stats div {
+  display: flex;
+  flex-direction: column;
+}
+
+.jobs-stats strong {
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.jobs-stats span {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* ================= JOB RAIL ================= */
+
+.job-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.job-rail-item {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 1.5rem;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.job-rail-item:hover {
+  transform: translateX(6px);
+  border-color: rgba(250, 204, 21, 0.6);
+  box-shadow: 0 12px 30px rgba(250, 204, 21, 0.25);
+}
+
+.job-rail-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.job-rail-top h5 {
+  font-weight: 700;
+}
+
+.job-rail-desc {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin: 0.75rem 0;
+}
+
+.job-rail-meta {
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 992px) {
+  .jobs-editorial {
+    position: static;
+  }
+
+  .jobs-heading {
+    font-size: 2.2rem;
+  }
+
+  .jobs-stats {
+    gap: 1.5rem;
+  }
+}
+
+/* ================= APPLY MODAL ================= */
+
+.apply-clean-body {
+  background-color: #fbf3c4;
+}
+
+/* LEFT PANEL */
+.apply-left {
+  background-color: #232323;
+}
+
+.theme-badge {
+  background-color: #facc15;
+  color: #111827;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* FORM BASE */
+.apply-form .form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.apply-form .form-control,
+.apply-form .form-select,
+.apply-form textarea {
+  border-radius: 8px;
+  border: 1.5px solid rgba(17, 24, 39, 0.25);
+  background-color: #ffffff;
+  color: #111827;
+  font-size: 0.9rem;
+}
+
+/* REMOVE BOOTSTRAP BLUE */
+.apply-form .form-control:focus,
+.apply-form .form-select:focus,
+.apply-form textarea:focus {
+  border-color: #facc15;
+  box-shadow: 0 0 0 0.15rem rgba(250, 204, 21, 0.35);
+  outline: none;
+}
+
+/* SELECT THEME */
+.theme-select {
+  cursor: pointer;
+}
+
+.theme-select option {
+  background-color: #111827;
+  color: #facc15;
+}
+
+/* BUTTON */
+.apply-btn {
+  background: rgb(255, 213, 0);
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  border-radius: 30px;
+}
+
+.apply-btn:hover {
+  background-color: #717171;
+}
+
+.apply-btn:focus,
+.apply-btn:active {
+  box-shadow: none !important;
+  outline: none !important;
+  background-color: #000000;
+}
+
+/* REMOVE ALL BLUE OUTLINES */
+.apply-clean-body *:focus {
+  outline: none !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 767px) {
+  .apply-left {
+    text-align: center;
+  }
+
+  .apply-left ul {
+    text-align: left;
+  }
+}
+
+/* ================= CULTURE SECTION ================= */
+
+.culture-section {
+  padding: 100px 0;
+  background-color: #000;
+  color: #fff;
+}
+
+.culture-title {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.culture-title span {
+  color: #facc15;
+}
+
+.culture-subtitle {
+  color: #9ca3af;
+  max-width: 600px;
+  margin: 12px auto 0;
+}
+
+/* IMAGE GRID */
+.culture-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  height: 100%;
+}
+
+.culture-image.large {
+  height: 420px;
+}
+
+.culture-image.small {
+  height: 420px;
+}
+
+.culture-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+}
+
+.image-overlay h4,
+.image-overlay h5 {
+  margin: 0;
+}
+
+.image-overlay p {
+  font-size: 14px;
+  color: #e5e7eb;
+}
+
+/* VALUES */
+.culture-card {
+  background-color: #111;
+  border: 1px solid rgba(250, 204, 21, 0.2);
+  border-radius: 16px;
+}
+
+.culture-card h5 {
+  color: #facc15;
+  margin-bottom: 10px;
+}
+
+.culture-card p {
+  font-size: 14px;
+  color: #9f9f9f;
+}
+
+/* TESTIMONIAL */
+.testimonial-card {
+  background-color: #0f0f0f;
+  border-radius: 16px;
+  border: 1px solid rgba(250, 204, 21, 0.2);
+}
+
+.quote-icon {
+  color: rgba(250, 204, 21, 0.4);
+}
+
+.testimonial-text {
+  font-size: 15px;
+  color: #d1d5db;
+}
+
+.testimonial-card small {
+  color: #ababab;
+}
+
+/* ================= LIFE SECTION ================= */
+
+.life-box {
+  background: linear-gradient(to right, #18181b, #000, #18181b);
+  border: 1px solid rgba(250, 204, 21, 0.25);
+  border-radius: 32px;
+  padding: 70px 40px;
+}
+
+/* Heading */
+.section-subtitle {
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.section-subtitle span {
+  color: #facc15;
+}
+
+/* Life Item */
+.life-item h5 {
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.life-item p {
+  font-size: 14px;
+  color: #ffffff;
+  margin-top: 6px;
+}
+
+/* Icon */
+.life-icon {
+  width: 88px;
+  height: 88px;
+  background: linear-gradient(145deg, #facc15, #f59e0b);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
+  margin: auto;
+  box-shadow: 0 10px 25px rgba(250, 204, 21, 0.25);
+}
+
+/* Meme Box */
+.meme-box {
+  max-width: 420px;
+  padding: 22px 32px;
+  border: 2px solid #facc15;
+  border-radius: 20px;
+  background: #000;
+}
+
+.meme-box .old {
+  text-decoration: line-through;
+  color: #6b7280;
+  font-size: 1.3rem;
+}
+
+.meme-box .new {
+  color: #facc15;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .life-box {
+    padding: 50px 24px;
+  }
+
+  .section-subtitle {
+    font-size: 30px;
+  }
+
+  .life-icon {
+    width: 74px;
+    height: 74px;
+    font-size: 2rem;
+  }
+
+  .meme-box {
+    padding: 20px 24px;
+  }
+
+  .meme-box .new {
+    font-size: 1.5rem;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .culture-title {
+    font-size: 34px;
+  }
+
+  .culture-image.large,
+  .culture-image.small {
+    height: 260px;
+  }
+}
+
+/* ================= GENERAL APPLICATION ================= */
+
+.general-apply-section {
+  padding: 5rem 0;
+ background: #000;;
+}
+
+.general-apply-box {
+  background: linear-gradient(135deg, #0b0b0b, #000);
+  border: 1px solid rgba(250, 204, 21, 0.35);
+  border-radius: 28px;
+  padding: 3rem 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Text */
+.general-apply-content h2 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.general-apply-content p {
+  color: #d1d5db;
+  max-width: 520px;
+  font-size: 1.05rem;
+}
+
+/* Button */
+.general-apply-btn {
+  background: linear-gradient(145deg, #facc15, #f59e0b);
+  color: #000;
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: 700;
+  border-radius: 999px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.general-apply-btn span {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.general-apply-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(250, 204, 21, 0.35);
+}
+
+.general-apply-btn:hover span {
+  transform: translate(4px, -4px);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .general-apply-box {
+    flex-direction: column;
+    text-align: center;
+    padding: 2.5rem 2rem;
+  }
+
+  .general-apply-content h2 {
+    font-size: 2rem;
+  }
+
+  .general-apply-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

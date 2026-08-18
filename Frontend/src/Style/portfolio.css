@@ -1,0 +1,435 @@
+/* ================= HERO BASE ================= */
+.pf-hero {
+  background: linear-gradient(180deg, #ffd400, #ffc400);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Maintain hero height on large screens */
+@media (min-width: 992px) {
+  .pf-hero {
+    min-height: 100vh;
+  }
+}
+
+/* ================= LEFT ================= */
+.pf-left {
+  z-index: 2;
+}
+
+/* ================= BADGE ================= */
+.pf-badge {
+  background: rgba(255, 255, 255, 0.25);
+  color: #860000;
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  width: fit-content;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .pf-badge {
+    padding: 9px 20px;
+    font-size: 12.5px;
+    letter-spacing: 1.3px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .pf-badge {
+    padding: 8px 18px;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 360px) {
+  .pf-badge {
+    padding: 7px 16px;
+    font-size: 11.5px;
+    letter-spacing: 1.1px;
+  }
+}
+
+/* ================= BUTTONS ================= */
+.pf-btn-primary {
+  background: #111;
+  color: #ffd400;
+  border-radius: 50px;
+  font-weight: 700;
+}
+
+.pf-btn-primary:hover {
+  background: #000;
+  color: #ffd400;
+}
+
+.pf-btn-secondary {
+  border: 2px solid #000000;
+  color: #000000;
+  border-radius: 50px;
+  font-weight: 700;
+}
+
+.pf-btn-secondary:hover {
+  background: #ffeeee;
+  color: #000;
+}
+
+/* ================= RIGHT ================= */
+.pf-right {
+  background: linear-gradient(135deg, #000000, #000000);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ================= GRID ================= */
+.pf-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 500px 500px;
+  opacity: 0.4;
+}
+
+/* Scale grid safely on smaller screens */
+@media (max-width: 768px) {
+  .pf-grid {
+    background-size: 300px 300px;
+    opacity: 0.25;
+  }
+}
+
+/* ================= IMAGE CARD ================= */
+.pf-image-card {
+  max-width: 520px;
+  width: 100%;
+  z-index: 2;
+}
+
+/* Prevent overflow on short screens */
+.pf-hero-video {
+  width: 150rem;
+  height: auto;
+  max-height: 150rem;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* ================= DIAGONAL ================= */
+.pf-diagonal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 200px;
+  background: #000000;
+  transform: skewX(-12deg) translateX(-50%);
+  z-index: 1;
+}
+
+/* ================= MOBILE & TABLET ================= */
+@media (max-width: 991px) {
+
+  .pf-hero {
+    height: auto !important;
+    min-height: auto !important;
+    padding-top: 100px !important;
+    padding-bottom: 40px;
+  }
+
+  .pf-diagonal {
+    display: none !important;
+  }
+
+  .pf-left {
+    padding: 0 1.25rem !important;
+    text-align: center;
+    align-items: center;
+  }
+
+  .pf-left h1 {
+    font-size: 2.1rem;
+    line-height: 1.15;
+    max-width: 92%;
+    margin: 0 auto 12px;
+  }
+
+  .pf-left p {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    max-width: 92%;
+    margin: 0 auto 22px;
+  }
+
+  .pf-left .d-flex {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .pf-left .btn {
+    width: 100%;
+    max-width: 260px;
+    padding: 14px 0;
+    font-size: 0.95rem;
+  }
+
+  .pf-right {
+    margin-top: 28px;
+    padding: 0;
+    background: #000;
+  }
+
+  .pf-image-card {
+    width: 90%;
+    max-width: 360px;
+    margin: 0 auto;
+    padding: 6px;
+  }
+}
+
+/* ================= SMALL PHONES ================= */
+@media (max-width: 420px) {
+  .pf-left h1 {
+    font-size: 1.9rem;
+  }
+
+  .pf-left p {
+    font-size: 0.9rem;
+  }
+}
+
+/* ================= ULTRA-WIDE / 4K SAFETY ================= */
+@media (min-width: 1600px) {
+  .pf-left,
+  .pf-right {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+
+/* Modern Mission/Vision/Values layout */
+.mvv-modern-container {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 30px;
+  padding: 3rem 1.5rem;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.4s ease, background 0.4s ease;
+  overflow: visible;
+  z-index: 1;
+}
+.mvv-modern-container:hover {
+  transform: translateY(-15px);
+  background: rgba(0, 0, 0, 0.12); /* subtle yellow glow */
+}
+
+.mvv-circle-bg {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background: rgba(255, 212, 0, 0.2);
+  border-radius: 50%;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: blur(50px);
+  z-index: 0;
+}
+
+.mvv-modern-icon {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 1rem;
+  transition: transform 0.5s ease;
+}
+
+/* Text styles */
+.mvv-modern-container h4 {
+  z-index: 2;
+  position: relative;
+}
+.mvv-modern-container p {
+  z-index: 2;
+  position: relative;
+}
+
+/* TEAM SECTION */
+.team-section {
+  position: relative;
+}
+
+.team-member {
+  text-align: center;
+  transition: transform 0.4s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-8px);
+}
+
+.team-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 18px;
+  position: relative;
+}
+
+.team-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: all 0.5s ease;
+}
+
+.team-member:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.08);
+}
+
+.team-info {
+  margin-top: 14px;
+}
+
+.team-info h5 {
+  margin-bottom: 4px;
+  font-weight: 700;
+  color: #000000; /* yellow */
+}
+
+.team-info span {
+  font-size: 18px bold;
+  color: rgba(0, 0, 0, 0.75);
+  letter-spacing: 0.5px;
+}
+/* WORK SECTION */
+.work-section {
+  position: relative;
+}
+
+/* CARD */
+.work-card {
+  position: relative;
+  height: 480px;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #000;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+
+.work-card:hover {
+  transform: translateY(-10px);
+}
+
+/* IMAGE */
+.work-card-img {
+  position: absolute;
+  inset: 0;
+}
+
+.work-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.work-card:hover img {
+  transform: scale(1.15);
+}
+
+/* OVERLAY */
+.work-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.85));
+  z-index: 1;
+}
+
+/* CONTENT */
+.work-card-content {
+  position: absolute;
+  bottom: 0;
+  padding: 30px;
+  z-index: 2;
+  color: #fff;
+}
+
+.work-card-content h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.work-card-content p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  margin-bottom: 18px;
+}
+
+/* TAG */
+.work-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ff4d4f;
+  text-transform: uppercase;
+}
+
+/* LINK */
+.work-link {
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+}
+
+.work-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #ff4d4f;
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.work-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .work-card {
+    height: 420px;
+  }
+}
+/* RESPONSIVE */
+@media (max-width: 991px) {
+  .work-image-wrapper {
+    height: 300px;
+  }
+}
+
+

@@ -1,0 +1,216 @@
+/* ================= RESET ================= */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* ================= HERO WRAPPER ================= */
+.hero-full {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* ================= HERO SECTION ================= */
+.about-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ================= VIDEO ================= */
+.about-banner-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ================= MUTE BUTTON ================= */
+.video-audio-btn {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  z-index: 6;
+
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+
+  border: none;
+  cursor: pointer;
+
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+
+  color: #fff;
+  font-size: 1.2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.video-audio-btn:hover {
+  transform: scale(1.08);
+  background: rgba(0, 0, 0, 0.75);
+}
+
+/* ================= CONTACT BOX ================= */
+.about-contact-box {
+  background: rgba(0, 0, 0, 0.45);
+  padding: 20px 24px;
+  max-width: 350px;
+}
+
+.about-contact-box span {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* ================= IMAGE WRAP ================= */
+.about-img-wrap {
+  height: 100%;
+}
+
+.about-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ================= FEATURE CARDS ================= */
+.about-feature-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ================= MOBILE FIXES ================= */
+@media (max-width: 991px) {
+  .about-hero {
+    height: 90vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    height: 85vh;
+  }
+
+  .about-banner-img {
+    object-position: center top;
+  }
+
+  .video-audio-btn {
+    bottom: 18px;
+    left: 18px;
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+
+  .about-contact-box {
+    max-width: 100%;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-hero {
+    height: 80vh;
+  }
+
+  .about-banner-img {
+    object-position: center;
+  }
+}
+
+/* ===================ceo================== */
+
+.visionary-card {
+  background: rgba(0, 0, 0, 0.6); /* black with transparency */
+  color: #fff;
+  backdrop-filter: blur(7px); /* glass effect (optional but recommended) */
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.visionary-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+.visionary-image-container img {
+  height: 320px;
+  object-fit: cover;
+}
+
+.icon-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 767px) {
+  .visionaries-page .lead {
+    padding: 0 15px;
+  }
+}
+
+/* =================================Prblmsol============================= */
+.bg-danger-subtle {
+  background-color: #fce8e8 !important;
+}
+.cards {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 1px 1px 1px #919090;
+}
+.cards:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(156, 249, 254, 0.15);
+}
+.text-danger {
+  color: #dc3545 !important;
+}
+
+.bg-primary-subtle {
+  background-color: #e0f2f7 !important;
+}
+
+@media (max-width: 767px) {
+  .travel-solution-page .display-4 {
+    font-size: 2.5rem;
+  }
+  .travel-solution-page .lead {
+    font-size: 1rem;
+  }
+  .travel-solution-page .card-title {
+    font-size: 1.1rem;
+  }
+}
+
+.scattered-journey-img,
+.solution-platform-img {
+  max-width: 100%;
+  height: auto;
+}
+
+.card.shadow-sm {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
