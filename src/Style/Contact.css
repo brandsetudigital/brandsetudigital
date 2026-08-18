@@ -1,0 +1,114 @@
+
+/* ================================================CONTACT PAGE========================================================== */
+.contact-page-wrapper {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.contact-page-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(32, 32, 32, 0.6);
+  backdrop-filter: blur(6px);
+  z-index: 1;
+}
+
+.contact-image-container {
+  position: relative;
+  height: 100%;
+  min-height: 400px;
+}
+
+.contact-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+.contact-image-container:hover .contact-overlay {
+  opacity: 1;
+}
+
+.contact-card {
+  background: #2c2b2b;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-info-card {
+  background: #fff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.contact-info-card:hover {
+  transform: translateY(-8px);
+}
+.email-card:hover {
+  background-color: #cfe2fd;
+}
+.phone-card:hover {
+  background-color: #cafbe1;
+}
+.location-card:hover {
+  background-color: #ffeaea;
+}
+.hours-card:hover {
+  background-color: #faedc8;
+}
+
+
+/* ===========================FollowModal========================= */
+.social-grid a.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  color: rgb(19, 19, 19);
+  background: var(--social-color, #000);
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.social-grid a.social-icon:hover {
+  transform: translateY(-8px) scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+}
+
+.social-grid div.small {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #f9d400;
+}
+
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.contact-info-card:hover {
+  transform: translateY(-5px);
+  transition: 0.3s ease;
+}
+
+.custom-close .btn-close {
+  filter: invert(72%) sepia(98%) saturate(600%) hue-rotate(5deg);
+  opacity: 1;
+}

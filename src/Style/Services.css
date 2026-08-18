@@ -1,0 +1,493 @@
+/* ===========================================SERVICE PAGE================================================== */
+/* HERO SECTION */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  min-height: 600px;
+}
+
+/* FLOATING SHAPES */
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0; /* behind overlay and content */
+  pointer-events: none;
+}
+
+.floating-shape {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 8px 25px rgba(255, 204, 0, 0.4);
+}
+
+/* HERO IMAGE OVERLAY */
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(50, 50, 50, 0.5);
+  z-index: 1;
+}
+
+/* HERO CONTENT */
+.hero-content {
+  position: relative;
+  z-index: 2; /* above everything */
+  animation: fadeInUp 1.2s ease;
+}
+
+.hero-content h1 {
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.hero-content p {
+  opacity: 0.9;
+  max-width: 700px;
+}
+
+/* Highlight stats */
+.highlight-stats {
+  position: relative;
+}
+
+.highlight-stat .stat-number {
+  font-size: 4.5rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+  letter-spacing: -2px;
+  color: #111;
+  -webkit-text-stroke: 1.5px #000;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s ease;
+}
+
+.stat-line {
+  width: 46px;
+  height: 4px;
+  margin: 0 auto 14px;
+  background: linear-gradient(90deg, #000, #333);
+  border-radius: 2px;
+  transform: scaleX(0.6);
+  transition: transform 0.4s ease;
+}
+
+.highlight-stat:hover .stat-number {
+  transform: translateY(-6px);
+}
+
+.highlight-stat:hover .stat-line {
+  transform: scaleX(1);
+}
+/* ====================== RESPONSIVE STATS (NO UI CHANGE) ====================== */
+
+/* Keep stats in one row always */
+.highlight-stats .row {
+  flex-wrap: nowrap;
+}
+
+/* Equal width columns without breaking layout */
+.highlight-stats .col,
+.highlight-stats [class*="col-"] {
+  flex: 1 1 0;
+  max-width: 25%;
+}
+
+/* Responsive number scaling */
+.highlight-stat .stat-number {
+  font-size: clamp(1.9rem, 4.2vw, 4.5rem);
+  font-weight: 900;
+  margin-bottom: 10px;
+  letter-spacing: -2px;
+  color: #111;
+  -webkit-text-stroke: 1.5px #000;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+  transition: transform 0.4s ease;
+}
+
+/* Responsive label text */
+.highlight-stat p {
+  font-size: clamp(0.7rem, 1vw, 1rem);
+  white-space: nowrap;
+}
+
+/* Responsive divider */
+.stat-line {
+  width: clamp(28px, 5vw, 46px);
+  height: clamp(3px, 0.5vw, 4px);
+  margin: 0 auto 14px;
+  background: linear-gradient(90deg, #000, #333);
+  border-radius: 2px;
+  transform: scaleX(0.6);
+  transition: transform 0.4s ease;
+}
+
+/* Hover remains unchanged */
+.highlight-stat:hover .stat-number {
+  transform: translateY(-6px);
+}
+
+.highlight-stat:hover .stat-line {
+  transform: scaleX(1);
+}
+
+/* Extra safety for very small devices */
+@media (max-width: 420px) {
+  .highlight-stat .stat-number {
+    font-size: 1.7rem;
+  }
+
+  .highlight-stat p {
+    font-size: 0.65rem;
+  }
+}
+
+/* ============= Detailedservices =============== */
+
+.read-more {
+  color: #740bb0 !important;
+  transition: all 0.3s ease;
+}
+
+.read-more:hover {
+  color: #9b51e0 !important;
+  transform: translateX(5px);
+}
+
+/* IMAGE BOX – DESKTOP DEFAULT */
+.service-img-box {
+  width: 250px;
+  height: 150px;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* IMAGE FIT */
+.service-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.service-img-box:hover .service-img {
+  transform: scale(1.08);
+}
+
+/* READ MORE LINK */
+.read-more-link {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #5f0000;
+  cursor: pointer;
+}
+
+.read-more-link:focus,
+.read-more-link:active {
+  outline: none;
+  box-shadow: none;
+}
+
+.read-more-link:hover {
+  opacity: 0.85;
+}
+
+/* ================= RESPONSIVENESS ================= */
+
+/* Prevent horizontal scroll */
+body {
+  overflow-x: hidden;
+}
+
+/* DEFAULT (desktop untouched) */
+.service-card {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .service-img-box {
+    width: 200px;
+    height: 130px;
+  }
+}
+
+/* ================= MOBILE FIX ================= */
+@media (max-width: 768px) {
+  .service-card {
+    flex-direction: column; /* stack properly */
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .service-img-box {
+    width: 100%;
+    height: 180px; /* smaller = cleaner */
+  }
+
+  .service-img {
+    object-fit: cover;
+  }
+
+  .service-card h4 {
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  .read-more-link {
+    align-self: flex-start; /* keeps UI same feel */
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .service-img-box {
+    height: 160px;
+  }
+
+  .service-card p {
+    font-size: 0.88rem;
+  }
+}
+
+/* ================= BRANDSAYS ================= */
+.brand-wall {
+  padding: 20px 0;
+}
+
+/* HEADER */
+.brand-wall-header h1 {
+  font-size: 56px;
+  font-weight: 900;
+}
+
+.brand-wall-header p {
+  font-size: 18px;
+  color: #555;
+}
+
+/* ================= STRIP ================= */
+.brand-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: 120px;
+}
+
+.brand-strip.reverse {
+  flex-direction: row-reverse;
+}
+
+/* ================= TEXT ================= */
+.brand-text {
+  max-width: 520px;
+}
+
+.brand-text img {
+  height: 40px;
+  margin-bottom: 12px;
+}
+
+.brand-text h2 {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.brand-says {
+  font-size: 19px;
+  line-height: 1.6;
+  color: #fffefe;
+}
+
+.brand-work {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #7b7301;
+}
+
+/* ================= COLLAGE (LIGHT SHADOW) ================= */
+.brand-collage {
+  position: relative;
+  width: 520px;
+  height: 360px;
+}
+
+.brand-collage img {
+  position: absolute;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18); /* lighter */
+}
+
+/* POSITIONS */
+.img1 {
+  width: 300px;
+  height: 360px;
+  left: 0;
+  top: 0;
+  z-index: 4;
+}
+
+.img2 {
+  width: 190px;
+  height: 140px;
+  top: 0;
+  right: 0;
+}
+
+.img3 {
+  width: 190px;
+  height: 140px;
+  top: 160px;
+  right: 0;
+}
+
+.img4 {
+  width: 170px;
+  height: 120px;
+  bottom: -20px;
+  left: 200px;
+}
+
+/* ================= RESPONSIVE FIXES (NO UI CHANGE) ================= */
+
+/* Tablet adjustments */
+@media (max-width: 992px) {
+  .brand-strip {
+    gap: 40px;
+    margin-bottom: 80px;
+  }
+
+  .brand-text {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .brand-text h2 {
+    font-size: 32px;
+  }
+
+  .brand-says {
+    font-size: 17px;
+  }
+
+  .brand-work {
+    font-size: 11px;
+  }
+}
+
+/* =================== MOBILE – VISUAL UPGRADE (NO UI CHANGE) =================== */
+@media (max-width: 768px) {
+
+  .brand-strip {
+    gap: 22px;
+    margin-bottom: 90px;
+  }
+
+  /* TEXT FEELS LIKE A HERO */
+  .brand-text {
+    max-width: 100%;
+    text-align: center;
+    padding: 0 6px;
+  }
+
+  .brand-text h2 {
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+
+  .brand-says {
+    font-size: 15.5px;
+    line-height: 1.55;
+    opacity: 0.95;
+  }
+
+  .brand-work {
+    font-size: 10px;
+    margin-top: 10px;
+    letter-spacing: 1.3px;
+  }
+
+  /* COLLAGE – KEEP DEPTH, NOT GRID */
+  .brand-collage {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    display: block;
+  }
+
+  .brand-collage img {
+    position: absolute;
+    border-radius: 16px;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.25);
+  }
+
+  /* HERO IMAGE */
+  .brand-collage .img1 {
+    width: 72%;
+    height: 80%;
+    left: 0;
+    top: 0;
+    z-index: 3;
+  }
+
+  /* SUPPORTING IMAGES */
+  .brand-collage .img2 {
+    width: 42%;
+    height: 42%;
+    right: 0;
+    top: 0;
+    z-index: 4;
+  }
+
+  .brand-collage .img3 {
+    width: 42%;
+    height: 42%;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+  }
+
+  .brand-collage .img4 {
+    display: none; /* reduces clutter ONLY on mobile */
+  }
+}
+
+/* =================== SMALL MOBILE =================== */
+@media (max-width: 480px) {
+
+  .brand-wall-header h1 {
+    font-size: 32px;
+  }
+
+  .brand-text h2 {
+    font-size: 24px;
+  }
+
+  .brand-says {
+    font-size: 14.5px;
+  }
+
+  .brand-collage {
+    height: 220px;
+  }
+}
