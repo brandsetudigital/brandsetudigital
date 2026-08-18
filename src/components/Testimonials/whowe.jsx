@@ -7,12 +7,9 @@ import "../../Style/portfolio.css";
 import "../../App.css";
 import "../../Style/Home.css";
 
-import Founder1 from "../../assets/founder-brandsetu.webp";
-import Dipesh from "../../assets/dipesh-brandsetu.webp";
 import yuvraj from "../../assets/yuvraj-brandsetu.JPG";
+import founder from "../../assets/founder-brandsetu.webp";
 import mansi from "../../assets/mansi-brandsetu.webp";
-import shivani from "../../assets/Founder-brandsetu-digital.webp";
-import Founder2 from "../../assets/ceo-brandsetu.webp";
 import ProblemImg from "../../assets/top-web-development-company.png";
 import StrategyImg from "../../assets/best-Video-editor-agency.png";
 import SolutionImg from "../../assets/Ai-automation-services.png";
@@ -269,7 +266,7 @@ export default function WhoAreWe() {
                 {
                   name: "Soumitra Bajpai",
                   role: "Marketing Head & Growth Strategist",
-                  img: shivani,
+                  img: founder,
                 },
                 {
                   name: "Mansi Gupta",

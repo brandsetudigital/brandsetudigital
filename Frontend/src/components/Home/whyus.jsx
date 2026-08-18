@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import { Shield, Heart, MapPin, Gem, Users, Award } from "lucide-react";
+import { Shield, Heart, MapPin, Gem } from "lucide-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../App.css";
 import "../../Style/Home.css";

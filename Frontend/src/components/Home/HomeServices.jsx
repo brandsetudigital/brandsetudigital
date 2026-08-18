@@ -6,14 +6,13 @@ import {
   Share2,
   BarChart3,
   Palette,
-  Subtitles,
 } from "lucide-react";
 import "../../Style/Home.css";
 import "../../App.css";
-import websitedevelopmentcompany from "../../../src/assets/website-development-company.webp";
-import automationandmaintainance from "../../../src/assets/autimationandmaintainance.jpg";
-import shootandvideo from "../../../src/assets/shootandvideo.jpg";
-import WhatsappMarketing from "../../../src/assets/whatsapp-marketing-services.avif";
+import websitedevelopmentcompany from "../../assets/website-development-company.webp";
+import automationandmaintainance from "../../assets/autimationandmaintainance.jpg";
+import shootandvideo from "../../assets/shootandvideo.jpg";
+import WhatsappMarketing from "../../assets/whatsapp-marketing-services.avif";
 
 const services = [
   {

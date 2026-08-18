@@ -1,12 +1,11 @@
 import React from "react";
-import { Modal, Row, Col, Button } from "react-bootstrap";
+import { Modal, Row, Col } from "react-bootstrap";
 import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
   FaTwitter,
   FaYoutube,
-  FaPinterestP,
   FaTiktok,
 } from "react-icons/fa";
 import "../../Style/Contact.css";
