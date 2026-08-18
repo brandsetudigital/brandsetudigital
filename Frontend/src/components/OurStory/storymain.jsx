@@ -89,11 +89,12 @@ const About = () => {
   /* ===== Floating Shapes ===== */
   const floatingShapes = useMemo(
     () =>
-      [...Array(12)].map(() => ({
-        size: Math.floor(Math.random() * 80 + 40),
+      Array.from({ length: 35 }).map(() => ({
+        size: Math.floor(Math.random() * 130 + 40),
         left: Math.random() * 100,
         top: Math.random() * 100,
-        duration: Math.random() * 10 + 12,
+        duration: Math.random() * 15 + 10,
+        delay: Math.random() * 5,
       })),
     [],
   );
@@ -152,22 +153,27 @@ const About = () => {
     />
     <section className="hero-section position-relative overflow-hidden hero-full">
       {/* FLOATING BACKGROUND */}
-      <div className="hero-background position-absolute w-100 h-100">
+      <div className="hero-background position-absolute w-100 h-100" style={{ top: 0, left: 0, zIndex: 0, pointerEvents: "none" }} aria-hidden="true">
         {floatingShapes.map((shape, i) => (
           <motion.div
             key={i}
-            className="floating-shape position-absolute rounded-circle opacity-75"
+            className="floating-shape position-absolute rounded-circle"
             style={{
               width: shape.size,
               height: shape.size,
               left: `${shape.left}%`,
               top: `${shape.top}%`,
             }}
-            animate={{ y: [0, 40, 0], opacity: [0.4, 0.7, 0.4] }}
+            animate={{
+              y: [0, Math.random() * 80 - 40, 0],
+              x: [0, Math.random() * 80 - 40, 0],
+              scale: [1, 1.3, 1],
+            }}
             transition={{
               duration: shape.duration,
               repeat: Infinity,
               ease: "easeInOut",
+              delay: shape.delay,
             }}
           />
         ))}

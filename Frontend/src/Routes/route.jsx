@@ -4,6 +4,7 @@ import Navbar from "../common/Navbar";
 import Footer from "../common/Footer";
 import { Hero } from "../components/Home/Hero";
 import Services from "../components/Servive/servicepage";
+import ServiceDetail from "../components/Servive/ServiceDetail";
 import ContactPage from "../components/contact/contact";
 import OurStory from "../components/OurStory/storymain";
 import Portfolio from "../components/Testimonials/whowe";
@@ -26,6 +27,7 @@ const AppRoutes = () => {
       <Route element={<MainLayout />}>
         <Route path="/" element={<Hero />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/services/:slug" element={<ServiceDetail />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/about" element={<OurStory />} />
         <Route path="/work" element={<Portfolio />} />

@@ -87,9 +87,8 @@ const brands = [
 
 const BrandCard = memo(({ brand, reverse, dark }) => (
   <motion.div
-    className={`brand-strip ${reverse ? "reverse" : ""} ${
-      dark ? "dark-bg" : "light-bg"
-    }`}
+    className={`brand-strip ${reverse ? "reverse" : ""} ${dark ? "dark-bg" : "light-bg"
+      }`}
     initial={{ opacity: 0, y: 40 }}
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: 40 }}
@@ -149,12 +148,12 @@ const WhatOurBrandsSay = () => {
       <div className="bg-blob blob-1"></div>
       <div className="bg-blob blob-2"></div>
 
-      <div className="container position-relative" style={{ zIndex: 2 }}>
+      <div className="container-fluid px-3 px-md-5 px-xl-5 position-relative" style={{ zIndex: 2 }}>
         <div className="brand-wall-header text-center mb-5 text-white">
-          <h2>
+          <h2 className="display-4 fw-bold mb-2">
             What Our <span className="text-warning">Brands</span> Say
           </h2>
-          <p className="fw-semibold text-danger">
+          <p className="fs-5 fw-semibold text-danger">
             Not testimonials. Brand experiences.
           </p>
         </div>
