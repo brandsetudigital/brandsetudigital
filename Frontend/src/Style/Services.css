@@ -15,10 +15,10 @@
 }
 
 .floating-shape {
-  position: absolute;
+  background-color: rgba(0, 0, 0, 0.05);
   border-radius: 50%;
+  position: absolute;
   pointer-events: none;
-  box-shadow: 0 8px 25px rgba(255, 204, 0, 0.4);
 }
 
 /* HERO IMAGE OVERLAY */
@@ -183,7 +183,9 @@
   padding: 0;
   margin: 0;
   color: #5f0000;
+  font-weight: 700;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .read-more-link:focus,
@@ -194,6 +196,7 @@
 
 .read-more-link:hover {
   opacity: 0.85;
+  transform: translateX(4px);
 }
 
 /* ================= RESPONSIVENESS ================= */
@@ -265,27 +268,36 @@ body {
 
 /* ================= BRANDSAYS ================= */
 .brand-wall {
-  padding: 20px 0;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding: 80px 0;
+  position: relative;
+  background-color: #111827 !important;
+  overflow: hidden;
 }
 
 /* HEADER */
-.brand-wall-header h1 {
-  font-size: 56px;
+.brand-wall-header h1,
+.brand-wall-header h2 {
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
   font-weight: 900;
 }
 
 .brand-wall-header p {
-  font-size: 18px;
-  color: #555;
+  font-size: 20px;
 }
 
 /* ================= STRIP ================= */
 .brand-strip {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 60px;
-  margin-bottom: 120px;
+  max-width: 1550px;
+  width: 100%;
+  margin: 0 auto 120px;
+  padding: 0 20px;
 }
 
 .brand-strip.reverse {
@@ -294,77 +306,85 @@ body {
 
 /* ================= TEXT ================= */
 .brand-text {
-  max-width: 520px;
+  max-width: 580px;
+  flex: 1;
 }
 
 .brand-text img {
-  height: 40px;
-  margin-bottom: 12px;
+  height: 50px;
+  width: auto;
+  margin-bottom: 16px;
+  object-fit: contain;
 }
 
-.brand-text h2 {
-  font-size: 40px;
+.brand-text h2,
+.brand-text h3 {
+  font-size: clamp(2.2rem, 3.2vw, 2.8rem);
   font-weight: 800;
   margin-bottom: 16px;
 }
 
 .brand-says {
-  font-size: 19px;
+  font-size: 24px;
   line-height: 1.6;
-  color: #fffefe;
+  color: #ffffff;
+  font-weight: 400;
 }
 
 .brand-work {
   display: inline-block;
-  margin-top: 14px;
-  font-size: 12px;
-  letter-spacing: 1.4px;
+  margin-top: 18px;
+  font-size: 13px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #7b7301;
+  color: #facc15;
 }
 
 /* ================= COLLAGE (LIGHT SHADOW) ================= */
 .brand-collage {
   position: relative;
-  width: 520px;
-  height: 360px;
+  width: 580px;
+  height: 420px;
+  flex-shrink: 0;
 }
 
 .brand-collage img {
   position: absolute;
   object-fit: cover;
-  border-radius: 18px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18); /* lighter */
+  border-radius: 20px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
 }
 
 /* POSITIONS */
 .img1 {
-  width: 300px;
-  height: 360px;
+  width: 350px;
+  height: 420px;
   left: 0;
   top: 0;
   z-index: 4;
+  background: #ffffff;
 }
 
 .img2 {
-  width: 190px;
-  height: 140px;
+  width: 220px;
+  height: 165px;
   top: 0;
   right: 0;
 }
 
 .img3 {
-  width: 190px;
-  height: 140px;
-  top: 160px;
+  width: 220px;
+  height: 165px;
+  top: 185px;
   right: 0;
 }
 
 .img4 {
-  width: 170px;
-  height: 120px;
+  width: 190px;
+  height: 140px;
   bottom: -20px;
-  left: 200px;
+  left: 220px;
+  z-index: 5;
 }
 
 /* ================= RESPONSIVE FIXES (NO UI CHANGE) ================= */

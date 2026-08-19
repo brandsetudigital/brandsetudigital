@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "../../Style/Home.css";
 import "../../Style/Services.css";
@@ -20,15 +20,18 @@ const Services = () => {
     AOS.init({ duration: 1200, once: true });
   }, []);
 
-  /* ================= FLOATING SHAPES (BLACK ONLY) ================= */
-  const floatingShapes = [...Array(30)].map(() => ({
-    size: Math.floor(Math.random() * 90 + 30),
-    left: Math.random() * 100,
-    top: Math.random() * 100,
-    duration: Math.random() * 18 + 12,
-    delay: Math.random() * 5,
-    opacity: Math.random() * 0.1 + 0.04,
-  }));
+  /* ================= FLOATING SHAPES ================= */
+  const floatingShapes = useMemo(
+    () =>
+      Array.from({ length: 45 }).map(() => ({
+        size: Math.floor(Math.random() * 130 + 40),
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        duration: Math.random() * 15 + 10,
+        delay: Math.random() * 5,
+      })),
+    []
+  );
 
   const heroImage = HeroImg;
 
@@ -124,22 +127,21 @@ const Services = () => {
       />
     <section className="hero-section position-relative overflow-hidden py-3 pt-5">
       {/* ================= FLOATING SHAPES ================= */}
-      <div className="hero-background">
+      <div className="hero-background position-absolute w-100 h-100" style={{ top: 0, left: 0, zIndex: 0, pointerEvents: "none" }} aria-hidden="true">
         {floatingShapes.map((shape, i) => (
           <motion.div
             key={i}
-            className="floating-shape"
+            className="floating-shape position-absolute rounded-circle"
             style={{
               width: shape.size,
               height: shape.size,
               left: `${shape.left}%`,
               top: `${shape.top}%`,
-              background: `rgba(0, 0, 0, ${shape.opacity})`,
             }}
             animate={{
               y: [0, Math.random() * 80 - 40, 0],
               x: [0, Math.random() * 80 - 40, 0],
-              scale: [1, 1.25, 1],
+              scale: [1, 1.3, 1],
             }}
             transition={{
               duration: shape.duration,
