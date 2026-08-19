@@ -7,12 +7,9 @@ import "../../Style/portfolio.css";
 import "../../App.css";
 import "../../Style/Home.css";
 
-import Founder1 from "../../assets/founder-brandsetu.webp";
-import Dipesh from "../../assets/dipesh-brandsetu.webp";
 import yuvraj from "../../assets/yuvraj-brandsetu.JPG";
+import founder from "../../assets/founder-brandsetu.webp";
 import mansi from "../../assets/mansi-brandsetu.webp";
-import shivani from "../../assets/shivani-brandsetu.webp";
-import Founder2 from "../../assets/ceo-brandsetu.webp";
 import ProblemImg from "../../assets/top-web-development-company.png";
 import StrategyImg from "../../assets/best-Video-editor-agency.png";
 import SolutionImg from "../../assets/Ai-automation-services.png";
@@ -242,7 +239,7 @@ export default function WhoAreWe() {
             </Row> */}
 
             {/* Core Team */}
-            <Row>
+            <Row className="justify-content-center">
               <Col xs={12} className="text-center mb-5 mt-3">
                 <h3 className="fw-bold display-6 text-danger">
                   Pillars Of <span className="text-dark">BrandSetu</span>
@@ -250,33 +247,44 @@ export default function WhoAreWe() {
               </Col>
               {[
                 {
-                  name: "Garvit Jain",
-                  role: "Media Handler",
+                  name: "Darshana Bajpai",
+                  role: "Manager & Media Handler",
                   img: yuvraj,
                 },
                 {
-                  name: "Shivani Kushwah",
-                  role: "Growth Strategist",
-                  img: shivani,
+                  name: "Soumitra Bajpai",
+                  role: "Marketing Head & Growth Strategist",
+                  img: founder,
                 },
                 {
                   name: "Mansi Gupta",
                   role: "Analytics & Operations",
                   img: mansi,
                 },
-                {
-                  name: "Dipesh Bundele",
-                  role: "Creative Lead",
-                  img: Dipesh,
-                },
               ].map((member, i) => (
-                <Col lg={3} md={6} className="mb-4" key={i}>
-                  <div className="team-member">
+                <Col
+                  key={i}
+                  xl={4}
+                  lg={4}
+                  md={6}
+                  sm={10}
+                  xs={12}
+                  className="mb-4 d-flex justify-content-center"
+                >
+                  <div className="team-member w-100">
                     <div className="team-image">
-                      <img src={member.img} alt={`${member.name}, ${member.role} at BrandSetu Digital`} width="400" height="500" loading="lazy" decoding="async" />
+                      <img
+                        src={member.img}
+                        alt={`${member.name}, ${member.role} at BrandSetu Digital`}
+                        width="400"
+                        height="500"
+                        loading="lazy"
+                        decoding="async"
+                        className="img-fluid"
+                      />
                     </div>
-                    <div className="team-info">
-                      <h4 className="fs-5">{member.name}</h4>
+                    <div className="team-info mt-3">
+                      <h4 className="fs-5 mb-1 text-dark fw-bold">{member.name}</h4>
                       <span className="text-danger fw-semibold">
                         {member.role}
                       </span>
