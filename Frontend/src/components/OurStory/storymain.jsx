@@ -48,6 +48,9 @@ const About = () => {
 
   /* ===== TRY INITIAL UNMUTED PLAY (BROWSER SAFE) ===== */
   useEffect(() => {
+    if (typeof navigator !== "undefined" && navigator.userAgent === "ReactSnap") {
+      return;
+    }
     const video = videoRef.current;
     if (!video) return;
 
@@ -184,10 +187,11 @@ const About = () => {
         <video
           ref={videoRef}
           className="w-100 pt-0 mt-0 about-banner-img"
-          src={StoryHero}
-          autoPlay
-          loop
+          src={typeof navigator !== "undefined" && navigator.userAgent === "ReactSnap" ? undefined : StoryHero}
+          autoPlay={typeof navigator === "undefined" || navigator.userAgent !== "ReactSnap"}
+          loop={typeof navigator === "undefined" || navigator.userAgent !== "ReactSnap"}
           playsInline
+          preload={typeof navigator !== "undefined" && navigator.userAgent === "ReactSnap" ? "none" : "metadata"}
         />
 
         <div className="about-banner-overlay" />

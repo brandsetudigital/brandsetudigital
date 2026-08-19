@@ -54,8 +54,7 @@
       "/contact",
       "/about",
       "/work",
-      "/career",
-      "/404"
+      "/career"
     ],
     "inlineCss": false,
     "puppeteerArgs": [

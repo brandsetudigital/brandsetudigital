@@ -1,105 +1,57 @@
 # =========================================================================
-# BrandSetu Digital — Apache/LiteSpeed config for Hostinger shared hosting.
-# Tuned for a CRA build prerendered with react-snap.
-# This file lives in Frontend/public/.htaccess and CRA copies it to build/
-# automatically during `npm run build`. Upload the whole build/ folder to
-# public_html/ on Hostinger.
+# BrandSetu Digital — Apache / Hostinger Configuration
 # =========================================================================
 
-# --- HTTPS (Hostinger usually handles this at the edge, but enforce here too)
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  RewriteBase /
 
+  # --- Force HTTPS
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP:X-Forwarded-Proto} !https
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # --- Strip trailing slashes for non-directories (canonical URLs)
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^(.+)/$ /$1 [L,R=301]
-
-  # --- If a real file or directory exists, serve it as-is.
-  # This is what makes prerendered routes work: /services has a directory
-  # build/services/ containing index.html, so /services -> services/index.html
-  # automatically (Apache's DirectoryIndex). Same for /about, /work, etc.
+  # --- If requested file or directory exists, serve directly
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # --- Anything else: 404.
-  # We do NOT rewrite to the root index.html (that would soft-404 every
-  # unknown URL with HTTP 200, which Google penalizes). Instead we let
-  # Apache return a real 404 status and use ErrorDocument below to render
-  # the prerendered 404 page.
+  # --- Single Page Application / React-Snap Fallback
+  RewriteRule ^ index.html [L]
 </IfModule>
 
-# Render our prerendered 404 page on any 404 (with proper HTTP 404 status).
-ErrorDocument 404 /404/index.html
+# Custom 404 page
+ErrorDocument 404 /404.html
 
-# --- Cache: long for hashed assets, none for HTML so deploys take effect immediately.
-<IfModule mod_expires.c>
-  ExpiresActive On
-  ExpiresDefault                              "access plus 1 month"
-  ExpiresByType text/html                     "access plus 0 seconds"
-  ExpiresByType application/json              "access plus 0 seconds"
-  ExpiresByType application/xml               "access plus 0 seconds"
-  ExpiresByType text/xml                      "access plus 0 seconds"
-  ExpiresByType image/jpg                     "access plus 1 year"
-  ExpiresByType image/jpeg                    "access plus 1 year"
-  ExpiresByType image/png                     "access plus 1 year"
-  ExpiresByType image/webp                    "access plus 1 year"
-  ExpiresByType image/avif                    "access plus 1 year"
-  ExpiresByType image/svg+xml                 "access plus 1 year"
-  ExpiresByType image/gif                     "access plus 1 year"
-  ExpiresByType image/x-icon                  "access plus 1 year"
-  ExpiresByType video/mp4                     "access plus 1 year"
-  ExpiresByType text/css                      "access plus 1 year"
-  ExpiresByType application/javascript        "access plus 1 year"
-  ExpiresByType application/x-font-woff       "access plus 1 year"
-  ExpiresByType application/font-woff2        "access plus 1 year"
-  ExpiresByType font/woff2                    "access plus 1 year"
+# --- Correct MIME Types
+<IfModule mod_mime.c>
+  AddType text/css .css
+  AddType application/javascript .js
+  AddType application/manifest+json .webmanifest .json
+  AddType image/webp .webp
+  AddType image/avif .avif
+  AddType font/woff2 .woff2
 </IfModule>
 
-# Force the prerendered HTML files to revalidate every request.
-# CRA's JS/CSS bundles are content-hashed and safe to cache aggressively;
-# index.html files are not hashed and must always reflect the latest deploy.
+# --- Caching Headers
 <IfModule mod_headers.c>
-  <FilesMatch "\.(html|xml|txt)$">
+  <FilesMatch "\.(html)$">
     Header set Cache-Control "no-cache, no-store, must-revalidate"
     Header set Pragma "no-cache"
     Header set Expires "0"
   </FilesMatch>
-
-  # Long cache + immutable for hashed asset bundles.
-  <FilesMatch "\.([0-9a-f]{8,})\.(js|css|woff2?|jpg|jpeg|png|webp|avif|svg)$">
+  <FilesMatch "\.(js|css|webp|png|jpg|jpeg|svg|woff2|ico)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-
-  # Basic security headers.
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
-  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
 </IfModule>
 
-# --- Gzip / Brotli compression
+# --- Gzip Compression
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
   AddOutputFilterByType DEFLATE application/javascript application/json application/xml
   AddOutputFilterByType DEFLATE image/svg+xml
-  AddOutputFilterByType DEFLATE font/woff font/woff2 application/font-woff application/font-woff2
+  AddOutputFilterByType DEFLATE font/woff font/woff2
 </IfModule>
-
-# Pretty MIME types for some static files Apache may not know.
-<IfModule mod_mime.c>
-  AddType application/manifest+json   .webmanifest
-  AddType application/x-web-app-manifest+json .json
-  AddType image/webp                  .webp
-  AddType image/avif                  .avif
-  AddType font/woff2                  .woff2
-</IfModule>
-
-# Block access to common sensitive files.
-<FilesMatch "(^\.|composer\.|package(-lock)?\.|\.env|\.git|\.htaccess|\.htpasswd)">
-  Require all denied
-</FilesMatch>

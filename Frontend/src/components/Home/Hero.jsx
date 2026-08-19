@@ -192,12 +192,12 @@ export function Hero() {
                       {i === 0 && (
                         <div className="card-logo p-4">
                           <motion.video
-                            src={heroVideo}
-                            autoPlay
+                            src={typeof navigator !== "undefined" && navigator.userAgent === "ReactSnap" ? undefined : heroVideo}
+                            autoPlay={typeof navigator === "undefined" || navigator.userAgent !== "ReactSnap"}
                             muted
-                            loop
+                            loop={typeof navigator === "undefined" || navigator.userAgent !== "ReactSnap"}
                             playsInline
-                            preload="metadata"
+                            preload={typeof navigator !== "undefined" && navigator.userAgent === "ReactSnap" ? "none" : "metadata"}
                             aria-label="BrandSetu Digital marketing agency showreel"
                             width="500"
                             height="500"

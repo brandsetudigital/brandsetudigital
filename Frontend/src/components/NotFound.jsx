@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <>
       <Seo
-        title="Page Not Found"
+        title="404 - Page Not Found"
         description="The page you were looking for could not be found."
         path="/404"
         noindex

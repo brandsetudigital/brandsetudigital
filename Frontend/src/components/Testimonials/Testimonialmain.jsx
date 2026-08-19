@@ -55,11 +55,12 @@ export default function HeroSection() {
             <div className="pf-image-card shadow-lg rounded-4 p-3 pt-5">
               <video
                 className="img-fluid rounded-3 pf-hero-video"
-                src={Portfolio} 
-                autoPlay
-                loop
+                src={typeof navigator !== "undefined" && navigator.userAgent === "ReactSnap" ? undefined : Portfolio} 
+                autoPlay={typeof navigator === "undefined" || navigator.userAgent !== "ReactSnap"}
+                loop={typeof navigator === "undefined" || navigator.userAgent !== "ReactSnap"}
                 muted
                 playsInline
+                preload={typeof navigator !== "undefined" && navigator.userAgent === "ReactSnap" ? "none" : "metadata"}
               />
             </div>
           </Col>
