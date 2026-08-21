@@ -139,16 +139,8 @@ const About = () => {
         {
           "@context": "https://schema.org",
           "@type": "Person",
-          name: "Soumitra Bajpai",
+          name: "Saumitra Bajpai",
           jobTitle: "Founder & CEO",
-          worksFor: { "@id": "https://brandsetudigital.com/#organization" },
-          url: "https://brandsetudigital.com/about",
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "Person",
-          name: "Devesh Jain",
-          jobTitle: "Co-Founder & COO",
           worksFor: { "@id": "https://brandsetudigital.com/#organization" },
           url: "https://brandsetudigital.com/about",
         },

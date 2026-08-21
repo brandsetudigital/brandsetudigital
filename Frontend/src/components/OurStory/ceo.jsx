@@ -38,76 +38,47 @@ const VisionariesPage = () => {
             style={{ maxWidth: "720px" }}
             data-aos="fade-up"
           >
-            Built by two passionate professionals who believe in honest work, smart digital strategy, and long-term business growth.
-
+            Driven by passion, strategic vision, and 15+ years of digital excellence to turn ambitious businesses into market leaders.
           </p>
         </div>
 
-        {/* Founder Cards */}
-        <Row className="justify-content-center g-4 mb-5">
-          {/* Founder 1 */}
-          <Col md={6} lg={5} data-aos="fade-right">
-            <Card className="h-100 border-0 shadow-sm rounded-4 overflow-hidden visionary-card">
-              <div className="visionary-image-container">
-                <img
-                  src={customBoyImage}
-                  alt="Soumitra Bajpai, Co-Founder of BrandSetu Digital"
-                  className="img-fluid w-100"
-                  width="600"
-                  height="600"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-
-              <Card.Body className="p-4">
-                <h3 className="fw-bold mb-1 fs-5">SOUMITRA BAJPAI</h3>
-                <p className="text-warning  fw-semibold mb-3">
-                  Co-Founder & Visionary
-                </p>
-                <p className="text-white text-justify mb-0">
-                  At Brand Setu Digital, I bring over 15 years of experience to
-                  help businesses grow with confidence and clarity. I understand
-                  the frustration of putting in effort without seeing real
-                  progress. That’s why my focus is on building trust, long-term
-                  growth, and results that truly matter. My goal is to support
-                  brands not just in growing faster, but in growing smarter and
-                  stronger.
-                </p>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          {/* Founder 2 */}
-          <Col md={6} lg={5} data-aos="fade-left">
-            <Card className="h-100 border-0 shadow-sm rounded-4 overflow-hidden visionary-card">
-              <div className="visionary-image-container">
-                <img
-                  src={customGirlImage}
-                  alt="Devesh Jain, Co-Founder of BrandSetu Digital"
-                  className="img-fluid w-100"
-                  width="600"
-                  height="600"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-
-              <Card.Body className="p-4">
-                <h3 className="fw-bold mb-1 fs-5">DEVESH JAIN</h3>
-                <p className="text-warning fw-semibold mb-3">
-                  Co-Founder & Strategist
-                </p>
-                <p className="text-white text-justify mb-0">
-                  At BrandSetu Digital, I bring 5+ years of experience working
-                  closely with growing businesses and understanding their real
-                  challenges. I believe growth is not about shortcuts, but about
-                  patience, right decisions, and consistent effort. My focus is
-                  on helping brands move forward with confidence, clear
-                  direction, and a strong long-term vision they can truly
-                  believe in.
-                </p>
-              </Card.Body>
+        {/* Founder Card */}
+        <Row className="justify-content-center mb-5">
+          <Col md={10} lg={8} data-aos="fade-up">
+            <Card className="h-100 border-0 shadow-lg rounded-4 overflow-hidden visionary-card">
+              <Row className="g-0 align-items-center">
+                <Col md={5}>
+                  <div className="visionary-image-container h-100">
+                    <img
+                      src={customBoyImage}
+                      alt="Saumitra Bajpai, Founder & CEO of BrandSetu Digital"
+                      className="img-fluid w-100 h-100 object-fit-cover"
+                      width="600"
+                      height="600"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </Col>
+                <Col md={7}>
+                  <Card.Body className="p-4 p-lg-5">
+                    <span className="badge bg-danger mb-2 px-3 py-2 text-uppercase fw-bold">Leadership</span>
+                    <h3 className="fw-bold mb-1 fs-3">SAUMITRA BAJPAI</h3>
+                    <p className="text-warning fw-semibold mb-3 fs-5">
+                      Founder & CEO
+                    </p>
+                    <p className="text-white text-justify mb-0 lh-lg">
+                      At BrandSetu Digital, I bring over 15 years of experience to
+                      help businesses grow with confidence and clarity. I understand
+                      the frustration of putting in effort without seeing real
+                      progress. That’s why my focus is on building trust, long-term
+                      growth, and results that truly matter. My goal is to support
+                      brands not just in growing faster, but in growing smarter and
+                      stronger.
+                    </p>
+                  </Card.Body>
+                </Col>
+              </Row>
             </Card>
           </Col>
         </Row>

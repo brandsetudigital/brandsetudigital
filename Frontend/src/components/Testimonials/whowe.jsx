@@ -212,14 +212,9 @@ export default function WhoAreWe() {
               </Col>
               {[
                 {
-                  name: "Soumitra Bajpai",
-                  role: "Co-Founder",
+                  name: "Saumitra Bajpai",
+                  role: "Founder & CEO",
                   img: Founder1,
-                },
-                {
-                  name: "Devesh Jain",
-                  role: "Co-Founder",
-                  img: Founder2,
                 },
               ].map((founder, i) => (
                 <Col lg={4} md={6} className="mb-4" key={i}>

@@ -16,6 +16,11 @@
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
+  # --- Do NOT rewrite missing static assets to index.html (prevents MIME type text/html error)
+  RewriteCond %{REQUEST_URI} \.(js|css|webp|png|jpg|jpeg|svg|woff2|ico|json|map)$ [NC,OR]
+  RewriteCond %{REQUEST_URI} ^/static/ [NC]
+  RewriteRule ^ - [R=404,L]
+
   # --- Single Page Application / React-Snap Fallback
   RewriteRule ^ index.html [L]
 </IfModule>

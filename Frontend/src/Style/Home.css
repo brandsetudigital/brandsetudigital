@@ -296,19 +296,26 @@
 }
 @media (max-width: 768px) {
   .hero-title {
-    font-size: clamp(3.5rem, 14vw, 9rem);
-    line-height: 1;
+    font-size: clamp(4.5rem, 17vw, 8rem);
+    line-height: 0.98;
     text-align: center;
     word-break: keep-all;
     overflow-wrap: normal;
-    padding-inline: 0.5rem;
+    padding-inline: 0.25rem;
   }
 }
 
 @media (max-width: 480px) {
   .hero-title {
-    font-size: clamp(2.75rem, 16vw, 5rem);
-    letter-spacing: -1px;
+    font-size: clamp(3.6rem, 19.5vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.5px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: clamp(3.1rem, 18.5vw, 4rem);
   }
 }
 
@@ -798,4 +805,5 @@
   line-height: 1.6;
   font-size: 0.95rem;
 }
+
 
