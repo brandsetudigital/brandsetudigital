@@ -92,11 +92,12 @@
 
 .service-hero-subtitle {
   font-size: clamp(1.05rem, 1.3vw, 1.25rem);
-  line-height: 1.6;
+  line-height: 1.65;
   color: #1f2937;
   font-weight: 600;
   max-width: 800px;
   margin-bottom: 28px;
+  text-align: justify;
 }
 
 .service-hero-img-box {
@@ -163,7 +164,8 @@
   font-size: 1.05rem;
   color: #1f2937;
   font-weight: 600;
-  line-height: 1.6;
+  line-height: 1.65;
+  text-align: justify;
 }
 
 /* ================= OVERVIEW & IMPACT ================= */
@@ -183,7 +185,9 @@
 }
 
 .overview-card .section-desc {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.88);
+  text-align: justify;
+  line-height: 1.65;
 }
 
 .overview-card:hover {
@@ -239,9 +243,10 @@
 
 .challenge-desc {
   font-size: 0.94rem;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
   margin-bottom: 0;
+  text-align: justify;
 }
 
 /* ================= SERVICES OFFERED GRID ================= */
@@ -296,9 +301,10 @@
 
 .offer-desc {
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
   margin-bottom: 0;
+  text-align: justify;
 }
 
 /* ================= PROCESS TIMELINE ================= */
@@ -344,8 +350,9 @@
 
 .process-desc {
   font-size: 0.94rem;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  text-align: justify;
 }
 
 /* ================= WHY CHOOSE US ================= */
@@ -364,6 +371,8 @@
 
 .why-choose-box .section-desc {
   color: rgba(255, 255, 255, 0.85);
+  text-align: justify;
+  line-height: 1.65;
 }
 
 .why-point-item {
@@ -469,6 +478,7 @@
   font-size: 0.98rem;
   color: rgba(255, 255, 255, 0.85);
   line-height: 1.65;
+  text-align: justify;
 }
 
 /* ================= BOTTOM CTA BANNER ================= */

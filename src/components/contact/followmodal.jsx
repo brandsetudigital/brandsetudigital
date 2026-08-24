@@ -26,13 +26,13 @@ const socialMedia = [
   {
     name: "LinkedIn",
     icon: <FaLinkedinIn />,
-    link: "https://linkedin.com",
+    link: "https://www.linkedin.com/in/brand-setu-digital-5361ab410/",
     color: "#0A66C2",
   },
   {
     name: "Twitter",
     icon: <FaTwitter />,
-    link: "https://twitter.com",
+    link: "https://x.com/brandsetudigita",
     color: "#1DA1F2",
   },
   {

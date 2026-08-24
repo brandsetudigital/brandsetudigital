@@ -1,6 +1,8 @@
 # =========================================================================
-# BrandSetu Digital — Apache / Hostinger Configuration
+# BrandSetu Digital — Apache / Hostinger / cPanel Configuration
 # =========================================================================
+
+DirectoryIndex index.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
@@ -11,9 +13,13 @@
   RewriteCond %{HTTP:X-Forwarded-Proto} !https
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # --- If requested file or directory exists, serve directly
-  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  # --- If requested file exists, serve directly
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # --- If requested directory exists with index.html, serve directly
   RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
   RewriteRule ^ - [L]
 
   # --- Do NOT rewrite missing static assets to index.html (prevents MIME type text/html error)
@@ -21,7 +27,8 @@
   RewriteCond %{REQUEST_URI} ^/static/ [NC]
   RewriteRule ^ - [R=404,L]
 
-  # --- Single Page Application / React-Snap Fallback
+  # --- Single Page Application Fallback
+  RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^ index.html [L]
 </IfModule>
 

@@ -207,7 +207,7 @@ const ServiceDetail = () => {
                   className="rounded-pill px-4 py-3 d-inline-flex align-items-center gap-2 fw-bold shadow-sm"
                   onClick={() =>
                     window.open(
-                      `https://wa.me/916232363639?text=${encodeURIComponent(
+                      `https://wa.me/917389824231?text=${encodeURIComponent(
                         `Hi BrandSetu Digital, I would like to enquire about your ${service.title} services.`
                       )}`,
                       "_blank"
@@ -479,7 +479,7 @@ const ServiceDetail = () => {
                 className="rounded-pill px-4 py-3 d-inline-flex align-items-center gap-2 fw-bold border border-secondary"
                 onClick={() =>
                   window.open(
-                    `https://wa.me/916232363639?text=${encodeURIComponent(
+                    `https://wa.me/917389824231?text=${encodeURIComponent(
                       `Hi BrandSetu Digital, I would like to enquire about your ${service.title} services.`
                     )}`,
                     "_blank"

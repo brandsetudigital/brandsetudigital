@@ -68,7 +68,7 @@ export default function Navbar() {
                 src={logo}
                 alt="BrandSetu Digital logo"
                 className="logo-img"
-                width="160"
+                width="48"
                 height="48"
                 loading="eager"
                 fetchpriority="high"
@@ -99,7 +99,7 @@ export default function Navbar() {
                 type="button"
                 className="main-btn rounded-pill px-4 d-flex align-items-center gap-2"
                 onClick={() =>
-                  window.open("https://wa.me/916232363639", "_blank")
+                  window.open("https://wa.me/917389824231", "_blank")
                 }
                 aria-label="Let's Talk on WhatsApp"
               >
@@ -170,7 +170,7 @@ export default function Navbar() {
                 type="button"
                 className="main-btn rounded-pill mt-4 px-5 py-2 d-flex align-items-center justify-content-center gap-2"
                 onClick={() =>
-                  window.open("https://wa.me/916232363639", "_blank")
+                  window.open("https://wa.me/917389824231", "_blank")
                 }
                 aria-label="Let's Talk on WhatsApp"
               >

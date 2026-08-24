@@ -200,7 +200,7 @@ const About = () => {
           <div className="about-contact-box text-white rounded-4 shadow">
             <div className="d-flex align-items-center mb-3">
               <FaPhoneAlt className="me-3" />
-              <span>+91 6232363639</span>
+              <span>+91 7389824231</span>
             </div>
             <div className="d-flex align-items-center mb-3">
               <FaEnvelope className="me-3" />

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 import Logo from "../assets/Logo.png";
-import { FaLinkedinIn, FaInstagram, FaFacebookF } from "react-icons/fa";
+import { FaLinkedinIn, FaInstagram, FaFacebookF, FaWhatsapp, FaTwitter } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const Footer = () => {
@@ -19,18 +19,20 @@ const Footer = () => {
       {particles.map((_, i) => (
         <motion.div
           key={i}
-          className="footer-particle"
-          aria-hidden="true"
+          className="particle"
+          initial={{
+            y: 0,
+            x: Math.random() * 100 - 50,
+            opacity: Math.random() * 0.5 + 0.2,
+          }}
           animate={{
-            x: [0, Math.random() * 100 - 50, 0],
-            y: [0, Math.random() * 100 - 50, 0],
-            scale: [1, Math.random() + 0.5, 1],
-            opacity: [0.3, 0.6, 0.3],
+            y: [-20, -100],
+            opacity: [0.6, 0],
           }}
           transition={{
-            duration: Math.random() * 10 + 10,
+            duration: Math.random() * 5 + 4,
             repeat: Infinity,
-            ease: "easeInOut",
+            delay: Math.random() * 2,
           }}
           style={{ pointerEvents: "none" }}
         />
@@ -44,8 +46,9 @@ const Footer = () => {
               <img
                 src={Logo}
                 alt="BrandSetu Digital logo"
-                width="232"
-                height="70"
+                className="footer-logo-img"
+                width="48"
+                height="48"
                 loading="lazy"
                 decoding="async"
               />
@@ -82,20 +85,24 @@ const Footer = () => {
           >
             <h2 className="footer-title text-light mb-3 fs-6">Services</h2>
             <ul className="list-unstyled footer-links">
-              <li><Link to="/services#web">Web Design & Development</Link></li>
-              <li><Link to="/services#seo">SEO & Marketing</Link></li>
-              <li><Link to="/services#branding">Brand Strategy</Link></li>
-              <li><Link to="/services#social">Social Media Marketing</Link></li>
-              <li><Link to="/services#social">Shoots & Editing</Link></li>
+              <li>Performance Marketing</li>
+              <li>Social Media Management</li>
+              <li>Branding & Strategy</li>
+              <li>Content Creation</li>
+              <li>Influencer Marketing</li>
+              <li>SEO & Outreach</li>
             </ul>
           </div>
 
-          {/* Contact & Social (UI UNCHANGED) */}
-          <div className="col-lg-3 col-md-6">
-            <h2 className="footer-title text-light mb-3 fs-6">Contact Us</h2>
-
+          {/* Contact */}
+          <div
+            className="col-lg-3 col-md-6"
+            aria-label="Footer contact information"
+          >
+            <h2 className="footer-title text-light mb-3 fs-6">Get in Touch</h2>
+            <p className="text-light-50 mb-2">📍 Indore, Madhya Pradesh</p>
             <p className="text-light-50 mb-2">
-              📧{" "}
+              ✉️{" "}
               <span aria-label="Email BrandSetu Digital">
                 Brandsetudigital@gmail.com
               </span>
@@ -115,7 +122,7 @@ const Footer = () => {
               <motion.a
                 whileHover={{ scale: 1.2 }}
                 className="social-btn"
-                href="https://www.linkedin.com"
+                href="https://www.linkedin.com/in/brand-setu-digital-5361ab410/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="BrandSetu on LinkedIn"
@@ -143,6 +150,28 @@ const Footer = () => {
                 aria-label="BrandSetu on Facebook"
               >
                 <FaFacebookF aria-hidden="true" />
+              </motion.a>
+
+              <motion.a
+                whileHover={{ scale: 1.2 }}
+                className="social-btn"
+                href="https://wa.me/917389824231"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="BrandSetu on WhatsApp"
+              >
+                <FaWhatsapp aria-hidden="true" />
+              </motion.a>
+
+              <motion.a
+                whileHover={{ scale: 1.2 }}
+                className="social-btn"
+                href="https://x.com/brandsetudigita"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="BrandSetu on Twitter"
+              >
+                <FaTwitter aria-hidden="true" />
               </motion.a>
             </div>
           </div>

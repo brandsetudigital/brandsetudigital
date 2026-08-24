@@ -188,7 +188,7 @@ const ContactPage = () => {
     <>
       <Seo
         title="Contact BrandSetu Digital in Indore — Free Strategy Call"
-        description="Contact BrandSetu Digital in Indore for SEO, branding, web development, and performance marketing. Email Brandsetudigital@gmail.com or call +91 6232363639."
+        description="Contact BrandSetu Digital in Indore for SEO, branding, web development, and performance marketing. Email Brandsetudigital@gmail.com or call +91 7389824231."
         path="/contact"
         jsonLd={[
           {
@@ -224,7 +224,7 @@ const ContactPage = () => {
                 {
                   "@type": "ContactPoint",
                   contactType: "customer support",
-                  telephone: "+91-6232363639",
+                  telephone: "+91-7389824231",
                   email: "Brandsetudigital@gmail.com",
                   areaServed: "IN",
                   availableLanguage: ["English", "Hindi"],
@@ -469,7 +469,7 @@ const ContactPage = () => {
 
               <Col md={3} sm={6}>
                 <a
-                  href="tel:+916232363639"
+                  href="tel:+917389824231"
                   className="text-decoration-none text-dark"
                 >
                   <div className="contact-info-card p-4 shadow-sm bg-light-green rounded-4 h-100">

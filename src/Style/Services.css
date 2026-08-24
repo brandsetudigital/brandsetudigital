@@ -49,56 +49,54 @@
 /* Highlight stats */
 .highlight-stats {
   position: relative;
+  padding: 30px 0;
 }
 
-.highlight-stat .stat-number {
-  font-size: 4.5rem;
-  font-weight: 900;
-  margin-bottom: 10px;
-  letter-spacing: -2px;
-  color: #111;
-  -webkit-text-stroke: 1.5px #000;
-  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-  transition: transform 0.4s ease;
-}
-
-.stat-line {
-  width: 46px;
-  height: 4px;
-  margin: 0 auto 14px;
-  background: linear-gradient(90deg, #000, #333);
-  border-radius: 2px;
-  transform: scaleX(0.6);
-  transition: transform 0.4s ease;
-}
-
-.highlight-stat:hover .stat-number {
-  transform: translateY(-6px);
-}
-
-.highlight-stat:hover .stat-line {
-  transform: scaleX(1);
-}
-/* ====================== RESPONSIVE STATS (NO UI CHANGE) ====================== */
-
-/* Keep stats in one row always */
 .highlight-stats .row {
-  flex-wrap: nowrap;
+  display: flex;
+  justify-content: center;
 }
 
-/* Equal width columns without breaking layout */
-.highlight-stats .col,
-.highlight-stats [class*="col-"] {
-  flex: 1 1 0;
-  max-width: 25%;
+/* Desktop default: 4 in a row */
+@media (min-width: 769px) {
+  .highlight-stats .row {
+    flex-wrap: nowrap;
+  }
+  .highlight-stats .col,
+  .highlight-stats [class*="col-"] {
+    flex: 1 1 0;
+    max-width: 25%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 
-/* Responsive number scaling */
+/* Mobile & Tablet: 2x2 grid so nothing ever gets cut */
+@media (max-width: 768px) {
+  .highlight-stats .row {
+    flex-wrap: wrap !important;
+    row-gap: 28px;
+  }
+  .highlight-stats .col,
+  .highlight-stats [class*="col-"] {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.highlight-stat {
+  padding: 8px 10px;
+}
+
+/* Responsive number scaling with proper letter spacing */
 .highlight-stat .stat-number {
-  font-size: clamp(1.9rem, 4.2vw, 4.5rem);
+  font-size: clamp(2rem, 4.5vw, 4.2rem);
   font-weight: 900;
-  margin-bottom: 10px;
-  letter-spacing: -2px;
+  margin-bottom: 12px;
+  letter-spacing: 1.5px;
+  line-height: 1.1;
   color: #111;
   -webkit-text-stroke: 1.5px #000;
   text-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
@@ -108,22 +106,28 @@
 
 /* Responsive label text */
 .highlight-stat p {
-  font-size: clamp(0.7rem, 1vw, 1rem);
-  white-space: nowrap;
+  font-size: clamp(0.8rem, 1.2vw, 1.05rem);
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+  word-break: normal;
+  white-space: normal;
 }
 
-/* Responsive divider */
+/* Responsive divider with vertical spacing */
 .stat-line {
-  width: clamp(28px, 5vw, 46px);
+  width: clamp(32px, 5vw, 46px);
   height: clamp(3px, 0.5vw, 4px);
-  margin: 0 auto 14px;
+  margin: 12px auto 14px;
   background: linear-gradient(90deg, #000, #333);
   border-radius: 2px;
-  transform: scaleX(0.6);
+  transform: scaleX(0.7);
   transition: transform 0.4s ease;
 }
 
-/* Hover remains unchanged */
+/* Hover effects */
 .highlight-stat:hover .stat-number {
   transform: translateY(-6px);
 }
@@ -132,14 +136,21 @@
   transform: scaleX(1);
 }
 
-/* Extra safety for very small devices */
-@media (max-width: 420px) {
+/* Extra safety for small devices */
+@media (max-width: 480px) {
   .highlight-stat .stat-number {
-    font-size: 1.7rem;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .stat-line {
+    margin: 8px auto 10px;
   }
 
   .highlight-stat p {
-    font-size: 0.65rem;
+    font-size: 0.82rem;
+    margin-top: 6px;
   }
 }
 
@@ -211,6 +222,11 @@ body {
   width: 100%;
 }
 
+.service-card p {
+  text-align: justify;
+  line-height: 1.6;
+}
+
 /* Tablet */
 @media (max-width: 992px) {
   .service-img-box {
@@ -236,15 +252,17 @@ body {
     object-fit: cover;
   }
 
+  .service-card h3,
   .service-card h4 {
-    font-size: 1.05rem;
-    margin-bottom: 6px;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
   }
 
   .service-card p {
-    font-size: 0.9rem;
-    line-height: 1.4;
-    margin-bottom: 8px;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-bottom: 10px;
+    text-align: justify;
   }
 
   .read-more-link {
@@ -299,11 +317,15 @@ body {
 
 .brand-text img {
   height: 40px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
   margin-bottom: 12px;
 }
 
-.brand-text h2 {
-  font-size: 40px;
+.brand-text h2,
+.brand-text h3 {
+  font-size: 36px;
   font-weight: 800;
   margin-bottom: 16px;
 }
@@ -312,6 +334,7 @@ body {
   font-size: 19px;
   line-height: 1.6;
   color: #fffefe;
+  text-align: justify;
 }
 
 .brand-work {
@@ -320,7 +343,7 @@ body {
   font-size: 12px;
   letter-spacing: 1.4px;
   text-transform: uppercase;
-  color: #7b7301;
+  color: #facc15;
 }
 
 /* ================= COLLAGE (LIGHT SHADOW) ================= */
@@ -328,6 +351,7 @@ body {
   position: relative;
   width: 520px;
   height: 360px;
+  flex-shrink: 0;
 }
 
 .brand-collage img {
@@ -367,12 +391,14 @@ body {
   left: 200px;
 }
 
-/* ================= RESPONSIVE FIXES (NO UI CHANGE) ================= */
+/* ================= RESPONSIVE FIXES ================= */
 
 /* Tablet adjustments */
 @media (max-width: 992px) {
-  .brand-strip {
-    gap: 40px;
+  .brand-strip,
+  .brand-strip.reverse {
+    flex-direction: column !important;
+    gap: 36px;
     margin-bottom: 80px;
   }
 
@@ -381,36 +407,46 @@ body {
     text-align: center;
   }
 
-  .brand-text h2 {
-    font-size: 32px;
+  .brand-text h2,
+  .brand-text h3 {
+    font-size: 30px;
   }
 
   .brand-says {
     font-size: 17px;
+    text-align: center;
   }
 
   .brand-work {
     font-size: 11px;
   }
+
+  .brand-collage {
+    width: 100%;
+    max-width: 460px;
+    margin: 0 auto;
+    height: 300px;
+  }
 }
 
-/* =================== MOBILE – VISUAL UPGRADE (NO UI CHANGE) =================== */
+/* =================== MOBILE – CLEAN STACK =================== */
 @media (max-width: 768px) {
-
-  .brand-strip {
-    gap: 22px;
-    margin-bottom: 90px;
+  .brand-strip,
+  .brand-strip.reverse {
+    flex-direction: column !important;
+    gap: 26px;
+    margin-bottom: 70px;
   }
 
-  /* TEXT FEELS LIKE A HERO */
   .brand-text {
     max-width: 100%;
     text-align: center;
-    padding: 0 6px;
+    padding: 0 10px;
   }
 
-  .brand-text h2 {
-    font-size: 28px;
+  .brand-text h2,
+  .brand-text h3 {
+    font-size: 26px;
     font-weight: 900;
     margin-bottom: 10px;
   }
@@ -419,32 +455,35 @@ body {
     font-size: 15.5px;
     line-height: 1.55;
     opacity: 0.95;
+    text-align: center;
   }
 
   .brand-work {
-    font-size: 10px;
+    font-size: 10.5px;
     margin-top: 10px;
-    letter-spacing: 1.3px;
+    letter-spacing: 1.2px;
   }
 
-  /* COLLAGE – KEEP DEPTH, NOT GRID */
+  /* COLLAGE – MAINTAIN PROPORTIONS WITHOUT OVERFLOW */
   .brand-collage {
     position: relative;
     width: 100%;
-    height: 260px;
+    max-width: 340px;
+    height: 240px;
+    margin: 0 auto;
     display: block;
   }
 
   .brand-collage img {
     position: absolute;
-    border-radius: 16px;
-    box-shadow: 0 14px 30px rgba(0,0,0,0.25);
+    border-radius: 14px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.25);
   }
 
   /* HERO IMAGE */
   .brand-collage .img1 {
-    width: 72%;
-    height: 80%;
+    width: 68%;
+    height: 85%;
     left: 0;
     top: 0;
     z-index: 3;
@@ -452,35 +491,35 @@ body {
 
   /* SUPPORTING IMAGES */
   .brand-collage .img2 {
-    width: 42%;
-    height: 42%;
+    width: 44%;
+    height: 44%;
     right: 0;
     top: 0;
     z-index: 4;
   }
 
   .brand-collage .img3 {
-    width: 42%;
-    height: 42%;
+    width: 44%;
+    height: 44%;
     right: 0;
-    bottom: 0;
+    bottom: 5%;
     z-index: 2;
   }
 
   .brand-collage .img4 {
-    display: none; /* reduces clutter ONLY on mobile */
+    display: none; /* reduces clutter on mobile */
   }
 }
 
 /* =================== SMALL MOBILE =================== */
 @media (max-width: 480px) {
-
   .brand-wall-header h1 {
     font-size: 32px;
   }
 
-  .brand-text h2 {
-    font-size: 24px;
+  .brand-text h2,
+  .brand-text h3 {
+    font-size: 22px;
   }
 
   .brand-says {
@@ -488,6 +527,7 @@ body {
   }
 
   .brand-collage {
-    height: 220px;
+    max-width: 300px;
+    height: 210px;
   }
 }
