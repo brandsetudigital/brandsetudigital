@@ -397,10 +397,18 @@
   .footer-modern {
     text-align: center;
   }
+  .footer-title::after {
+    margin: 6px auto 0 auto;
+  }
   .footer-modern .row > div {
     margin-bottom: 1.5rem;
   }
-  .footer-links li a,
+  .footer-links li a {
+    display: inline-block;
+    padding: 3px 0;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
   .social-btn {
     touch-action: manipulation; /* Ensure links work reliably on mobile */
   }

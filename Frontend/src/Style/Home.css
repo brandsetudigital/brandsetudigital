@@ -757,18 +757,30 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
 }
 
 .process-badge {
   display: inline-block;
-  padding: 6px 18px;
+  padding: 6px 20px;
   border-radius: 999px;
   background: rgba(250, 204, 21, 0.15);
   color: #facc15;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
   margin-bottom: 14px;
+  border: 1px solid rgba(250, 204, 21, 0.3);
+}
+
+.process-subtitle {
+  color: #facc15 !important;
+  font-size: 1.15rem;
+  max-width: 650px;
+  margin: 12px auto 0;
+  letter-spacing: 0.3px;
+  text-shadow: 0 0 16px rgba(250, 204, 21, 0.25);
 }
 
 .process-card {

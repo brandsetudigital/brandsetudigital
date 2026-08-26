@@ -49,108 +49,113 @@
 /* Highlight stats */
 .highlight-stats {
   position: relative;
-  padding: 30px 0;
+  padding: 16px 0 10px 0;
+  width: 100%;
 }
 
 .highlight-stats .row {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: nowrap !important;
+  width: 100%;
 }
 
-/* Desktop default: 4 in a row */
-@media (min-width: 769px) {
-  .highlight-stats .row {
-    flex-wrap: nowrap;
-  }
-  .highlight-stats .col,
-  .highlight-stats [class*="col-"] {
-    flex: 1 1 0;
-    max-width: 25%;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-}
-
-/* Mobile & Tablet: 2x2 grid so nothing ever gets cut */
-@media (max-width: 768px) {
-  .highlight-stats .row {
-    flex-wrap: wrap !important;
-    row-gap: 28px;
-  }
-  .highlight-stats .col,
-  .highlight-stats [class*="col-"] {
-    flex: 0 0 50% !important;
-    max-width: 50% !important;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
+.highlight-stats .col,
+.highlight-stats [class*="col-"],
+.highlight-stat-col {
+  flex: 1 1 25% !important;
+  max-width: 25% !important;
+  width: 25% !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
 }
 
 .highlight-stat {
-  padding: 8px 10px;
+  padding: 6px 2px;
+  text-align: center;
+  width: 100%;
 }
 
 /* Responsive number scaling with proper letter spacing */
 .highlight-stat .stat-number {
-  font-size: clamp(2rem, 4.5vw, 4.2rem);
+  font-size: clamp(1.6rem, 4.2vw, 3.8rem);
   font-weight: 900;
-  margin-bottom: 12px;
-  letter-spacing: 1.5px;
-  line-height: 1.1;
-  color: #111;
-  -webkit-text-stroke: 1.5px #000;
-  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+  line-height: 1.05;
+  color: #111827;
+  -webkit-text-stroke: 1px #000;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   white-space: nowrap;
   transition: transform 0.4s ease;
 }
 
 /* Responsive label text */
 .highlight-stat p {
-  font-size: clamp(0.8rem, 1.2vw, 1.05rem);
-  font-weight: 600;
-  letter-spacing: 0.4px;
-  margin-top: 10px;
+  font-size: clamp(0.72rem, 1.35vw, 1.1rem);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  margin-top: 6px;
   margin-bottom: 0;
+  line-height: 1.25;
   text-align: center;
   word-break: normal;
   white-space: normal;
+  color: #111827;
 }
 
 /* Responsive divider with vertical spacing */
 .stat-line {
-  width: clamp(32px, 5vw, 46px);
-  height: clamp(3px, 0.5vw, 4px);
-  margin: 12px auto 14px;
-  background: linear-gradient(90deg, #000, #333);
+  width: clamp(24px, 3.8vw, 46px);
+  height: clamp(2.5px, 0.35vw, 4px);
+  margin: 6px auto 8px;
+  background: linear-gradient(90deg, #111827, #374151);
   border-radius: 2px;
-  transform: scaleX(0.7);
+  transform: scaleX(0.85);
   transition: transform 0.4s ease;
 }
 
 /* Hover effects */
 .highlight-stat:hover .stat-number {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
 }
 
 .highlight-stat:hover .stat-line {
   transform: scaleX(1);
 }
 
-/* Extra safety for small devices */
-@media (max-width: 480px) {
+/* Extra safety for small mobile devices (e.g. 320px - 480px) */
+@media (max-width: 576px) {
+  .highlight-stats {
+    padding: 12px 0 6px 0;
+  }
+
+  .highlight-stats .col,
+  .highlight-stats [class*="col-"],
+  .highlight-stat-col {
+    padding-left: 3px !important;
+    padding-right: 3px !important;
+  }
+
   .highlight-stat .stat-number {
-    font-size: 2rem;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
+    font-size: clamp(1.35rem, 5.8vw, 1.85rem);
+    letter-spacing: 0;
+    margin-bottom: 2px;
+    -webkit-text-stroke: 0.5px #000;
   }
 
   .stat-line {
-    margin: 8px auto 10px;
+    width: 20px;
+    height: 2px;
+    margin: 3px auto 4px;
   }
 
   .highlight-stat p {
-    font-size: 0.82rem;
-    margin-top: 6px;
+    font-size: clamp(0.64rem, 2.3vw, 0.8rem);
+    margin-top: 3px;
+    line-height: 1.15;
+    font-weight: 700;
   }
 }
 

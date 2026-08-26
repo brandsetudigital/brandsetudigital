@@ -69,7 +69,7 @@ const cardVariants = {
 
 export default function ProcessSection() {
   return (
-    <section className="process-section py-5 pt-5 mt-5">
+    <section className="process-section py-5">
       {/* Visual Blob Blobs */}
       <div className="bg-blob blob-1" style={{ opacity: 0.2 }}></div>
       <div className="bg-blob blob-2" style={{ opacity: 0.2 }}></div>
@@ -79,10 +79,9 @@ export default function ProcessSection() {
         <div className="text-center mb-5 header-section">
           <div className="process-badge">OUR WORKFLOW</div>
           <h2 className="display-2 fw-bold text-white">
-            Our <span className="text-warning">Execution </span>
-            <span className="gradient-text">PROCESS</span>
+            Our <span className="text-warning">Execution PROCESS</span>
           </h2>
-          <p className="lead text-light-50 fw-semibold">
+          <p className="process-subtitle lead fw-semibold text-warning">
             How we transform your business goals into digital reality
           </p>
         </div>

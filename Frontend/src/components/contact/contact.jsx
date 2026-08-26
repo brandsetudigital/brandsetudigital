@@ -7,8 +7,6 @@ import {
   Form,
   Button,
   Card,
-  InputGroup,
-  FormControl,
 } from "react-bootstrap";
 import FollowModal from "../contact/followmodal";
 import { motion } from "framer-motion";
@@ -544,24 +542,24 @@ const ContactPage = () => {
                 up!
               </p>
 
-              <Form onSubmit={handleSubscribeSubmit}>
-                <InputGroup>
-                  <FormControl
+              <Form onSubmit={handleSubscribeSubmit} className="subscribe-form-wrapper">
+                <div className="subscribe-pill-container">
+                  <input
                     type="email"
                     required
                     aria-label="Email address"
-                    placeholder="Enter Your Email Address..."
-                    className="rounded-pill me-3"
+                    placeholder="Enter your email address..."
+                    className="subscribe-pill-input"
                     value={subscribeEmail}
                     onChange={(e) => setSubscribeEmail(e.target.value)}
                   />
                   <Button
                     type="submit"
-                    className="main-btn rounded-pill px-5 py-3"
+                    className="subscribe-pill-btn"
                   >
                     Subscribe
                   </Button>
-                </InputGroup>
+                </div>
               </Form>
             </Col>
           </Row>

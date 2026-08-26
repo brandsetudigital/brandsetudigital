@@ -179,9 +179,9 @@ const Services = () => {
         </section>
 
         {/* ================= STATS ================= */}
-        <section className="highlight-stats my-5">
-          <Row className="justify-content-center text-center g-5">
-            <Col md={3} sm={6}>
+        <section className="highlight-stats my-3 my-md-4 w-100">
+          <Row className="justify-content-between text-center g-1 g-sm-2 g-md-3 flex-nowrap w-100 mx-0">
+            <Col xs={3} className="highlight-stat-col">
               <div className="highlight-stat">
                 <span className="stat-number d-block">
                   {isPrerender ? "500" : <CountUp end={500} duration={2.5} />}+
@@ -191,7 +191,7 @@ const Services = () => {
               </div>
             </Col>
 
-            <Col md={3} sm={6}>
+            <Col xs={3} className="highlight-stat-col">
               <div className="highlight-stat">
                 <span className="stat-number d-block">
                   {isPrerender ? "350" : <CountUp end={350} duration={2.8} />}+
@@ -201,7 +201,7 @@ const Services = () => {
               </div>
             </Col>
 
-            <Col md={3} sm={6}>
+            <Col xs={3} className="highlight-stat-col">
               <div className="highlight-stat">
                 <span className="stat-number d-block">
                   {isPrerender ? "4.5" : <CountUp end={4.5} decimals={1} duration={2.3} />}+
@@ -211,7 +211,7 @@ const Services = () => {
               </div>
             </Col>
 
-            <Col md={3} sm={6}>
+            <Col xs={3} className="highlight-stat-col">
               <div className="highlight-stat">
                 <span className="stat-number d-block">
                   {isPrerender ? "20" : <CountUp end={20} duration={2.2} />}+

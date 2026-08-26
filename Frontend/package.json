@@ -62,6 +62,7 @@
       "--disable-setuid-sandbox"
     ],
     "skipThirdPartyRequests": true,
+    "port": 45680,
     "puppeteer": {
       "timeout": 60000
     }

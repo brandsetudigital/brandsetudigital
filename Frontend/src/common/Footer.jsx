@@ -85,12 +85,12 @@ const Footer = () => {
           >
             <h2 className="footer-title text-light mb-3 fs-6">Services</h2>
             <ul className="list-unstyled footer-links">
-              <li>Performance Marketing</li>
-              <li>Social Media Management</li>
-              <li>Branding & Strategy</li>
-              <li>Content Creation</li>
-              <li>Influencer Marketing</li>
-              <li>SEO & Outreach</li>
+              <li><Link to="/services/google-ads-agency-indore">Performance Marketing</Link></li>
+              <li><Link to="/services/social-media-marketing-agency-indore">Social Media Management</Link></li>
+              <li><Link to="/services/branding-strategy">Branding & Strategy</Link></li>
+              <li><Link to="/services/product-photography-video-production-indore">Content Creation</Link></li>
+              <li><Link to="/services/influencer-marketing-agency-indore">Influencer Marketing</Link></li>
+              <li><Link to="/services/seo-services-indore">SEO & Outreach</Link></li>
             </ul>
           </div>
 
