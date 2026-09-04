@@ -1,124 +1,87 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import { Search, Compass, Zap, TrendingUp } from "lucide-react";
-import { motion } from "framer-motion";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../App.css";
 import "../../Style/Home.css";
 
 const steps = [
   {
-    number: "01",
     icon: Search,
     title: "Discovery & Audit",
     description:
       "We dive deep into your brand's metrics, audit competitor strategies, and identify clear digital growth opportunities.",
-    color: "#06b6d4", // Teal/Cyan
-    bg: "rgba(6, 182, 212, 0.12)",
+    color: "primary",
+    bg: "bg-light-blue",
   },
   {
-    number: "02",
     icon: Compass,
     title: "Strategy & Planning",
     description:
       "Our team designs a bespoke marketing roadmap, selecting high-impact channels and setting clear measurable KPIs.",
-    color: "#a855f7", // Purple
-    bg: "rgba(168, 85, 247, 0.12)",
+    color: "danger",
+    bg: "bg-light-red",
   },
   {
-    number: "03",
     icon: Zap,
     title: "Execution & Launch",
     description:
       "We bring plans to life by launching hyper-targeted ads, building SEO authority, and creating standout brand campaigns.",
-    color: "#f59e0b", // Amber/Gold
-    bg: "rgba(245, 158, 11, 0.12)",
+    color: "warning",
+    bg: "bg-light-yellow",
   },
   {
-    number: "04",
     icon: TrendingUp,
     title: "Optimize & Scale",
     description:
       "Using real-time performance analytics and rigorous A/B testing, we refine campaigns to maximize your ROI and scale growth.",
-    color: "#10b981", // Emerald
-    bg: "rgba(16, 185, 129, 0.12)",
+    color: "success",
+    bg: "bg-light-green",
   },
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 15,
-    },
-  },
-};
-
-export default function ProcessSection() {
+const ProcessSection = () => {
   return (
-    <section className="process-section py-5">
-      {/* Visual Blob Blobs */}
-      <div className="bg-blob blob-1" style={{ opacity: 0.2 }}></div>
-      <div className="bg-blob blob-2" style={{ opacity: 0.2 }}></div>
-
-      <Container className="position-relative z-3">
-        {/* Header */}
+    <section className="why-travelbuff py-5 pt-5 mt-5">
+      <Container>
         <div className="text-center mb-5 header-section">
-          <div className="process-badge">OUR WORKFLOW</div>
-          <h2 className="display-2 fw-bold text-white">
-            Our <span className="text-warning">Execution PROCESS</span>
+          <h2 className="display-2 fw-bold">
+            Our <span className="text-danger">Execution </span>
+            <span className="gradient-text">PROCESS</span>
           </h2>
-          <p className="process-subtitle lead fw-semibold text-warning">
+          <p className="lead text-muted fw-semibold">
             How we transform your business goals into digital reality
           </p>
         </div>
 
-        {/* Stepper Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <Row className="g-4">
-            {steps.map((step, idx) => (
-              <Col key={idx} md={6} lg={3}>
-                <motion.div variants={cardVariants} className="h-100">
-                  <div className="process-card h-100">
-                    <div className="process-number">{step.number}</div>
+        <Row className="g-4 mb-5 features-grid">
+          {steps.map((step, idx) => (
+            <Col key={idx} md={6} lg={3}>
+              <Card className="text-center bg-dark h-100 rounded-4 border-0 feature-card position-relative overflow-hidden">
+                {/* Blobs behind card content */}
+                <div className="bg-blob blob-1"></div>
+                <div className="bg-blob blob-2"></div>
 
-                    <div
-                      className="process-icon-wrapper"
-                      style={{
-                        backgroundColor: step.bg,
-                        color: step.color,
-                      }}
-                    >
-                      <step.icon size={28} />
-                    </div>
-
-                    <h3 className="process-step-title fs-5">{step.title}</h3>
-                    <p className="process-step-desc mb-0">{step.description}</p>
+                <Card.Body className="position-relative z-2">
+                  <div
+                    className={`feature-icon rounded-circle d-flex justify-content-center align-items-center text-${step.color} ${step.bg}`}
+                  >
+                    <step.icon size={32} />
                   </div>
-                </motion.div>
-              </Col>
-            ))}
-          </Row>
-        </motion.div>
+                  <Card.Title as="h3" className="text-white mt-3 fs-5">
+                    {step.title}
+                  </Card.Title>
+                  <Card.Text className="text-white">
+                    {step.description}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
       </Container>
     </section>
   );
-}
+};
+
+export default ProcessSection;

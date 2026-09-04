@@ -276,7 +276,8 @@
   color: #fff;
   position: relative;
   font-family: "Poppins", sans-serif;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
   overflow: hidden;
   z-index: 1; /* Ensure content above particles */
 }
@@ -299,6 +300,7 @@
 .footer-modern .row,
 .footer-modern a,
 .footer-modern p,
+.footer-modern h2,
 .footer-modern h6,
 .footer-modern ul,
 .footer-modern li,
@@ -318,6 +320,7 @@
   text-transform: uppercase;
   position: relative;
   margin-bottom: 1rem;
+  color: #ffffff;
 }
 
 .footer-title::after {
@@ -361,6 +364,12 @@
 }
 
 /* Social Buttons */
+.social-wrapper {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .social-btn {
   display: flex;
   justify-content: center;
@@ -373,12 +382,13 @@
   font-size: 1.2rem;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(250, 203, 21, 0.3);
+  text-decoration: none;
 }
 
 .social-btn:hover {
   background: linear-gradient(135deg, #d7b012, #d7c654);
   color: #272822;
-  transform: translateY(-3px) scale(1.2);
+  transform: translateY(-3px) scale(1.15);
   box-shadow: 0 5px 10px rgba(250, 203, 21, 0.7);
 }
 
@@ -392,36 +402,90 @@
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Responsive adjustments */
+/* Default Desktop grids */
+.footer-quick-links-grid,
+.footer-services-grid {
+  display: block;
+}
+
+/* ================= RESPONSIVE ADJUSTMENTS (MOBILE & TABLET) ================= */
 @media (max-width: 768px) {
   .footer-modern {
-    text-align: center;
-  }
-  .footer-title::after {
-    margin: 6px auto 0 auto;
-  }
-  .footer-modern .row > div {
-    margin-bottom: 1.5rem;
-  }
-  .footer-links li a {
-    display: inline-block;
-    padding: 3px 0;
-    cursor: pointer;
-    touch-action: manipulation;
-  }
-  .social-btn {
-    touch-action: manipulation; /* Ensure links work reliably on mobile */
-  }
-}
-/* ================= FOOTER LOGO TITLE FIX (MOBILE & TAB) ================= */
-@media (max-width: 991px) {
-  .footer-brand .d-none.d-sm-block {
-    display: block !important; /* show title */
+    padding-top: 1.8rem !important;
+    padding-bottom: 1.2rem !important;
     text-align: left;
   }
-
+  .footer-main-row {
+    row-gap: 1.25rem !important;
+  }
+  .footer-brand-col {
+    margin-bottom: 0.25rem !important;
+  }
   .footer-brand {
-    justify-content: center; /* keep alignment clean */
+    justify-content: flex-start;
+    margin-bottom: 0.4rem;
+  }
+  .footer-modern .glow-text {
+    font-size: 0.82rem;
+    margin-bottom: 0.5rem;
+  }
+  .footer-title {
+    font-size: 0.95rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .footer-title::after {
+    margin: 4px 0 0 0;
+  }
+  /* 2-Column Grid for Quick Links on Mobile */
+  .footer-quick-links-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 3px 14px !important;
+    margin-top: 4px;
+  }
+  .footer-quick-links-grid li {
+    margin-bottom: 0.3rem !important;
+  }
+  .footer-quick-links-grid li a {
+    font-size: 0.82rem !important;
+    line-height: 1.35 !important;
+    display: inline-block;
+    padding: 2px 0;
+    touch-action: manipulation;
+  }
+  /* 2-Column Grid for Our Services on Mobile */
+  .footer-services-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 3px 14px !important;
+    margin-top: 4px;
+  }
+  .footer-services-grid li {
+    margin-bottom: 0.3rem !important;
+  }
+  .footer-services-grid li a {
+    font-size: 0.8rem !important;
+    line-height: 1.35 !important;
+    display: inline-block;
+    padding: 2px 0;
+    touch-action: manipulation;
+  }
+  .social-wrapper {
+    gap: 10px;
+    margin-top: 0.5rem;
+  }
+  .social-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+    touch-action: manipulation;
+  }
+}
+
+@media (max-width: 991px) {
+  .footer-brand .d-none.d-sm-block {
+    display: block !important;
+    text-align: left;
   }
 }
 

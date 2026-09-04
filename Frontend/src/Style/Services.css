@@ -1,423 +1,373 @@
-/* ===========================================SERVICE PAGE================================================== */
-/* HERO SECTION */
-.hero-section {
+/* =========================================== SERVICE PAGE MODERN STYLING =========================================== */
+
+.services-main-hero {
   position: relative;
   overflow: hidden;
-  min-height: 600px;
+  background-color: #0f1013;
+  color: #fff;
+  min-height: 100vh;
 }
 
 /* FLOATING SHAPES */
 .hero-background {
   position: absolute;
   inset: 0;
-  z-index: 0; /* behind overlay and content */
+  z-index: 0;
   pointer-events: none;
 }
 
 .floating-shape {
-  background-color: rgba(0, 0, 0, 0.05);
+  background: radial-gradient(circle, rgba(250, 204, 21, 0.08) 0%, rgba(250, 204, 21, 0) 70%);
   border-radius: 50%;
   position: absolute;
   pointer-events: none;
 }
 
-/* HERO IMAGE OVERLAY */
-.image-overlay {
+/* HERO BANNER */
+.services-hero-banner {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
+}
+
+.services-image-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(50, 50, 50, 0.5);
+  background: linear-gradient(180deg, rgba(15, 16, 19, 0.8) 0%, rgba(15, 16, 19, 0.96) 100%);
   z-index: 1;
 }
 
-/* HERO CONTENT */
-.hero-content {
-  position: relative;
-  z-index: 2; /* above everything */
-  animation: fadeInUp 1.2s ease;
+.services-pill-badge {
+  padding: 6px 18px;
+  border-radius: 9999px;
+  background: rgba(250, 204, 21, 0.1);
+  border: 1px solid rgba(250, 204, 21, 0.3);
+  color: #facc15;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
-.hero-content h1 {
-  letter-spacing: 1px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+.services-hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
 }
 
-.hero-content p {
-  opacity: 0.9;
+.services-hero-tagline {
+  color: #cbd5e1;
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
   max-width: 700px;
 }
 
-/* Highlight stats */
-.highlight-stats {
+.services-journey-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  font-size: 0.95rem;
+}
+
+/* ================= MODERN STATS SECTION ================= */
+.services-modern-stats {
   position: relative;
-  padding: 16px 0 10px 0;
-  width: 100%;
+  z-index: 2;
 }
 
-.highlight-stats .row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: nowrap !important;
-  width: 100%;
+.modern-stat-card {
+  background: rgba(24, 25, 30, 0.75);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.35s ease;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
-.highlight-stats .col,
-.highlight-stats [class*="col-"],
-.highlight-stat-col {
-  flex: 1 1 25% !important;
-  max-width: 25% !important;
-  width: 25% !important;
-  padding-left: 8px !important;
-  padding-right: 8px !important;
+.modern-stat-card:hover {
+  border-color: rgba(250, 204, 21, 0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 20px -5px rgba(250, 204, 21, 0.2);
 }
 
-.highlight-stat {
-  padding: 6px 2px;
-  text-align: center;
-  width: 100%;
+.stat-icon-wrapper {
+  display: inline-flex;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(250, 204, 21, 0.1);
 }
 
-/* Responsive number scaling with proper letter spacing */
-.highlight-stat .stat-number {
-  font-size: clamp(1.6rem, 4.2vw, 3.8rem);
-  font-weight: 900;
-  margin-bottom: 6px;
-  letter-spacing: 0.5px;
-  line-height: 1.05;
-  color: #111827;
-  -webkit-text-stroke: 1px #000;
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  white-space: nowrap;
-  transition: transform 0.4s ease;
+.modern-stat-card .stat-number {
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  color: #facc15;
+  line-height: 1.1;
+  margin-bottom: 4px;
 }
 
-/* Responsive label text */
-.highlight-stat p {
-  font-size: clamp(0.72rem, 1.35vw, 1.1rem);
-  font-weight: 700;
-  letter-spacing: 0.2px;
-  margin-top: 6px;
-  margin-bottom: 0;
-  line-height: 1.25;
-  text-align: center;
-  word-break: normal;
-  white-space: normal;
-  color: #111827;
+.modern-stat-card .stat-label {
+  color: #cbd5e1;
+  font-size: clamp(0.78rem, 1.1vw, 0.92rem);
 }
 
-/* Responsive divider with vertical spacing */
-.stat-line {
-  width: clamp(24px, 3.8vw, 46px);
-  height: clamp(2.5px, 0.35vw, 4px);
-  margin: 6px auto 8px;
-  background: linear-gradient(90deg, #111827, #374151);
-  border-radius: 2px;
-  transform: scaleX(0.85);
-  transition: transform 0.4s ease;
+/* ================= DETAILED SERVICES ================= */
+.detailed-services-section {
+  position: relative;
+  z-index: 2;
+  padding-top: 40px;
 }
 
-/* Hover effects */
-.highlight-stat:hover .stat-number {
-  transform: translateY(-4px);
+.detailed-services-heading {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.5px;
 }
 
-.highlight-stat:hover .stat-line {
-  transform: scaleX(1);
-}
-
-/* Extra safety for small mobile devices (e.g. 320px - 480px) */
-@media (max-width: 576px) {
-  .highlight-stats {
-    padding: 12px 0 6px 0;
-  }
-
-  .highlight-stats .col,
-  .highlight-stats [class*="col-"],
-  .highlight-stat-col {
-    padding-left: 3px !important;
-    padding-right: 3px !important;
-  }
-
-  .highlight-stat .stat-number {
-    font-size: clamp(1.35rem, 5.8vw, 1.85rem);
-    letter-spacing: 0;
-    margin-bottom: 2px;
-    -webkit-text-stroke: 0.5px #000;
-  }
-
-  .stat-line {
-    width: 20px;
-    height: 2px;
-    margin: 3px auto 4px;
-  }
-
-  .highlight-stat p {
-    font-size: clamp(0.64rem, 2.3vw, 0.8rem);
-    margin-top: 3px;
-    line-height: 1.15;
-    font-weight: 700;
-  }
-}
-
-/* ============= Detailedservices =============== */
-
-.read-more {
-  color: #740bb0 !important;
-  transition: all 0.3s ease;
-}
-
-.read-more:hover {
-  color: #9b51e0 !important;
-  transform: translateX(5px);
-}
-
-/* IMAGE BOX – DESKTOP DEFAULT */
-.service-img-box {
-  width: 250px;
-  height: 150px;
-  border-radius: 16px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-/* IMAGE FIT */
-.service-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.service-img-box:hover .service-img {
-  transform: scale(1.08);
-}
-
-/* READ MORE LINK */
-.read-more-link {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  color: #5f0000;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.read-more-link:focus,
-.read-more-link:active {
-  outline: none;
-  box-shadow: none;
-}
-
-.read-more-link:hover {
-  opacity: 0.85;
-}
-
-/* ================= RESPONSIVENESS ================= */
-
-/* Prevent horizontal scroll */
-body {
-  overflow-x: hidden;
-}
-
-/* DEFAULT (desktop untouched) */
-.service-card {
-  display: flex;
-  gap: 1.5rem;
-  align-items: flex-start;
-  width: 100%;
-}
-
-.service-card p {
-  text-align: justify;
+.detailed-services-subtitle {
+  color: #94a3b8;
+  max-width: 650px;
+  font-size: 1.05rem;
   line-height: 1.6;
 }
 
-/* Tablet */
-@media (max-width: 992px) {
-  .service-img-box {
-    width: 200px;
-    height: 130px;
-  }
+/* Category Filter Buttons */
+.services-filter-container {
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
 }
 
-/* ================= MOBILE FIX ================= */
-@media (max-width: 768px) {
-  .service-card {
-    flex-direction: column; /* stack properly */
-    align-items: stretch;
-    gap: 12px;
-  }
-
-  .service-img-box {
-    width: 100%;
-    height: 180px; /* smaller = cleaner */
-  }
-
-  .service-img {
-    object-fit: cover;
-  }
-
-  .service-card h3,
-  .service-card h4 {
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-  }
-
-  .service-card p {
-    font-size: 0.92rem;
-    line-height: 1.55;
-    margin-bottom: 10px;
-    text-align: justify;
-  }
-
-  .read-more-link {
-    align-self: flex-start; /* keeps UI same feel */
-  }
+.service-filter-btn {
+  padding: 8px 22px;
+  border-radius: 9999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.05);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
-/* Small phones */
-@media (max-width: 480px) {
-  .service-img-box {
-    height: 160px;
-  }
-
-  .service-card p {
-    font-size: 0.88rem;
-  }
+.service-filter-btn:hover {
+  background: rgba(250, 204, 21, 0.1);
+  border-color: rgba(250, 204, 21, 0.4);
+  color: #facc15;
+  transform: translateY(-2px);
 }
 
-/* ================= BRANDSAYS ================= */
-.brand-wall {
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  padding: 20px 0;
-  position: relative;
-  background-color: #111827 !important;
+.service-filter-btn.active {
+  background: #facc15;
+  color: #111827;
+  border-color: #facc15;
+  font-weight: 700;
+  box-shadow: 0 4px 18px rgba(250, 204, 21, 0.35);
+}
+
+/* Modern Service Card */
+.modern-service-item-card {
+  background: rgba(22, 23, 28, 0.85);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
   overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  height: 100%;
 }
 
-/* HEADER */
-.brand-wall-header h1 {
-  font-size: 56px;
+.modern-service-item-card:hover {
+  border-color: rgba(250, 204, 21, 0.45);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(250, 204, 21, 0.2);
+}
+
+.modern-service-img-wrapper {
+  width: 100%;
+  height: 210px;
+  overflow: hidden;
+  background-color: #1a1c23;
+}
+
+.modern-service-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modern-service-item-card:hover .modern-service-img {
+  transform: scale(1.08);
+}
+
+.service-card-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(15, 16, 20, 0.85);
+  backdrop-filter: blur(8px);
+  color: #facc15;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  border: 1px solid rgba(250, 204, 21, 0.3);
+  z-index: 2;
+}
+
+.service-card-body {
+  flex: 1;
+}
+
+.service-card-title {
+  color: #ffffff;
+  letter-spacing: -0.2px;
+  transition: color 0.3s ease;
+}
+
+.modern-service-item-card:hover .service-card-title {
+  color: #facc15;
+}
+
+.service-card-description {
+  color: #94a3b8;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.service-explore-link {
+  color: #facc15;
+  font-size: 0.9rem;
+  transition: all 0.25s ease;
+}
+
+.explore-arrow {
+  transition: transform 0.25s ease;
+}
+
+.modern-service-item-card:hover .explore-arrow {
+  transform: translateX(5px);
+}
+
+/* ================= WHAT OUR BRANDS SAY ================= */
+.brand-wall {
+  width: 100%;
+  padding: 80px 0;
+  position: relative;
+  background-color: #0c0d10 !important;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.brand-wall-header h2 {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
   font-weight: 900;
 }
 
-.brand-wall-header p {
-  font-size: 18px;
-  color: #555;
-}
-
-/* ================= STRIP ================= */
 .brand-strip {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 60px;
-  max-width: 1550px;
+  gap: 50px;
+  max-width: 1300px;
   width: 100%;
-  margin: 0 auto 120px;
-  padding: 0 20px;
+  margin: 0 auto 90px;
+  padding: 30px;
+  background: rgba(22, 23, 28, 0.75);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
 }
 
 .brand-strip.reverse {
   flex-direction: row-reverse;
 }
 
-/* ================= TEXT ================= */
 .brand-text {
   max-width: 520px;
   flex: 1;
+  text-align: left;
 }
 
 .brand-text img {
-  height: 40px;
+  height: 38px;
   width: auto;
   max-width: 140px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   object-fit: contain;
 }
 
-.brand-text h2,
-.brand-text h3 {
-  font-size: 36px;
-  font-weight: 800;
-  margin-bottom: 16px;
-}
-
 .brand-says {
-  font-size: 19px;
-  line-height: 1.6;
-  color: #fffefe;
-  font-weight: 400;
-  text-align: justify;
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: #e2e8f0;
+  font-style: italic;
+  margin-bottom: 14px;
+  text-align: left;
 }
 
 .brand-work {
   display: inline-block;
-  margin-top: 14px;
-  font-size: 12px;
-  letter-spacing: 1.4px;
+  font-size: 0.8rem;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
   color: #facc15;
 }
 
-/* ================= COLLAGE (LIGHT SHADOW) ================= */
 .brand-collage {
   position: relative;
-  width: 520px;
-  height: 360px;
+  width: 460px;
+  height: 320px;
   flex-shrink: 0;
 }
 
 .brand-collage img {
   position: absolute;
   object-fit: cover;
-  border-radius: 18px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
 }
 
-/* POSITIONS */
 .img1 {
-  width: 300px;
-  height: 360px;
+  width: 270px;
+  height: 320px;
   left: 0;
   top: 0;
   z-index: 4;
 }
 
 .img2 {
-  width: 190px;
-  height: 140px;
+  width: 170px;
+  height: 130px;
   top: 0;
   right: 0;
 }
 
 .img3 {
-  width: 190px;
-  height: 140px;
-  top: 160px;
+  width: 170px;
+  height: 130px;
+  top: 150px;
   right: 0;
 }
 
 .img4 {
-  width: 170px;
-  height: 120px;
-  bottom: -20px;
-  left: 200px;
+  width: 150px;
+  height: 110px;
+  bottom: -15px;
+  left: 180px;
+  z-index: 5;
 }
 
-/* ================= RESPONSIVE FIXES ================= */
-
-/* Tablet adjustments */
+/* ================= RESPONSIVE QUERIES ================= */
 @media (max-width: 992px) {
   .brand-strip,
   .brand-strip.reverse {
     flex-direction: column !important;
-    gap: 36px;
-    margin-bottom: 80px;
+    gap: 30px;
+    padding: 24px;
+    margin-bottom: 60px;
   }
 
   .brand-text {
@@ -425,127 +375,57 @@ body {
     text-align: center;
   }
 
-  .brand-text h2,
-  .brand-text h3 {
-    font-size: 30px;
-  }
-
   .brand-says {
-    font-size: 17px;
     text-align: center;
-  }
-
-  .brand-work {
-    font-size: 11px;
   }
 
   .brand-collage {
     width: 100%;
-    max-width: 460px;
-    margin: 0 auto;
-    height: 300px;
+    max-width: 420px;
+    height: 280px;
   }
 }
 
-/* =================== MOBILE – CLEAN STACK =================== */
 @media (max-width: 768px) {
-  .brand-strip,
-  .brand-strip.reverse {
-    flex-direction: column !important;
-    gap: 26px;
-    margin-bottom: 70px;
+  .services-hero-banner {
+    padding: 30px 15px !important;
+    border-radius: 18px;
   }
 
-  .brand-text {
-    max-width: 100%;
-    text-align: center;
-    padding: 0 10px;
+  .modern-service-img-wrapper {
+    height: 180px;
   }
 
-  .brand-text h2,
-  .brand-text h3 {
-    font-size: 26px;
-    font-weight: 900;
-    margin-bottom: 10px;
+  .service-card-body {
+    padding: 20px 16px !important;
   }
 
-  .brand-says {
-    font-size: 15.5px;
-    line-height: 1.55;
-    opacity: 0.95;
-    text-align: center;
-  }
-
-  .brand-work {
-    font-size: 10.5px;
-    margin-top: 10px;
-    letter-spacing: 1.2px;
-  }
-
-  /* COLLAGE – MAINTAIN PROPORTIONS WITHOUT OVERFLOW */
-  .brand-collage {
-    position: relative;
-    width: 100%;
-    max-width: 340px;
-    height: 240px;
-    margin: 0 auto;
-    display: block;
-  }
-
-  .brand-collage img {
-    position: absolute;
-    border-radius: 14px;
-    box-shadow: 0 10px 24px rgba(0,0,0,0.25);
-  }
-
-  /* HERO IMAGE */
-  .brand-collage .img1 {
-    width: 68%;
-    height: 85%;
-    left: 0;
-    top: 0;
-    z-index: 3;
-  }
-
-  /* SUPPORTING IMAGES */
-  .brand-collage .img2 {
-    width: 44%;
-    height: 44%;
-    right: 0;
-    top: 0;
-    z-index: 4;
-  }
-
-  .brand-collage .img3 {
-    width: 44%;
-    height: 44%;
-    right: 0;
-    bottom: 5%;
-    z-index: 2;
-  }
-
-  .brand-collage .img4 {
-    display: none; /* reduces clutter on mobile */
-  }
-}
-
-/* =================== SMALL MOBILE =================== */
-@media (max-width: 480px) {
-  .brand-wall-header h1 {
-    font-size: 32px;
-  }
-
-  .brand-text h2,
-  .brand-text h3 {
-    font-size: 22px;
-  }
-
-  .brand-says {
-    font-size: 14.5px;
+  .brand-wall {
+    padding: 50px 0;
   }
 
   .brand-collage {
-    max-width: 300px;
-    height: 210px;
+    max-width: 320px;
+    height: 230px;
+  }
+
+  .img1 {
+    width: 65%;
+    height: 90%;
+  }
+
+  .img2 {
+    width: 40%;
+    height: 42%;
+  }
+
+  .img3 {
+    width: 40%;
+    height: 42%;
+    top: 48%;
+  }
+
+  .img4 {
+    display: none;
   }
 }

@@ -9,7 +9,7 @@ import Services from "../../components/Home/HomeServices";
 import Brands from "../../components/Home/brands";
 import Reviews from "../../components/Home/review";
 import WhySetu from "./whyus";
-import FounderPage from "./founder";
+// import FounderPage from "./founder";
 import ProcessSection from "./ProcessSection";
 import Seo from "../Seo";
 
@@ -148,10 +148,10 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
-                className="stats-bar ms-1 d-flex justify-content-between mt-5 p-4"
+                className="stats-bar d-flex justify-content-around align-items-center mt-5 p-4 w-100"
               >
                 {stats.map((stat, i) => (
-                  <div key={i} className="text-center justify-center">
+                  <div key={i} className="text-center px-2">
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
@@ -192,12 +192,12 @@ export function Hero() {
                       {i === 0 && (
                         <div className="card-logo p-4">
                           <motion.video
-                            src={typeof navigator !== "undefined" && navigator.userAgent === "ReactSnap" ? undefined : heroVideo}
-                            autoPlay={typeof navigator === "undefined" || navigator.userAgent !== "ReactSnap"}
+                            src={heroVideo}
+                            autoPlay
                             muted
-                            loop={typeof navigator === "undefined" || navigator.userAgent !== "ReactSnap"}
+                            loop
                             playsInline
-                            preload={typeof navigator !== "undefined" && navigator.userAgent === "ReactSnap" ? "none" : "metadata"}
+                            preload="metadata"
                             aria-label="BrandSetu Digital marketing agency showreel"
                             width="500"
                             height="500"
@@ -249,7 +249,7 @@ export function Hero() {
           <Services />
           <ProcessSection />
           <WhySetu />
-          <FounderPage />
+          {/* <FounderPage /> */}
           <Reviews />
         </div>
       </section>

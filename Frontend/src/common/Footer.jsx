@@ -39,9 +39,9 @@ const Footer = () => {
       ))}
 
       <div className="container py-3 position-relative" style={{ zIndex: 2 }}>
-        <div className="row gy-4">
+        <div className="row gy-4 footer-main-row">
           {/* Brand */}
-          <div className="col-lg-3 col-md-6">
+          <div className="col-lg-3 col-md-6 footer-brand-col">
             <div className="footer-brand d-flex align-items-center gap-2 mb-3">
               <img
                 src={Logo}
@@ -65,54 +65,66 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div
-            className="col-lg-3 col-md-6"
+            className="col-lg-3 col-md-6 footer-links-col"
             aria-label="Footer quick links"
           >
             <h2 className="footer-title text-light mb-3 fs-6">Quick Links</h2>
-            <ul className="list-unstyled footer-links">
+            <ul className="list-unstyled footer-links footer-quick-links-grid">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/services">Services</Link></li>
               <li><Link to="/contact">Contact</Link></li>
               <li><Link to="/work">Portfolio</Link></li>
               <li><Link to="/about">Our Story</Link></li>
+              <li className="d-md-none"><Link to="/career">Careers</Link></li>
             </ul>
           </div>
 
           {/* Services */}
           <div
-            className="col-lg-3 col-md-6"
+            className="col-lg-3 col-md-6 footer-services-col"
             aria-label="Footer services"
           >
             <h2 className="footer-title text-light mb-3 fs-6">Services</h2>
-            <ul className="list-unstyled footer-links">
+            <ul className="list-unstyled footer-links footer-services-grid">
               <li><Link to="/services/google-ads-agency-indore">Performance Marketing</Link></li>
               <li><Link to="/services/social-media-marketing-agency-indore">Social Media Management</Link></li>
               <li><Link to="/services/branding-strategy">Branding & Strategy</Link></li>
               <li><Link to="/services/product-photography-video-production-indore">Content Creation</Link></li>
               <li><Link to="/services/influencer-marketing-agency-indore">Influencer Marketing</Link></li>
               <li><Link to="/services/seo-services-indore">SEO & Outreach</Link></li>
+              {/* Extra services visible on mobile 2-column view */}
+              <li className="d-md-none"><Link to="/services/website-development-company-indore">Website Development</Link></li>
+              <li className="d-md-none"><Link to="/services/app-development-company-indore">App Development</Link></li>
+              <li className="d-md-none"><Link to="/services/graphic-design-services-indore">Graphic Design</Link></li>
+              <li className="d-md-none"><Link to="/services/cgi-ads">CGI Ads</Link></li>
+              <li className="d-md-none"><Link to="/services/crm-setup-business-automation">Business Automation</Link></li>
+              <li className="d-md-none"><Link to="/services/website-maintenance-services-indore">Website Maintenance</Link></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div
-            className="col-lg-3 col-md-6"
+            className="col-lg-3 col-md-6 footer-contact-col"
             aria-label="Footer contact information"
           >
             <h2 className="footer-title text-light mb-3 fs-6">Get in Touch</h2>
             <p className="text-light-50 mb-2">📍 Indore, Madhya Pradesh</p>
             <p className="text-light-50 mb-2">
               ✉️{" "}
-              <span aria-label="Email BrandSetu Digital">
+              <a href="mailto:Brandsetudigital@gmail.com" className="text-light text-decoration-none" aria-label="Email BrandSetu Digital">
                 Brandsetudigital@gmail.com
-              </span>
+              </a>
             </p>
 
             <p className="text-light-50 mb-3">
               📞{" "}
-              <span aria-label="Phone number">
-                +91 7389824231 | +91 96697 65911
-              </span>
+              <a href="tel:+917389824231" className="text-light text-decoration-none">
+                +91 7389824231
+              </a>
+              {" "}|{" "}
+              <a href="tel:+919669765911" className="text-light text-decoration-none">
+                +91 96697 65911
+              </a>
             </p>
 
             <div
