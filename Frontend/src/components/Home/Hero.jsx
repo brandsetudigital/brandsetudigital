@@ -9,8 +9,8 @@ import Services from "../../components/Home/HomeServices";
 import Brands from "../../components/Home/brands";
 import Reviews from "../../components/Home/review";
 import WhySetu from "./whyus";
-// import FounderPage from "./founder";
 import ProcessSection from "./ProcessSection";
+import HomeFaq from "./HomeFaq";
 import Seo from "../Seo";
 
 export function Hero() {
@@ -250,6 +250,7 @@ export function Hero() {
           <ProcessSection />
           <WhySetu />
           {/* <FounderPage /> */}
+          <HomeFaq />
           <Reviews />
         </div>
       </section>

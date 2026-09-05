@@ -77,14 +77,19 @@
 
 .logo-title {
   font-weight: 900;
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   color: #ffffff;
+  letter-spacing: 0.5px;
 }
 
 .logo-subtitle {
-  font-weight: 700;
+  font-weight: 800;
   font-size: 0.7rem;
   color: #facc15;
+  text-align: right;
+  align-self: flex-end;
+  letter-spacing: 0.8px;
+  line-height: 1;
 }
 
 /* ================= NAV LINKS ================= */
@@ -108,22 +113,63 @@
   color: #facc15;
 }
 
-/* ================= CTA BUTTON ================= */
+/* ================= CTA BUTTON & HOVER EFFECTS ================= */
 .main-btn,
 .main-btn.btn {
   background-color: #facc15 !important;
   color: #111827 !important;
-  font-weight: 650;
-  border: 2px solid transparent !important;
-  box-shadow: none !important;
-  transition: all 0.3s ease;
+  font-weight: 700;
+  border: 2px solid #facc15 !important;
+  box-shadow: 0 4px 14px rgba(250, 204, 21, 0.3) !important;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
   text-align: center !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
-.main-btn:hover {
-  background-color: transparent !important;
+.main-btn:hover,
+.main-btn.btn:hover {
+  background-color: #111827 !important;
   color: #facc15 !important;
   border-color: #facc15 !important;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(250, 204, 21, 0.4) !important;
+}
+
+.main-btn:hover svg,
+.main-btn:hover .lucide {
+  transform: translateX(4px);
+  transition: transform 0.3s ease;
+}
+
+.btn-warning {
+  background-color: #facc15 !important;
+  border-color: #facc15 !important;
+  color: #111827 !important;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.btn-warning:hover {
+  background-color: #eab308 !important;
+  border-color: #eab308 !important;
+  color: #000000 !important;
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 25px -4px rgba(250, 204, 21, 0.5), 0 0 18px rgba(250, 204, 21, 0.35) !important;
+}
+
+.btn-warning:hover svg,
+.btn-warning:hover .lucide {
+  transform: translateX(3px);
+  transition: transform 0.3s ease;
+}
+
+.btn-outline-light:hover {
+  transform: translateY(-3px) scale(1.04);
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4) !important;
+  transition: all 0.35s ease !important;
 }
 
 /* ================= FULLSCREEN MOBILE MENU ================= */

@@ -2,18 +2,18 @@ import React from "react";
 import { motion } from "framer-motion";
 import "../../Style/Home.css";
 import "../../App.css";
-import SageUniversity from "../../assets/Sage.png";
-import BrightPathLogo from "../../assets/brightpath.png";
-import UrbanSpiceLogo from "../../assets/urbanspices.png";
-import SparkLabLogo from "../../assets/sparklab.png";
-import GreenBasketLogo from "../../assets/greenbasket.png";
-import HillViewLogo from "../../assets/hillview.png";
-import CraftoryLogo from "../../assets/craftory.png";
-import LocalRootLogo from "../../assets/localroot.png";
-import PixelNestLogo from "../../assets/PixelNest.png";
-import MotionFitLogo from "../../assets/motionfit.png";
-import NextWaveLogo from "../../assets/nextwave.png";
-import Bakery24Logo from "../../assets/bakery24.png";
+import SageUniversity from "../../assets/Sage.webp";
+import BrightPathLogo from "../../assets/brightpath.webp";
+import UrbanSpiceLogo from "../../assets/urbanspices.webp";
+import SparkLabLogo from "../../assets/sparklab.webp";
+import GreenBasketLogo from "../../assets/greenbasket.webp";
+import HillViewLogo from "../../assets/hillview.webp";
+import CraftoryLogo from "../../assets/craftory.webp";
+import LocalRootLogo from "../../assets/localroot.webp";
+import PixelNestLogo from "../../assets/PixelNest.webp";
+import MotionFitLogo from "../../assets/motionfit.webp";
+import NextWaveLogo from "../../assets/nextwave.webp";
+import Bakery24Logo from "../../assets/bakery24.webp";
 
 /* ===== BRANDS DATA ===== */
 const brands = [

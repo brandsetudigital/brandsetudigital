@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Navbar as BSNavbar, Nav, Button } from "react-bootstrap";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/Logo.png";
+import logo from "../assets/Logo.webp";
 import "../App.css";
 
 export default function Navbar() {

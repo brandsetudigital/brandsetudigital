@@ -56,7 +56,7 @@ export default function Culture() {
             <Col md={8}>
               <div className="culture-image large">
                 <img
-                  src="https://images.unsplash.com/photo-1662469567531-9ae8356d3788"
+                  src="https://images.unsplash.com/photo-1662469567531-9ae8356d3788?auto=format&fit=crop&w=800&q=75"
                   alt="BrandSetu team collaborating in a modern Indore office"
                   width="800"
                   height="600"
@@ -73,7 +73,7 @@ export default function Culture() {
             <Col md={4}>
               <div className="culture-image small">
                 <img
-                  src="https://images.unsplash.com/photo-1716703370285-d7ff2960abb4"
+                  src="https://images.unsplash.com/photo-1716703370285-d7ff2960abb4?auto=format&fit=crop&w=600&q=75"
                   alt="BrandSetu office culture and creative workspace"
                   width="400"
                   height="600"

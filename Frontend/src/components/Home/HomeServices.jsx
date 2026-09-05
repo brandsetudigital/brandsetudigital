@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Monitor,
@@ -6,6 +7,8 @@ import {
   Share2,
   BarChart3,
   Palette,
+  ArrowRight,
+  Sparkles,
 } from "lucide-react";
 import "../../Style/Home.css";
 import "../../App.css";
@@ -16,6 +19,7 @@ import WhatsappMarketing from "../../assets/whatsapp-marketing-services.avif";
 
 const services = [
   {
+    slug: "website-development-company-indore",
     title: "Website/App Design & Development",
     desc: "We craft high-performing, visually stunning websites that convert visitors into customers. Our focus is speed, UX, SEO readiness, and scalability.",
     points: [
@@ -30,6 +34,7 @@ const services = [
     subtitle: "Design • Performance • Conversion",
   },
   {
+    slug: "crm-setup-business-automation",
     title: "Automation & Maintenance",
     desc: "We provide reliable maintenance to keep your digital assets running smoothly. This includes updates, security monitoring, and performance optimization.",
     points: [
@@ -44,6 +49,7 @@ const services = [
     subtitle: "Automation • Stability • Support",
   },
   {
+    slug: "product-photography-video-production-indore",
     title: "Shoots & Video Editing",
     desc: "Build a strong brand presence with engaging content, reels, campaigns, and data-driven growth strategies.",
     points: [
@@ -58,6 +64,7 @@ const services = [
     subtitle: "Creativity • Storytelling • Impact",
   },
   {
+    slug: "social-media-marketing-agency-indore",
     title: "WhatsApp/Instagram Marketing",
     desc: "We create meaningful connections that drive engagement, growth, and results.",
     points: [
@@ -67,11 +74,11 @@ const services = [
       "Broadcast & Group",
     ],
     icon: Monitor,
-    image:
-      WhatsappMarketing,
+    image: WhatsappMarketing,
     subtitle: "Engagement • Reach • Conversations",
   },
   {
+    slug: "seo-services-indore",
     title: "SEO (Search Engine Optimization) & Local Visibility",
     desc: "Rank higher on Google and dominate your local market with proven SEO strategies that bring consistent organic traffic.",
     points: [
@@ -86,6 +93,7 @@ const services = [
     subtitle: "Ranking • Visibility • Traffic",
   },
   {
+    slug: "social-media-marketing-agency-indore",
     title: "Social Media Marketing",
     desc: "Build a strong brand presence with engaging content, reels, campaigns, and data-driven growth strategies.",
     points: [
@@ -100,6 +108,7 @@ const services = [
     subtitle: "Content • Engagement • Growth",
   },
   {
+    slug: "google-ads-agency-indore",
     title: "Google & Meta Ads",
     desc: "ROI-focused paid campaigns that generate leads, sales, and measurable business growth.",
     points: [
@@ -115,6 +124,7 @@ const services = [
     subtitle: "Targeting • ROI • Performance",
   },
   {
+    slug: "branding-strategy",
     title: "Branding & Graphic Design",
     desc: "Designs that communicate your brand story with clarity, creativity, and consistency.",
     points: [
@@ -133,75 +143,90 @@ const services = [
 export default function Services() {
   const [activeService, setActiveService] = useState(services[0]);
   const previewRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleServiceHover = (service) => {
+    setActiveService(service);
+  };
 
   const handleServiceClick = (service) => {
-    setActiveService(service);
-
-    // ✅ FIXED SCROLL (OFFSET APPLIED)
-    setTimeout(() => {
-      if (previewRef.current) {
-        const yOffset = -120; // heading safe space
-        const y =
-          previewRef.current.getBoundingClientRect().top +
-          window.pageYOffset +
-          yOffset;
-
-        window.scrollTo({
-          top: y,
-          behavior: "smooth",
-        });
-      }
-    }, 100);
+    navigate(`/services/${service.slug}`);
   };
 
   return (
-    <section className="services-section py-5 mt-5 pt-5">
+    <section className="services-section py-5 mt-5 pt-5" id="services-section">
       <div className="bg-blob blob-1"></div>
       <div className="bg-blob blob-2"></div>
 
       <div className="container services-inner mt-4">
         {/* HEADER */}
         <div className="text-center mb-5">
-          <span className="services-badge">OUR SERVICES</span>
+          <span className="services-badge d-inline-flex align-items-center gap-1">
+            <Sparkles size={14} /> OUR SERVICES
+          </span>
           <h2 className="display-3 fw-bold text-white mt-3">
             Powerful Digital Solutions
           </h2>
           <p className="text-light opacity-75 fs-5 mt-2">
-            Everything your brand needs to grow digitally
+            Everything your brand needs to grow digitally • Hover to preview, Click to explore
           </p>
         </div>
 
         <div className="row align-items-center">
           {/* LEFT — PREVIEW */}
           <div className="col-lg-6 mb-4 mb-lg-0" ref={previewRef}>
-            <div className="service-preview glass-card">
+            <div className="service-preview glass-card p-4 p-md-5 rounded-4 shadow-lg position-relative overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeService.title}
-                  initial={{ opacity: 0, y: 25 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -25 }}
-                  transition={{ duration: 0.45 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.35 }}
                 >
-                  <img
-                    src={activeService.image}
-                    alt={`${activeService.title} — BrandSetu Digital service preview`}
-                    className="img-fluid preview-image mb-4"
-                    width="800"
-                    height="600"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <div
+                    className="preview-img-container mb-4 rounded-4 overflow-hidden position-relative"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => handleServiceClick(activeService)}
+                  >
+                    <img
+                      src={activeService.image}
+                      alt={`${activeService.title} — BrandSetu Digital service preview`}
+                      className="img-fluid preview-image w-100 rounded-4"
+                      width="800"
+                      height="500"
+                      loading="lazy"
+                      decoding="async"
+                      style={{ height: "260px", objectFit: "cover" }}
+                    />
+                    <div className="position-absolute bottom-0 end-0 p-3">
+                      <span className="badge bg-dark text-warning border border-warning px-3 py-2 rounded-pill fw-bold">
+                        Click to View Details →
+                      </span>
+                    </div>
+                  </div>
 
-                  <h3 className="fw-bold text-white">{activeService.title}</h3>
+                  <h3 className="fw-bold text-white display-6 mb-2">{activeService.title}</h3>
 
-                  <p className="preview-desc mt-3">{activeService.desc}</p>
+                  <p className="preview-desc mt-2 text-light opacity-90 fs-6 lh-base">{activeService.desc}</p>
 
-                  <ul className="service-points mt-4">
+                  <ul className="service-points mt-3 d-flex flex-wrap gap-2 list-unstyled">
                     {activeService.points.map((point, i) => (
-                      <li key={i}>{point}</li>
+                      <li
+                        key={i}
+                        className="badge bg-dark bg-opacity-75 text-warning border border-secondary px-3 py-2 rounded-pill fw-normal"
+                      >
+                        ✓ {point}
+                      </li>
                     ))}
                   </ul>
+
+                  <button
+                    className="btn btn-warning rounded-pill px-4 py-3 fw-bold mt-4 d-inline-flex align-items-center gap-2 shadow"
+                    onClick={() => handleServiceClick(activeService)}
+                  >
+                    Explore {activeService.title} <ArrowRight size={18} />
+                  </button>
                 </motion.div>
               </AnimatePresence>
             </div>
@@ -209,25 +234,34 @@ export default function Services() {
 
           {/* RIGHT — LIST */}
           <div className="col-lg-6">
-            <div className="service-list">
+            <div className="service-list d-flex flex-column gap-3">
               {services.map((service, i) => {
                 const Icon = service.icon;
+                const isActive = activeService.title === service.title;
                 return (
                   <motion.div
                     key={i}
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    className={`service-item ${
-                      activeService.title === service.title ? "active" : ""
-                    }`}
+                    whileHover={{ scale: 1.02, x: 6 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`service-item ${isActive ? "active" : ""}`}
+                    style={{ cursor: "pointer" }}
+                    onMouseEnter={() => handleServiceHover(service)}
                     onClick={() => handleServiceClick(service)}
                   >
                     <div className="service-icon">
                       <Icon size={26} />
                     </div>
-                    <div>
-                      <h3 className="fw-bold mb-1 fs-5">{service.title}</h3>
-                      <p className="mb-0">{service.subtitle}</p>
+                    <div className="flex-grow-1">
+                      <div className="d-flex justify-content-between align-items-center">
+                        <h3 className="fw-bold mb-1 fs-5">{service.title}</h3>
+                        <ArrowRight
+                          size={18}
+                          className={`transition-all ${
+                            isActive ? "text-warning translate-x-1" : "opacity-50"
+                          }`}
+                        />
+                      </div>
+                      <p className="mb-0 text-secondary small">{service.subtitle}</p>
                     </div>
                   </motion.div>
                 );

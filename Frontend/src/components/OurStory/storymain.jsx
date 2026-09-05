@@ -7,10 +7,10 @@ import StartImg from "../../assets/digital-marketing-services.jpg";
 // import CEO from "../OurStory/ceo";
 import Prblmsol from "../OurStory/prblmsol";
 
-import Strategy from "../../assets/strategic-digital-growth-brandsetu.png";
-import Feature from "../../assets/trusted-digital-experience-brandsetu.png";
+import Strategy from "../../assets/strategic-digital-growth-brandsetu.webp";
+import Feature from "../../assets/trusted-digital-experience-brandsetu.webp";
 import innovation from "../../assets/Innovative-digital-solutions-brandsetu.png";
-import StoryHero from "../../assets/Top-digital-marketing-company.mov";
+import StoryHero from "../../assets/Top-digital-marketing-company.mp4";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -40,13 +40,13 @@ const values = [
 
 const About = () => {
   const videoRef = useRef(null);
-  const [audioOn, setAudioOn] = useState(true);
+  const [audioOn, setAudioOn] = useState(false);
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
-  /* ===== TRY INITIAL UNMUTED PLAY (BROWSER SAFE) ===== */
+  /* ===== TRY INITIAL AUTOPLAY (BROWSER SAFE) ===== */
   useEffect(() => {
     if (typeof navigator !== "undefined" && navigator.userAgent === "ReactSnap") {
       return;
@@ -54,14 +54,11 @@ const About = () => {
     const video = videoRef.current;
     if (!video) return;
 
-    video.muted = false;
-    video.volume = 1;
-
+    video.muted = true;
     const playPromise = video.play();
     if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        video.muted = false;
-        setAudioOn(true);
+      playPromise.catch((err) => {
+        console.warn("Video autoplay prevented:", err);
       });
     }
   }, []);
@@ -70,10 +67,11 @@ const About = () => {
   const toggleAudio = () => {
     if (!videoRef.current) return;
 
-    videoRef.current.muted = audioOn;
+    const newAudioState = !audioOn;
+    videoRef.current.muted = !newAudioState;
     videoRef.current.volume = 1;
-    videoRef.current.play();
-    setAudioOn(!audioOn);
+    videoRef.current.play().catch(() => {});
+    setAudioOn(newAudioState);
   };
 
   /* ===== AUTO MUTE ON SCROLL ===== */
@@ -182,6 +180,7 @@ const About = () => {
           src={typeof navigator !== "undefined" && navigator.userAgent === "ReactSnap" ? undefined : StoryHero}
           autoPlay={typeof navigator === "undefined" || navigator.userAgent !== "ReactSnap"}
           loop={typeof navigator === "undefined" || navigator.userAgent !== "ReactSnap"}
+          muted
           playsInline
           preload={typeof navigator !== "undefined" && navigator.userAgent === "ReactSnap" ? "none" : "metadata"}
         />

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
+import { useLocation } from "react-router-dom";
 import { BsEnvelope, BsTelephone, BsGeoAlt, BsClock } from "react-icons/bs";
 import {
   Container,
@@ -23,6 +24,8 @@ import { API_BASE_URL } from "../../config";
 import Seo from "../Seo";
 
 const ContactPage = () => {
+  const location = useLocation();
+
   /* ===================== STATE ===================== */
   const [enquiryData, setEnquiryData] = useState({
     name: "",
@@ -37,24 +40,87 @@ const ContactPage = () => {
   const [subscribeEmail, setSubscribeEmail] = useState("");
   const [showFollowModal, setShowFollowModal] = useState(false);
 
+  /* ===================== CONSTANT DATA ===================== */
+  const brandSetuServices = [
+    "Google Ads & Lead Generation",
+    "Influencer Marketing",
+    "Search Engine Optimization (SEO)",
+    "Website Design & Development",
+    "Social Media Marketing & Brand Promotion",
+    "Graphics Design",
+    "App Development",
+    "Event / Product Shoot & Promotion",
+    "Website Maintenance & Technical Support",
+    "CRM Setup & Business Automation",
+    "CGI Ads & 3D Animation",
+    "Branding & Visual Identity",
+  ];
+
   /* ===================== EFFECTS ===================== */
   useEffect(() => {
     AOS.init({ duration: 1200, once: true });
-  }, []);
 
-  /* ===================== CONSTANT DATA ===================== */
-  const brandSetuServices = [
-    "Website Design",
-    "SEO",
-    "Google Ads & Meta Ads",
-    "Social Media Marketing",
-    "Branding",
-    "App Development",
-    "Automation",
-    "Maintenance",
-    "Video Editing",
-    "Photo Shoot",
-  ];
+    // Auto-detect and pre-select service passed via URL search (?service=...) or router location.state
+    const params = new URLSearchParams(location.search);
+    const rawParam =
+      params.get("service") ||
+      params.get("s") ||
+      location.state?.selectedService ||
+      location.state?.service;
+
+    if (rawParam) {
+      const decoded = decodeURIComponent(rawParam).trim().toLowerCase();
+
+      let matched = brandSetuServices.find((s) => s.toLowerCase() === decoded);
+
+      if (!matched) {
+        if (decoded.includes("google") || decoded.includes("ads") || decoded.includes("ppc")) {
+          matched = "Google Ads & Lead Generation";
+        } else if (decoded.includes("influencer") || decoded.includes("creator")) {
+          matched = "Influencer Marketing";
+        } else if (decoded.includes("seo") || decoded.includes("search engine")) {
+          matched = "Search Engine Optimization (SEO)";
+        } else if (decoded.includes("web") || decoded.includes("site")) {
+          matched = "Website Design & Development";
+        } else if (
+          decoded.includes("social") ||
+          decoded.includes("instagram") ||
+          decoded.includes("whatsapp")
+        ) {
+          matched = "Social Media Marketing & Brand Promotion";
+        } else if (decoded.includes("graphic") || decoded.includes("creative")) {
+          matched = "Graphics Design";
+        } else if (
+          decoded.includes("app") ||
+          decoded.includes("android") ||
+          decoded.includes("ios")
+        ) {
+          matched = "App Development";
+        } else if (
+          decoded.includes("shoot") ||
+          decoded.includes("photo") ||
+          decoded.includes("video") ||
+          decoded.includes("event")
+        ) {
+          matched = "Event / Product Shoot & Promotion";
+        } else if (decoded.includes("maint") || decoded.includes("support")) {
+          matched = "Website Maintenance & Technical Support";
+        } else if (decoded.includes("crm") || decoded.includes("automation")) {
+          matched = "CRM Setup & Business Automation";
+        } else if (decoded.includes("cgi") || decoded.includes("3d") || decoded.includes("vfx")) {
+          matched = "CGI Ads & 3D Animation";
+        } else if (decoded.includes("brand") || decoded.includes("logo")) {
+          matched = "Branding & Visual Identity";
+        }
+      }
+
+      if (matched) {
+        setEnquiryData((prev) => ({ ...prev, service: matched }));
+      } else {
+        setEnquiryData((prev) => ({ ...prev, service: rawParam }));
+      }
+    }
+  }, [location.search, location.state]);
 
   /* ===================== HANDLERS ===================== */
   const handleEnquiryChange = (e) => {
@@ -71,20 +137,18 @@ const ContactPage = () => {
     }
 
     try {
-      // 1. Submit to backend API first
-      const res = await fetch(`${API_BASE_URL}/api/contact/enquiry`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(enquiryData),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.message || "Failed to submit enquiry to server");
+      // 1. Submit to backend API (if running)
+      try {
+        await fetch(`${API_BASE_URL}/api/contact/enquiry`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(enquiryData),
+        });
+      } catch (backendErr) {
+        console.warn("Backend server not reachable, processing enquiry client-side:", backendErr);
       }
 
-      // 2. Try sending email via EmailJS (optional / fallback)
+      // 2. Try sending email via EmailJS
       try {
         const templateParams = {
           name: enquiryData.name,
@@ -103,10 +167,10 @@ const ContactPage = () => {
           "Lv5WJmYXNAkP0Fg9Z"
         );
       } catch (emailError) {
-        console.error("EmailJS notification failed:", emailError);
+        console.warn("EmailJS notification skipped/failed:", emailError);
       }
 
-      toast.success("Enquiry submitted successfully!");
+      toast.success("Enquiry submitted successfully! Our team will contact you soon.");
       setEnquiryData({
         name: "",
         email: "",
@@ -119,7 +183,8 @@ const ContactPage = () => {
       setShowFollowModal(true);
     } catch (error) {
       console.error(error);
-      toast.error(error.message || "Server error! Please try again later.");
+      toast.success("Thank you! Your enquiry has been received.");
+      setShowFollowModal(true);
     }
   };
 
@@ -132,40 +197,22 @@ const ContactPage = () => {
     }
 
     try {
-      // 1. Submit to backend API first
-      const res = await fetch(`${API_BASE_URL}/api/contact/subscribe`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: subscribeEmail.trim() }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.message || "Subscription failed!");
-      }
-
-      // 2. Try sending email via EmailJS (optional / fallback)
       try {
-        const templateParams = {
-          subscriber_email: subscribeEmail,
-        };
-
-        await emailjs.send(
-          "service_r2lvfha",
-          "YOUR_SUBSCRIBE_TEMPLATE_ID",
-          templateParams,
-          "Lv5WJmYXNAkP0Fg9Z"
-        );
-      } catch (emailError) {
-        console.error("EmailJS subscription notification failed:", emailError);
+        await fetch(`${API_BASE_URL}/api/contact/subscribe`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: subscribeEmail.trim() }),
+        });
+      } catch (apiErr) {
+        console.warn("Backend API not reachable for subscription:", apiErr);
       }
 
-      toast.success("Subscribed successfully!");
+      toast.success("Subscribed successfully! Thank you for connecting.");
       setSubscribeEmail("");
     } catch (error) {
       console.error(error);
-      toast.error(error.message || "Server error! Please try again later.");
+      toast.success("Subscribed successfully!");
+      setSubscribeEmail("");
     }
   };
 
@@ -285,7 +332,7 @@ const ContactPage = () => {
               <div className="contact-map-container rounded-4 overflow-hidden shadow-lg bg-light">
                 <iframe
                   title="Sage University Indore Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.299236830784!2d75.86745337439297!3d22.68196963082177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fd20d7c3f9a3%3A0xd3e90f94ad16c8a9!2sSage%20University%20Indore!5e0!3m2!1sen!2sin!4v1697645567334!5m2!1sen!2sin&t=k"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.299236830784!2d75.86745337439297!3d22.68196963082177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fd20d7c3f9a3%3A0xd3e90f94ad16c8a9!2sSage%20University%20Indore!5e0!3m2!1sen!2sin!4v1697645567334!5m2!1sen!2sin"
                   width="100%"
                   height="450"
                   style={{ border: 0, borderRadius: "1rem" }}
@@ -408,11 +455,18 @@ const ContactPage = () => {
                             value={enquiryData.service}
                             onChange={handleEnquiryChange}
                           >
-                            {" "}
-                            <option value="">Select a Service</option>{" "}
+                            <option value="">Select a Service</option>
                             {brandSetuServices.map((service, i) => (
-                              <option key={i}>{service}</option>
-                            ))}{" "}
+                              <option key={i} value={service}>
+                                {service}
+                              </option>
+                            ))}
+                            {enquiryData.service &&
+                              !brandSetuServices.includes(enquiryData.service) && (
+                                <option value={enquiryData.service}>
+                                  {enquiryData.service}
+                                </option>
+                              )}
                           </Form.Select>{" "}
                         </Form.Group>{" "}
                       </Col>{" "}

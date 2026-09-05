@@ -8,10 +8,17 @@ import {
   ChevronDown,
   ChevronUp,
   Sparkles,
-  AlertTriangle,
   ArrowUpRight,
   Phone,
-  Building2
+  Building2,
+  UserX,
+  ShieldAlert,
+  TrendingDown,
+  Clock,
+  ZapOff,
+  DollarSign,
+  HelpCircle,
+  MessageCircle,
 } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -22,6 +29,15 @@ import { getServiceBySlug, servicesData } from "../../data/servicesData";
 import Seo from "../Seo";
 import Brands from "../Home/brands";
 import WhatOurBrandsSay from "./BrandSays";
+
+const challengeConfig = [
+  { icon: UserX, color: "#f87171", bg: "rgba(239, 68, 68, 0.15)", border: "rgba(239, 68, 68, 0.35)", tag: "Problem 01" },
+  { icon: ShieldAlert, color: "#fbbf24", bg: "rgba(245, 158, 11, 0.15)", border: "rgba(245, 158, 11, 0.35)", tag: "Problem 02" },
+  { icon: TrendingDown, color: "#c084fc", bg: "rgba(168, 85, 247, 0.15)", border: "rgba(168, 85, 247, 0.35)", tag: "Problem 03" },
+  { icon: Clock, color: "#38bdf8", bg: "rgba(6, 182, 212, 0.15)", border: "rgba(6, 182, 212, 0.35)", tag: "Problem 04" },
+  { icon: DollarSign, color: "#f472b6", bg: "rgba(244, 114, 182, 0.15)", border: "rgba(244, 114, 182, 0.35)", tag: "Problem 05" },
+  { icon: ZapOff, color: "#34d399", bg: "rgba(52, 211, 153, 0.15)", border: "rgba(52, 211, 153, 0.35)", tag: "Problem 06" },
+];
 
 const ServiceDetail = () => {
   const { slug } = useParams();
@@ -196,7 +212,11 @@ const ServiceDetail = () => {
               <div className="d-flex flex-wrap gap-3 mt-4">
                 <Button
                   as={Link}
-                  to="/contact"
+                  to={{
+                    pathname: "/contact",
+                    search: `?service=${encodeURIComponent(service.title)}`,
+                    state: { selectedService: service.title },
+                  }}
                   className="main-btn rounded-pill px-5 py-3 d-inline-flex align-items-center gap-2"
                 >
                   {service.heroCTA || "Get Free Consultation"} <ArrowRight size={18} />
@@ -283,17 +303,41 @@ const ServiceDetail = () => {
             </div>
 
             <Row className="g-4">
-              {service.challenges.items.map((item, idx) => (
-                <Col md={6} lg={idx < 4 ? 3 : 6} key={idx} data-aos="fade-up" data-aos-delay={idx * 80}>
-                  <div className="challenge-card">
-                    <div className="challenge-icon">
-                      <AlertTriangle size={22} />
+              {service.challenges.items.map((item, idx) => {
+                const conf = challengeConfig[idx % challengeConfig.length];
+                const IconComponent = conf.icon;
+                return (
+                  <Col md={6} lg={idx < 4 ? 3 : 6} key={idx} data-aos="fade-up" data-aos-delay={idx * 80}>
+                    <div className="challenge-card" style={{ borderTop: `3px solid ${conf.color}` }}>
+                      <div className="d-flex justify-content-between align-items-center mb-3">
+                        <div
+                          className="challenge-icon"
+                          style={{
+                            backgroundColor: conf.bg,
+                            borderColor: conf.border,
+                            color: conf.color,
+                          }}
+                        >
+                          <IconComponent size={22} />
+                        </div>
+                        <span
+                          className="badge rounded-pill px-2 py-1 fw-bold"
+                          style={{
+                            backgroundColor: conf.bg,
+                            color: conf.color,
+                            fontSize: "0.72rem",
+                            letterSpacing: "0.5px",
+                          }}
+                        >
+                          {conf.tag}
+                        </span>
+                      </div>
+                      <h3 className="challenge-title">{item.title}</h3>
+                      <p className="challenge-desc">{item.desc}</p>
                     </div>
-                    <h3 className="challenge-title">{item.title}</h3>
-                    <p className="challenge-desc">{item.desc}</p>
-                  </div>
-                </Col>
-              ))}
+                  </Col>
+                );
+              })}
             </Row>
           </Container>
         </section>
@@ -365,7 +409,11 @@ const ServiceDetail = () => {
                   <p className="section-desc mb-4">{service.whyChooseUs.desc}</p>
                   <Button
                     as={Link}
-                    to="/contact"
+                    to={{
+                      pathname: "/contact",
+                      search: `?service=${encodeURIComponent(service.title)}`,
+                      state: { selectedService: service.title },
+                    }}
                     className="main-btn rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2"
                   >
                     Partner With Us <ArrowRight size={16} />
@@ -411,49 +459,145 @@ const ServiceDetail = () => {
 
       {/* ================= FAQS ACCORDION ================= */}
       {service.faqs && service.faqs.length > 0 && (
-        <section className="py-5 my-4 position-relative" style={{ zIndex: 2 }}>
-          <Container fluid className="px-3 px-md-5 px-xl-5">
+        <section className="home-faq-section py-5 my-4 position-relative z-1" id="faq-section">
+          <Container>
+            {/* SECTION HEADER */}
             <div className="text-center mb-5" data-aos="fade-up">
-              <span className="section-tag">Got Questions?</span>
-              <h2 className="section-main-title">Frequently Asked Questions</h2>
-              <p className="section-desc max-w-700 mx-auto">
+              <div className="badge-custom mb-3 d-inline-flex align-items-center gap-2">
+                <HelpCircle size={14} /> GOT QUESTIONS?
+              </div>
+
+              <h2 className="display-4 fw-black text-dark mb-3">
+                Frequently Asked <span className="text-danger">Questions</span>
+              </h2>
+
+              <p className="lead text-dark fw-semibold mx-auto col-lg-8">
                 Everything you need to know about our {service.title} services.
               </p>
             </div>
 
+            {/* ACCORDION CONTENT */}
             <Row className="justify-content-center">
-              <Col lg={9}>
-                {service.faqs.map((faq, idx) => (
-                  <div
-                    key={idx}
-                    className={`faq-item-custom ${openFaq === idx ? "active" : ""}`}
-                    data-aos="fade-up"
-                    data-aos-delay={idx * 60}
-                  >
-                    <button
-                      className="faq-header-btn"
-                      onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                      aria-expanded={openFaq === idx}
-                    >
-                      <span>{faq.question}</span>
-                      <span className="faq-icon-arrow">
-                        {openFaq === idx ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                      </span>
-                    </button>
-                    <AnimatePresence>
-                      {openFaq === idx && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
+              <Col lg={10}>
+                <div className="faq-list-wrapper d-flex flex-column gap-3">
+                  {service.faqs.map((faq, idx) => {
+                    const isOpen = openFaq === idx;
+                    const num = String(idx + 1).padStart(2, "0");
+                    return (
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: idx * 0.05 }}
+                        className={`home-faq-item rounded-4 transition-all shadow-sm ${
+                          isOpen ? "faq-open" : ""
+                        }`}
+                        style={{
+                          backgroundColor: isOpen ? "#111827" : "rgba(255, 255, 255, 0.75)",
+                          border: isOpen
+                            ? "1px solid rgba(250, 204, 21, 0.4)"
+                            : "1px solid rgba(0, 0, 0, 0.08)",
+                          backdropFilter: "blur(10px)",
+                          overflow: "hidden",
+                        }}
+                      >
+                        <button
+                          className="w-100 p-4 d-flex justify-content-between align-items-center text-start border-0 bg-transparent"
+                          onClick={() => setOpenFaq(isOpen ? null : idx)}
+                          aria-expanded={isOpen}
                         >
-                          <div className="faq-body-content">{faq.answer}</div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                          <div className="d-flex align-items-center gap-3 pe-3">
+                            <span
+                              className={`fw-bold px-2 py-1 rounded-3 fs-6 ${
+                                isOpen
+                              ? "bg-warning text-dark"
+                              : "bg-dark bg-opacity-10 text-dark"
+                              }`}
+                              style={{ minWidth: "36px", textAlign: "center" }}
+                            >
+                              {num}
+                            </span>
+                            <span
+                              className={`fw-bold fs-5 mb-0 ${
+                                isOpen ? "text-white" : "text-dark"
+                              }`}
+                            >
+                              {faq.question}
+                            </span>
+                          </div>
+                          <span
+                            className={`rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 ${
+                              isOpen
+                                ? "bg-warning text-dark"
+                                : "bg-dark text-white"
+                            }`}
+                            style={{ width: "36px", height: "36px" }}
+                          >
+                            {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                          </span>
+                        </button>
+
+                        <AnimatePresence>
+                          {isOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.3 }}
+                            >
+                              <div className="px-4 pb-4 text-light opacity-90 fs-6 lh-lg border-top border-secondary pt-3">
+                                {faq.answer}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+
+                {/* BOTTOM HELP BANNER */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="mt-5 p-4 rounded-4 bg-dark text-white text-center d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 shadow-lg"
+                >
+                  <div className="text-md-start">
+                    <h4 className="fw-bold mb-1 text-warning">Have a specific question about {service.title}?</h4>
+                    <p className="mb-0 text-light opacity-75">
+                      Talk directly to our marketing strategists and get a custom roadmap.
+                    </p>
                   </div>
-                ))}
+                  <div className="d-flex gap-2 flex-wrap">
+                    <Link
+                      to={{
+                        pathname: "/contact",
+                        search: `?service=${encodeURIComponent(service.title)}`,
+                        state: { selectedService: service.title },
+                      }}
+                    >
+                      <button className="btn btn-warning rounded-pill px-4 py-2 fw-bold d-inline-flex align-items-center gap-2">
+                        Contact Us <ArrowRight size={16} />
+                      </button>
+                    </Link>
+                    <button
+                      className="btn btn-outline-light rounded-pill px-4 py-2 fw-bold d-inline-flex align-items-center gap-2"
+                      onClick={() =>
+                        window.open(
+                          `https://wa.me/917389824231?text=${encodeURIComponent(
+                            `Hi BrandSetu Digital, I have a question regarding your ${service.title} services.`
+                          )}`,
+                          "_blank"
+                        )
+                      }
+                    >
+                      <MessageCircle size={16} className="text-success" /> WhatsApp
+                    </button>
+                  </div>
+                </motion.div>
               </Col>
             </Row>
           </Container>
@@ -469,7 +613,11 @@ const ServiceDetail = () => {
             <div className="d-flex flex-wrap justify-content-center gap-3">
               <Button
                 as={Link}
-                to="/contact"
+                to={{
+                  pathname: "/contact",
+                  search: `?service=${encodeURIComponent(service.title)}`,
+                  state: { selectedService: service.title },
+                }}
                 className="main-btn rounded-pill px-5 py-3 d-inline-flex align-items-center gap-2"
               >
                 {service.bottomCTA?.btnText || "Get Started Today"} <ArrowRight size={18} />

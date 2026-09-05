@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
-import Logo from "../assets/Logo.png";
+import Logo from "../assets/Logo.webp";
 import { FaLinkedinIn, FaInstagram, FaFacebookF, FaWhatsapp, FaTwitter } from "react-icons/fa";
 import { motion } from "framer-motion";
 
