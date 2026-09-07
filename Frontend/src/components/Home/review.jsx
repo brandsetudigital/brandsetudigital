@@ -155,19 +155,20 @@ export default function Reviews() {
     <section className="reviews-modern-section">
       <div className="container">
         <motion.div
-          className="reviews-modern-header text-center"
+          className="text-center mb-5 header-section"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <span className="reviews-label rounded-pill fw-bold text-dark">
+          <span className="brands-pill fw-bold">
             CLIENT LOVE
           </span>
-          <h2 className="brands-title display-2 fw-bold">
-            What <span>Our Clients Say</span>
+          <h2 className="display-2 fw-bold">
+            What <span className="text-danger">Our Clients </span>
+            <span className="gradient-text">Say</span>
           </h2>
-          <p className="fw-bold text-danger pt-2 mb-0">
+          <p className="lead text-muted fw-semibold">
             Real feedback from real clients
           </p>
         </motion.div>

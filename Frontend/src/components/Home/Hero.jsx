@@ -1,16 +1,22 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Play, Star } from "lucide-react";
-import { Link } from "react-router-dom"; // ✅ Import Link
+import { Link } from "react-router-dom";
 import heroVideo from "../../assets/digital-marketing-agency.mp4";
 import "../../App.css";
 import "../../Style/Home.css";
-import Services from "../../components/Home/HomeServices";
-import Brands from "../../components/Home/brands";
-import Reviews from "../../components/Home/review";
+
+// 02 to 11 Homepage Sequence Components
+import Brands from "./brands";
+import Services from "./HomeServices";
 import WhySetu from "./whyus";
 import ProcessSection from "./ProcessSection";
+import HomeWork from "./HomeWork";
+import MissionValues from "./mission";
+import FounderPage from "./founder";
+import Reviews from "./review";
 import HomeFaq from "./HomeFaq";
+import HomeCTA from "./HomeCTA";
 import Seo from "../Seo";
 
 export function Hero() {
@@ -74,6 +80,7 @@ export function Hero() {
 
         {/* Content */}
         <div className="container position-relative z-1">
+          {/* ================= 01. HERO ================= */}
           <div className="row align-items-center">
             {/* LEFT */}
             <div className="col-lg-6 hero-left">
@@ -87,7 +94,7 @@ export function Hero() {
                 Award-Winning Marketing Agency
               </motion.div>
 
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -103,7 +110,29 @@ export function Hero() {
                   BrandSetu Digital — a digital marketing and SEO agency in
                   Indore helping businesses build their brand online.
                 </p>
-              </motion.div>
+              </motion.div> */}
+
+              <motion.div
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.2 }}
+  className="hero-title-area"
+>
+  <h1 className="hero-title">
+    <span className="d-block">BUILD</span>
+    <span className="d-block text-white">YOUR</span>
+    <span className="d-block">BRAND</span>
+
+    <span className="visually-hidden">
+      With BrandSetu Digital
+    </span>
+  </h1>
+
+  <p className="visually-hidden">
+    BrandSetu Digital — a digital marketing and SEO agency in
+    Indore helping businesses build their brand online.
+  </p>
+</motion.div>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -244,16 +273,38 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Home Sections */}
+          {/* ================= 02. BRANDS WHO TRUST US ================= */}
           <Brands />
+
+          {/* ================= 03. OUR SERVICES ================= */}
           <Services />
-          <ProcessSection />
+
+          {/* ================= 04. WHY CHOOSE BRANDSETU? ================= */}
           <WhySetu />
-          {/* <FounderPage /> */}
-          <HomeFaq />
+
+          {/* ================= 05. OUR EXECUTION PROCESS ================= */}
+          <ProcessSection />
+
+          {/* ================= 07. MISSION & VISION ================= */}
+          <MissionValues />
+
+          {/* ================= 06. OUR WORK / CASE STUDIES ================= */}
+          <HomeWork />
+
+          {/* ================= 08. FOUNDER & CEO ================= */}
+          <FounderPage />
+
+          {/* ================= 09. CLIENT LOVE (TESTIMONIALS) ================= */}
           <Reviews />
+
+          {/* ================= 10. FAQ ================= */}
+          <HomeFaq />
+
+          {/* ================= 11. FINAL CTA ================= */}
+          <HomeCTA />
         </div>
       </section>
     </>
   );
 }
+export default Hero;

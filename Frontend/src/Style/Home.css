@@ -56,31 +56,34 @@
 
 /* Stats Bar */
 .stats-bar {
-  background-color: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(8px);
-  border-radius: 2rem;
+  background-color: rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 2.5rem;
   width: 100%;
   padding: 1.5rem 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 /* Stat number */
 .stat-value {
-  font-weight: 800;
+  font-weight: 900;
   line-height: 1.1;
-  color: #facc15;
+  color: #0b0f19;
+  letter-spacing: -1px;
 
   /* Fluid scaling */
-  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-size: clamp(2.3rem, 3.8vw, 3.5rem);
 }
 
 /* Stat text */
 .stat-label {
-  margin-top: 0.5rem;
-  color: #ffffff;
-  font-weight: 600;
+  margin-top: 0.35rem;
+  color: #0b0f19;
+  font-weight: 700;
+  opacity: 0.95;
 
   /* Fluid scaling */
-  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
   white-space: nowrap;
 }
 

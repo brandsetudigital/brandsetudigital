@@ -1,117 +1,282 @@
-/* =========================================== SERVICE PAGE MODERN STYLING =========================================== */
-
-.services-main-hero {
+/* =========================================== SERVICE PAGE =========================================== */
+/* HERO SECTION */
+.hero-section {
   position: relative;
   overflow: hidden;
-  background-color: oklch(85.2% 0.199 91.936) !important;
-  color: #111827;
-  min-height: 100vh;
+  min-height: 600px;
 }
 
 /* FLOATING SHAPES */
 .hero-background {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 0; /* behind overlay and content */
   pointer-events: none;
 }
 
 .floating-shape {
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 50%;
   position: absolute;
+  border-radius: 50%;
   pointer-events: none;
+  box-shadow: 0 8px 25px rgba(255, 204, 0, 0.4);
 }
 
-/* HERO BANNER */
-.services-hero-banner {
-  position: relative;
-  border-radius: 24px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.45);
-}
-
-.services-image-overlay {
+/* HERO IMAGE OVERLAY */
+.image-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15, 16, 19, 0.82) 0%, rgba(15, 16, 19, 0.95) 100%);
+  background: rgba(50, 50, 50, 0.5);
   z-index: 1;
 }
 
-.services-pill-badge {
-  padding: 8px 20px;
-  border-radius: 9999px;
-  background: #111827;
-  border: 1px solid rgba(250, 204, 21, 0.4);
-  color: #facc15;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+/* HERO CONTENT */
+.hero-content {
+  position: relative;
+  z-index: 2; /* above everything */
+  animation: fadeInUp 1.2s ease;
 }
 
-.services-hero-title {
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
-  font-weight: 900;
-  line-height: 1.2;
-  letter-spacing: -0.5px;
+.hero-content h1 {
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
-.services-hero-tagline {
-  color: #cbd5e1;
-  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+.hero-content p {
+  opacity: 0.9;
   max-width: 700px;
 }
 
-.services-journey-pill {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
-  font-size: 0.95rem;
-}
-
-/* ================= MODERN STATS SECTION ================= */
-.services-modern-stats {
+/* Highlight stats */
+.highlight-stats {
   position: relative;
-  z-index: 2;
 }
 
-.modern-stat-card {
-  background: #111827;
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  transition: all 0.35s ease;
-  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.35);
+.highlight-stat .stat-number {
+  font-size: 4.5rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+  letter-spacing: -2px;
+  color: #111;
+  -webkit-text-stroke: 1.5px #000;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s ease;
 }
 
-.modern-stat-card:hover {
-  border-color: rgba(250, 204, 21, 0.6);
-  transform: translateY(-5px);
-  box-shadow: 0 18px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(250, 204, 21, 0.3);
+.stat-line {
+  width: 46px;
+  height: 4px;
+  margin: 0 auto 14px;
+  background: linear-gradient(90deg, #000, #333);
+  border-radius: 2px;
+  transform: scaleX(0.6);
+  transition: transform 0.4s ease;
 }
 
-.stat-icon-wrapper {
+.highlight-stat:hover .stat-number {
+  transform: translateY(-6px);
+}
+
+.highlight-stat:hover .stat-line {
+  transform: scaleX(1);
+}
+
+/* ====================== RESPONSIVE STATS (NO UI CHANGE) ====================== */
+
+/* Keep stats in one row always */
+.highlight-stats .row {
+  flex-wrap: nowrap;
+}
+
+/* Equal width columns without breaking layout */
+.highlight-stats .col,
+.highlight-stats [class*="col-"] {
+  flex: 1 1 0;
+  max-width: 25%;
+}
+
+/* Responsive number scaling */
+.highlight-stat .stat-number {
+  font-size: clamp(1.9rem, 4.2vw, 4.5rem);
+  font-weight: 900;
+  margin-bottom: 10px;
+  letter-spacing: -2px;
+  color: #111;
+  -webkit-text-stroke: 1.5px #000;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+  transition: transform 0.4s ease;
+}
+
+/* Responsive label text */
+.highlight-stat p {
+  font-size: clamp(0.7rem, 1vw, 1rem);
+  white-space: nowrap;
+}
+
+/* Responsive divider */
+.stat-line {
+  width: clamp(28px, 5vw, 46px);
+  height: clamp(3px, 0.5vw, 4px);
+  margin: 0 auto 14px;
+  background: linear-gradient(90deg, #000, #333);
+  border-radius: 2px;
+  transform: scaleX(0.6);
+  transition: transform 0.4s ease;
+}
+
+/* Hover remains unchanged */
+.highlight-stat:hover .stat-number {
+  transform: translateY(-6px);
+}
+
+.highlight-stat:hover .stat-line {
+  transform: scaleX(1);
+}
+
+/* Extra safety for very small devices */
+@media (max-width: 420px) {
+  .highlight-stat .stat-number {
+    font-size: 1.7rem;
+  }
+
+  .highlight-stat p {
+    font-size: 0.65rem;
+  }
+}
+
+/* ============= Detailedservices =============== */
+
+.read-more {
+  color: #740bb0 !important;
+  transition: all 0.3s ease;
+}
+
+.read-more:hover {
+  color: #9b51e0 !important;
+  transform: translateX(5px);
+}
+
+/* IMAGE BOX – DESKTOP DEFAULT */
+.service-img-box {
+  width: 250px;
+  height: 150px;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+}
+
+/* IMAGE FIT */
+.service-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.service-img-box:hover .service-img {
+  transform: scale(1.08);
+}
+
+.service-card-info {
+  flex: 1;
+}
+
+/* READ MORE LINK */
+.read-more-link {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #5f0000;
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
   display: inline-flex;
-  padding: 10px;
-  border-radius: 12px;
-  background: rgba(250, 204, 21, 0.15);
+  align-items: center;
+  transition: all 0.25s ease;
 }
 
-.modern-stat-card .stat-number {
-  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
-  color: #facc15;
-  line-height: 1.1;
-  margin-bottom: 4px;
+.read-more-link:focus,
+.read-more-link:active {
+  outline: none;
+  box-shadow: none;
 }
 
-.modern-stat-card .stat-label {
-  color: #e2e8f0;
-  font-size: clamp(0.78rem, 1.1vw, 0.92rem);
+.read-more-link:hover {
+  color: #800000;
+  transform: translateX(4px);
 }
 
-/* ================= DETAILED SERVICES ================= */
+/* ================= RESPONSIVENESS ================= */
+
+/* Prevent horizontal scroll */
+body {
+  overflow-x: hidden;
+}
+
+/* DEFAULT (desktop untouched) */
+.service-card {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .service-img-box {
+    width: 200px;
+    height: 130px;
+  }
+}
+
+/* ================= MOBILE FIX ================= */
+@media (max-width: 768px) {
+  .service-card {
+    flex-direction: column; /* stack properly */
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .service-img-box {
+    width: 100%;
+    height: 180px; /* smaller = cleaner */
+  }
+
+  .service-img {
+    object-fit: cover;
+  }
+
+  .service-card h4 {
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  .read-more-link {
+    align-self: flex-start; /* keeps UI same feel */
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .service-img-box {
+    height: 160px;
+  }
+
+  .service-card p {
+    font-size: 0.88rem;
+  }
+}
+
+/* ================= DETAILED SERVICES SECTION & CARDS ================= */
 .detailed-services-section {
   position: relative;
   z-index: 2;
@@ -121,17 +286,16 @@
 .detailed-services-heading {
   font-size: clamp(2rem, 4vw, 3.2rem);
   letter-spacing: -0.5px;
-  color: #111827 !important;
+  color: #111827;
 }
 
 .detailed-services-subtitle {
-  color: #1f2937 !important;
+  color: #374151;
   max-width: 650px;
   font-size: 1.1rem;
   line-height: 1.6;
 }
 
-/* Category Filter Buttons */
 .services-filter-container {
   overflow-x: auto;
   padding-bottom: 8px;
@@ -166,7 +330,6 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Modern Service Card */
 .modern-service-item-card {
   background: #111827;
   backdrop-filter: blur(14px);
@@ -254,31 +417,36 @@
   transform: translateX(5px);
 }
 
-/* ================= WHAT OUR BRANDS SAY ================= */
+/* ================= BRANDSAYS ================= */
 .brand-wall {
+  padding: 60px 0;
   width: 100%;
-  padding: 80px 0;
-  position: relative;
-  background-color: #0c0d10 !important;
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+/* HEADER */
+.brand-wall-header h1,
 .brand-wall-header h2 {
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
   font-weight: 900;
 }
 
+.brand-wall-header p {
+  font-size: 1.15rem;
+  color: #ef4444;
+}
+
+/* ================= STRIP ================= */
 .brand-strip {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 50px;
-  max-width: 1300px;
+  max-width: 100%;
   width: 100%;
-  margin: 0 auto 90px;
+  margin: 0 auto 100px;
   padding: 30px;
-  background: rgba(22, 23, 28, 0.75);
+  background: rgba(22, 23, 28, 0.7);
   backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 24px;
@@ -288,89 +456,139 @@
   flex-direction: row-reverse;
 }
 
+/* ================= TEXT ================= */
 .brand-text {
-  max-width: 520px;
+  max-width: 540px;
   flex: 1;
-  text-align: left;
 }
 
 .brand-text img {
-  height: 38px;
+  height: 48px;
   width: auto;
-  max-width: 140px;
-  margin-bottom: 14px;
+  max-width: 160px;
+  margin-bottom: 16px;
   object-fit: contain;
+  background: #ffffff;
+  padding: 5px 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.brand-text h2,
+.brand-text h3 {
+  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+  font-weight: 800;
+  margin-bottom: 16px;
 }
 
 .brand-says {
-  font-size: 1.15rem;
+  font-size: clamp(1.1rem, 1.4vw, 1.25rem);
   line-height: 1.65;
-  color: #e2e8f0;
-  font-style: italic;
-  margin-bottom: 14px;
-  text-align: left;
+  color: #f1f5f9;
 }
 
 .brand-work {
   display: inline-block;
-  font-size: 0.8rem;
-  letter-spacing: 1.2px;
+  margin-top: 14px;
+  font-size: 0.85rem;
+  letter-spacing: 1.4px;
   text-transform: uppercase;
   color: #facc15;
 }
 
+/* ================= COLLAGE (LIGHT SHADOW) ================= */
 .brand-collage {
   position: relative;
-  width: 460px;
-  height: 320px;
+  width: 620px;
+  height: 440px;
   flex-shrink: 0;
 }
 
 .brand-collage img {
   position: absolute;
   object-fit: cover;
-  border-radius: 16px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
+.brand-collage img:hover {
+  transform: scale(1.04);
+  z-index: 10 !important;
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.5);
+}
+
+/* POSITIONS */
 .img1 {
-  width: 270px;
-  height: 320px;
+  width: 360px;
+  height: 440px;
   left: 0;
   top: 0;
   z-index: 4;
 }
 
 .img2 {
-  width: 170px;
-  height: 130px;
+  width: 240px;
+  height: 185px;
   top: 0;
   right: 0;
+  z-index: 3;
 }
 
 .img3 {
-  width: 170px;
-  height: 130px;
-  top: 150px;
+  width: 240px;
+  height: 185px;
+  top: 210px;
   right: 0;
+  z-index: 3;
 }
 
 .img4 {
-  width: 150px;
-  height: 110px;
-  bottom: -15px;
-  left: 180px;
+  width: 220px;
+  height: 150px;
+  bottom: -20px;
+  left: 230px;
   z-index: 5;
 }
 
-/* ================= RESPONSIVE QUERIES ================= */
+/* ================= RESPONSIVE FIXES (NO UI CHANGE) ================= */
+
+@media (max-width: 1250px) {
+  .brand-collage {
+    width: 520px;
+    height: 380px;
+  }
+
+  .img1 {
+    width: 300px;
+    height: 380px;
+  }
+
+  .img2,
+  .img3 {
+    width: 200px;
+    height: 155px;
+  }
+
+  .img3 {
+    top: 175px;
+  }
+
+  .img4 {
+    width: 180px;
+    height: 130px;
+    left: 190px;
+  }
+}
+
+/* Tablet adjustments */
 @media (max-width: 992px) {
   .brand-strip,
   .brand-strip.reverse {
     flex-direction: column !important;
-    gap: 30px;
+    gap: 36px;
     padding: 24px;
-    margin-bottom: 60px;
+    margin-bottom: 70px;
   }
 
   .brand-text {
@@ -378,57 +596,143 @@
     text-align: center;
   }
 
+  .brand-text h2,
+  .brand-text h3 {
+    font-size: 28px;
+  }
+
   .brand-says {
-    text-align: center;
+    font-size: 16px;
+  }
+
+  .brand-work {
+    font-size: 11px;
   }
 
   .brand-collage {
     width: 100%;
-    max-width: 420px;
-    height: 280px;
-  }
-}
-
-@media (max-width: 768px) {
-  .services-hero-banner {
-    padding: 30px 15px !important;
-    border-radius: 18px;
-  }
-
-  .modern-service-img-wrapper {
-    height: 180px;
-  }
-
-  .service-card-body {
-    padding: 20px 16px !important;
-  }
-
-  .brand-wall {
-    padding: 50px 0;
-  }
-
-  .brand-collage {
-    max-width: 320px;
-    height: 230px;
+    max-width: 480px;
+    height: 340px;
   }
 
   .img1 {
-    width: 65%;
-    height: 90%;
+    width: 280px;
+    height: 340px;
   }
 
-  .img2 {
-    width: 40%;
-    height: 42%;
+  .img2,
+  .img3 {
+    width: 180px;
+    height: 140px;
   }
 
   .img3 {
-    width: 40%;
-    height: 42%;
-    top: 48%;
+    top: 160px;
   }
 
   .img4 {
+    width: 160px;
+    height: 120px;
+    left: 170px;
+  }
+}
+
+/* =================== MOBILE – VISUAL UPGRADE =================== */
+@media (max-width: 768px) {
+  .brand-strip {
+    gap: 24px;
+    margin-bottom: 60px;
+    padding: 16px;
+  }
+
+  .brand-text {
+    max-width: 100%;
+    text-align: center;
+    padding: 0 4px;
+  }
+
+  .brand-text h2,
+  .brand-text h3 {
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+
+  .brand-says {
+    font-size: 15px;
+    line-height: 1.55;
+    opacity: 0.95;
+  }
+
+  .brand-work {
+    font-size: 10px;
+    margin-top: 10px;
+    letter-spacing: 1.3px;
+  }
+
+  .brand-collage {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    height: 260px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .brand-collage img {
+    position: absolute;
+    border-radius: 16px;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+  }
+
+  /* HERO IMAGE */
+  .brand-collage .img1 {
+    width: 72%;
+    height: 85%;
+    left: 0;
+    top: 0;
+    z-index: 3;
+  }
+
+  /* SUPPORTING IMAGES */
+  .brand-collage .img2 {
+    width: 42%;
+    height: 42%;
+    right: 0;
+    top: 0;
+    z-index: 4;
+  }
+
+  .brand-collage .img3 {
+    width: 42%;
+    height: 42%;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+  }
+
+  .brand-collage .img4 {
     display: none;
+  }
+}
+
+/* =================== SMALL MOBILE =================== */
+@media (max-width: 480px) {
+  .brand-wall-header h1,
+  .brand-wall-header h2 {
+    font-size: 28px;
+  }
+
+  .brand-text h2,
+  .brand-text h3 {
+    font-size: 22px;
+  }
+
+  .brand-says {
+    font-size: 14px;
+  }
+
+  .brand-collage {
+    height: 220px;
   }
 }

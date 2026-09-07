@@ -6,7 +6,7 @@ import { Hero } from "../components/Home/Hero";
 import Services from "../components/Servive/servicepage";
 import ServiceDetail from "../components/Servive/ServiceDetail";
 import ContactPage from "../components/contact/contact";
-import OurStory from "../components/OurStory/storymain";
+import   OurStory from "../components/OurStory/storymain";
 import Portfolio from "../components/Testimonials/whowe";
 import Career from "../components/Career/openings";
 import NotFound from "../components/NotFound";

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BsArrowRight } from "react-icons/bs";
-import { Layers } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AOS from "aos";
@@ -47,21 +45,12 @@ const DetailedServices = () => {
   return (
     <section className="detailed-services-section py-5 position-relative">
       <div className="container text-center mb-5">
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="d-inline-flex align-items-center gap-2 mb-3 services-pill-badge"
-        >
-          <Layers size={16} className="text-warning" />
-          <span>OUR SERVICE PORTFOLIO</span>
-        </motion.div>
+        <span className="brands-pill fw-bold">OUR SERVICE PORTFOLIO</span>
 
-        <h2 className="display-4 fw-black text-white mb-3 detailed-services-heading">
-          High-Impact Digital <span className="text-warning">Marketing & Tech</span> Services
+        <h2 className="display-3 fw-bold text-dark mb-3">
+          High-Impact Digital <span className="text-danger">Marketing & Tech</span> Services
         </h2>
-        <p className="detailed-services-subtitle lead fw-medium mx-auto">
+        <p className="fs-5 text-dark fw-semibold opacity-85 col-lg-8 mx-auto">
           Result-oriented digital solutions engineered to scale your audience, authority, and revenue.
         </p>
 
@@ -82,59 +71,51 @@ const DetailedServices = () => {
       </div>
 
       <div className="container px-3 px-md-4">
-        <motion.div layout className="row g-4 g-lg-4">
+        <motion.div layout className="row g-4 g-lg-5">
           <AnimatePresence>
             {visiblePosts.map((post, index) => (
               <motion.div
                 layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.35 }}
-                className="col-12 col-md-6 col-lg-4 d-flex"
+                className="col-12 col-lg-6 mb-3"
                 key={post.id || post.slug || index}
               >
                 <div
-                  className="modern-service-item-card w-100 d-flex flex-column"
+                  className="service-card"
                   onClick={() => handleCardClick(post.slug)}
+                  style={{ cursor: "pointer" }}
                 >
-                  {/* IMAGE CONTAINER WITH CATEGORY TAG */}
-                  <div className="modern-service-img-wrapper position-relative">
+                  {/* Left Side: Rounded Image Box */}
+                  <div className="service-img-box">
                     <img
                       src={post.img}
                       alt={`${post.title} — BrandSetu Digital service`}
-                      className="modern-service-img"
-                      width="400"
-                      height="240"
+                      className="service-img"
+                      width="250"
+                      height="150"
                       loading="lazy"
                       decoding="async"
                     />
-                    <div className="service-card-tag">
-                      {post.category || "Service"}
-                    </div>
                   </div>
 
-                  {/* CARD BODY */}
-                  <div className="service-card-body d-flex flex-column justify-content-between flex-grow-1 p-4">
-                    <div>
-                      <h3 className="service-card-title text-white fs-5 fw-bold mb-2">
-                        {post.title}
-                      </h3>
-                      <p className="service-card-description mb-3">
-                        {post.shortDesc || post.desc}
-                      </p>
-                    </div>
-
-                    <div className="service-card-action pt-3 mt-auto border-top border-dark-subtle d-flex align-items-center justify-content-between">
-                      <Link
-                        to={`/services/${post.slug}`}
-                        className="service-explore-link d-inline-flex align-items-center gap-2 fw-bold text-decoration-none"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <span>Explore Service</span>
-                        <BsArrowRight className="explore-arrow" />
-                      </Link>
-                    </div>
+                  {/* Right Side: Title, Description, Read More */}
+                  <div className="service-card-info">
+                    <h3 className="fw-bold fs-4 mb-2 text-dark">
+                      {post.title}
+                    </h3>
+                    <p className="mb-3 text-dark opacity-90" style={{ lineHeight: 1.55 }}>
+                      {post.shortDesc || post.desc}
+                    </p>
+                    <Link
+                      to={`/services/${post.slug}`}
+                      className="read-more-link fw-bold"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <span>→ Read More</span>
+                    </Link>
                   </div>
                 </div>
               </motion.div>

@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../../Style/Services.css";
 import "../../App.css";
 import { motion, AnimatePresence } from "framer-motion";
+import TechCorpLogo from "../../assets/tech-corp.png";
+import TechCorpWork from "../../assets/top-web-development-company.png";
 
 const img = (url) =>
   `${url}?auto=format&fit=crop&w=480&q=50`;
@@ -36,12 +38,12 @@ const brands = [
   },
   {
     name: "TechCorp",
-    logo: "https://dummyimage.com/140x50/000/fff&text=TechCorp",
+    logo: TechCorpLogo,
     says:
       "BrandSetu made our launch campaigns feel cinematic and professional.",
     work: "App Development • Website Design • SEO",
     images: [
-      img("https://rainbowpages.lk/uploads/listings/logo/t/techn1g.jpg"),
+      TechCorpWork,
       img("https://images.unsplash.com/photo-1562577309-4932fdd64cd1"),
       img("https://images.unsplash.com/photo-1556761175-b413da4baf72"),
       img("https://images.unsplash.com/photo-1519389950473-47ba0277781c"),
@@ -148,7 +150,7 @@ const WhatOurBrandsSay = () => {
       <div className="bg-blob blob-1"></div>
       <div className="bg-blob blob-2"></div>
 
-      <div className="container-fluid px-3 px-md-5 px-xl-5 position-relative" style={{ zIndex: 2 }}>
+      <div className="container position-relative" style={{ zIndex: 2 }}>
         <div className="brand-wall-header text-center mb-5 text-white">
           <h2 className="display-4 fw-bold mb-2">
             What Our <span className="text-warning">Brands</span> Say

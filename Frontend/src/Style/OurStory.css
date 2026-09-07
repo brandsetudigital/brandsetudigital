@@ -87,13 +87,53 @@ body {
 }
 
 /* ================= FEATURE CARDS ================= */
+.about-features-card,
 .about-feature-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(18, 19, 24, 0.85);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 2.2rem 1.8rem;
+  transition: all 0.35s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.4);
 }
 
+.about-features-card:hover,
 .about-feature-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px);
+  border-color: rgba(239, 68, 68, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(239, 68, 68, 0.25);
+}
+
+.about-feature-icon-wrapper {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.about-features-card:hover .about-feature-icon-wrapper,
+.about-feature-card:hover .about-feature-icon-wrapper {
+  transform: scale(1.08);
+  border-color: #facc15;
+}
+
+.about-feature-img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
 }
 
 /* ================= MOBILE FIXES ================= */
@@ -139,9 +179,11 @@ body {
 /* ===================ceo================== */
 
 .visionary-card {
-  background: rgba(0, 0, 0, 0.6); /* black with transparency */
+  background: rgba(0, 0, 0, 0.6);
+  /* black with transparency */
   color: #fff;
-  backdrop-filter: blur(7px); /* glass effect (optional but recommended) */
+  backdrop-filter: blur(7px);
+  /* glass effect (optional but recommended) */
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 
@@ -177,14 +219,17 @@ body {
 .bg-danger-subtle {
   background-color: #fce8e8 !important;
 }
+
 .cards {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 1px 1px 1px #919090;
 }
+
 .cards:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 40px rgba(156, 249, 254, 0.15);
 }
+
 .text-danger {
   color: #dc3545 !important;
 }
@@ -197,9 +242,11 @@ body {
   .travel-solution-page .display-4 {
     font-size: 2.5rem;
   }
+
   .travel-solution-page .lead {
     font-size: 1rem;
   }
+
   .travel-solution-page .card-title {
     font-size: 1.1rem;
   }
