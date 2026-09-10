@@ -159,7 +159,14 @@ export const servicesData = [
   {
     id: "google-ads",
     slug: "google-ads-agency-indore",
-    aliases: ["google-ads", "ppc-agency", "google-ads-services", "performance-marketing"],
+    aliases: [
+      "google-ads",
+      "ppc-agency",
+      "google-ads-services",
+      "performance-marketing",
+      "google-ads-management-indore",
+      "meta-ads-management-indore"
+    ],
     category: "Advertising",
     title: "Google Ads & Lead Generation",
     shortDesc: "We run performance-driven paid campaigns to generate leads and maximize ROI effectively.",

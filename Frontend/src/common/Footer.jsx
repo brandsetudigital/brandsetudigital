@@ -72,6 +72,7 @@ const Footer = () => {
             <ul className="list-unstyled footer-links footer-quick-links-grid">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/services">Services</Link></li>
+              <li><Link to="/blog">Blog</Link></li>
               <li><Link to="/contact">Contact</Link></li>
               <li><Link to="/work">Portfolio</Link></li>
               <li><Link to="/about">Our Story</Link></li>

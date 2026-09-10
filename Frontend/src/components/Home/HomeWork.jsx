@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Carousel } from "react-bootstrap";
 import { motion } from "framer-motion";
-import { ArrowRight, ExternalLink } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ExternalLink } from "lucide-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../Style/portfolio.css";
 import "../../Style/Home.css";
@@ -58,10 +57,16 @@ const workSlides = [
 ];
 
 export default function HomeWork() {
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex) => {
+    setIndex(selectedIndex);
+  };
+
   return (
-    <section className="work-section py-5 my-5">
+    <section className="work-section py-3 my-2">
       <Container>
-        <div className="text-center mb-5">
+        <div className="text-center mb-4">
           <span className="brands-pill fw-bold">PORTFOLIO &amp; CASE STUDIES</span>
           <h2 className="display-2 fw-bold text-dark mb-3">
             Our <span className="text-danger">Work</span> &amp; Case Studies
@@ -72,11 +77,12 @@ export default function HomeWork() {
         </div>
 
         <Carousel
+          activeIndex={index}
+          onSelect={handleSelect}
           interval={5000}
           pause="hover"
-          indicators={true}
+          indicators={false}
           controls={false}
-          className="pb-4"
         >
           {workSlides.map((slide, idx) => (
             <Carousel.Item key={idx}>
@@ -119,18 +125,7 @@ export default function HomeWork() {
             </Carousel.Item>
           ))}
         </Carousel>
-
-        <div className="text-center mt-4">
-          <Link to="/work">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn btn-dark btn-lg fw-bold rounded-pill px-5 py-3 shadow"
-            >
-              Explore Full Portfolio <ArrowRight size={20} className="ms-1" />
-            </motion.button>
-          </Link>
-        </div>
+        
       </Container>
     </section>
   );

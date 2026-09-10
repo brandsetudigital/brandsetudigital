@@ -284,12 +284,12 @@ export function Hero() {
 
           {/* ================= 05. OUR EXECUTION PROCESS ================= */}
           <ProcessSection />
+          
+           {/* ================= 06. OUR WORK / CASE STUDIES ================= */}
+          <HomeWork />
 
           {/* ================= 07. MISSION & VISION ================= */}
           <MissionValues />
-
-          {/* ================= 06. OUR WORK / CASE STUDIES ================= */}
-          <HomeWork />
 
           {/* ================= 08. FOUNDER & CEO ================= */}
           <FounderPage />

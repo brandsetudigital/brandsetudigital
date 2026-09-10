@@ -323,6 +323,10 @@
   position: relative;
 }
 
+.work-section .carousel-indicators {
+  display: none !important;
+}
+
 /* CARD */
 .work-card {
   position: relative;

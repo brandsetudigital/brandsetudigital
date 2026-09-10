@@ -19,6 +19,10 @@ import {
   DollarSign,
   HelpCircle,
   MessageCircle,
+  Star,
+  Zap,
+  ShieldCheck,
+  Award,
 } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -42,6 +46,7 @@ const challengeConfig = [
 const ServiceDetail = () => {
   const { slug } = useParams();
   const [openFaq, setOpenFaq] = useState(0);
+  const [activeStageTab, setActiveStageTab] = useState("specs");
 
   const service = getServiceBySlug(slug);
 
@@ -62,6 +67,31 @@ const ServiceDetail = () => {
       })),
     []
   );
+
+  // Dynamic capabilities tailored specifically to this service
+  const keyCapabilities = useMemo(() => {
+    if (!service?.servicesOffered?.items) return [];
+    return service.servicesOffered.items.slice(0, 4).map((item) => item.title);
+  }, [service]);
+
+  // Service-specific stage HUD live readout data
+  const serviceStageData = useMemo(() => {
+    if (!service) return { specs: "", focus: "", roi: "" };
+    const firstDeliverable =
+      service.servicesOffered?.items?.[0]?.desc || service.shortDesc || "Comprehensive high-velocity digital execution.";
+    const keyFocus = service.whyChooseUs?.points?.[0]?.title
+      ? `${service.whyChooseUs.points[0].title}: ${service.whyChooseUs.points[0].desc}`
+      : `Tailored ${service.category} execution calibrated for high conversion and brand retention.`;
+    const targetROI = service.stats?.[0]
+      ? `${service.stats[0].value} ${service.stats[0].label} achieved on average.`
+      : "Average 3.4x organic & paid customer acquisition boost across active campaigns.";
+
+    return {
+      specs: firstDeliverable,
+      focus: keyFocus,
+      roi: targetROI,
+    };
+  }, [service]);
 
   if (!service) {
     return (
@@ -186,21 +216,25 @@ const ServiceDetail = () => {
       {/* ================= HERO SECTION ================= */}
       <section className="service-detail-hero">
         <Container fluid className="px-3 px-md-5 px-xl-5 position-relative" style={{ zIndex: 2 }}>
-          {/* Breadcrumbs */}
-          <div className="service-breadcrumbs" data-aos="fade-down">
-            <Link to="/">Home</Link>
-            <span className="separator">/</span>
-            <Link to="/services">Services</Link>
-            <span className="separator">/</span>
-            <span className="current">{service.title}</span>
+          {/* Top Row: Breadcrumbs Pill + Service Tier Badge */}
+          <div className="service-hero-top-row" data-aos="fade-down">
+            <div className="service-breadcrumbs-pill">
+              <Link to="/">Home</Link>
+              <span className="separator">/</span>
+              <Link to="/services">Services</Link>
+              <span className="separator">/</span>
+              <span className="current">{service.title}</span>
+            </div>
+
+            <div className="service-tier-badge">
+              <span className="pulse-indicator" />
+              {service.category} • Enterprise Grade
+            </div>
           </div>
 
           <Row className="align-items-center g-5">
+            {/* Left Column: Title, Subtitle, Dynamic Deliverables & CTAs */}
             <Col lg={7} data-aos="fade-right">
-              <div className="service-badge">
-                <Sparkles size={14} /> {service.category} Service
-              </div>
-
               <h1 className="service-hero-title">
                 {service.seo.h1 || service.title}
               </h1>
@@ -209,7 +243,25 @@ const ServiceDetail = () => {
                 {service.seo.subHeading || service.shortDesc}
               </p>
 
-              <div className="d-flex flex-wrap gap-3 mt-4">
+              {/* Dynamic Service Deliverables (Pill Matrix, Not Cards) */}
+              {keyCapabilities.length > 0 && (
+                <div className="service-capabilities-matrix">
+                  <div className="matrix-label">
+                    <Sparkles size={13} /> Included Scope & Key Deliverables
+                  </div>
+                  <div className="d-flex flex-wrap gap-2">
+                    {keyCapabilities.map((cap, idx) => (
+                      <span key={idx} className="capability-pill">
+                        <CheckCircle2 size={14} className="capability-check" />
+                        {cap}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* CTAs */}
+              <div className="d-flex flex-wrap gap-3 mt-4 mb-3">
                 <Button
                   as={Link}
                   to={{
@@ -217,7 +269,7 @@ const ServiceDetail = () => {
                     search: `?service=${encodeURIComponent(service.title)}`,
                     state: { selectedService: service.title },
                   }}
-                  className="main-btn rounded-pill px-5 py-3 d-inline-flex align-items-center gap-2"
+                  className="main-btn rounded-pill px-5 py-3 d-inline-flex align-items-center gap-2 shadow"
                 >
                   {service.heroCTA || "Get Free Consultation"} <ArrowRight size={18} />
                 </Button>
@@ -234,8 +286,23 @@ const ServiceDetail = () => {
                     )
                   }
                 >
-                  <Phone size={18} className="text-success" /> Chat on WhatsApp
+                  <MessageCircle size={18} className="text-success" /> Chat on WhatsApp
                 </Button>
+              </div>
+
+              {/* Reassurance Trust Strip */}
+              <div className="service-trust-strip d-flex flex-wrap align-items-center gap-3 pt-2">
+                <span className="trust-item">
+                  <ShieldCheck size={16} /> 100% Tailored Roadmap
+                </span>
+                <span>•</span>
+                <span className="trust-item">
+                  <Zap size={16} /> 24-Hr Kickoff
+                </span>
+                <span>•</span>
+                <span className="trust-item">
+                  <Award size={16} /> 350+ Scaled Brands
+                </span>
               </div>
 
               {/* Keyword tags */}
@@ -250,16 +317,76 @@ const ServiceDetail = () => {
               )}
             </Col>
 
+            {/* Right Column: Interactive Service Visual Stage & Capability Switcher */}
             <Col lg={5} data-aos="fade-left">
-              <div className="service-hero-img-box">
-                <img
-                  src={service.img}
-                  alt={service.seo.h1 || service.title}
-                  className="service-hero-img"
-                  loading="eager"
-                  width="600"
-                  height="400"
-                />
+              <div className="service-stage-container">
+                <div className="service-stage-visual-wrap">
+                  <img
+                    src={service.img}
+                    alt={service.seo.h1 || service.title}
+                    className="service-stage-img"
+                    loading="eager"
+                    width="600"
+                    height="400"
+                  />
+                  <div className="service-stage-overlay-glow" />
+
+                  {/* Top Floating Badge */}
+                  <div className="service-stage-badge-top">
+                    <span className="stage-live-dot" /> Live {service.title} Framework
+                  </div>
+
+                  {/* Floating Metric Pill */}
+                  <div className="service-stage-metric-pill">
+                    <div className="metric-pill-icon">
+                      <Star size={16} className="text-warning fill-warning" />
+                    </div>
+                    <div className="metric-pill-text">
+                      <span className="metric-val">4.9 / 5.0</span>
+                      <span className="metric-lbl">Client Satisfaction Rate</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Interactive Capability Switcher HUD Bar */}
+                <div className="service-stage-hud-bar">
+                  <div className="stage-hud-tabs">
+                    <button
+                      type="button"
+                      className={`stage-hud-tab-btn ${activeStageTab === "specs" ? "active" : ""}`}
+                      onClick={() => setActiveStageTab("specs")}
+                    >
+                      ⚡ Quick Specs
+                    </button>
+                    <button
+                      type="button"
+                      className={`stage-hud-tab-btn ${activeStageTab === "focus" ? "active" : ""}`}
+                      onClick={() => setActiveStageTab("focus")}
+                    >
+                      🎯 Key Objective
+                    </button>
+                    <button
+                      type="button"
+                      className={`stage-hud-tab-btn ${activeStageTab === "roi" ? "active" : ""}`}
+                      onClick={() => setActiveStageTab("roi")}
+                    >
+                      📈 Target Impact
+                    </button>
+                  </div>
+
+                  <div className="stage-hud-readout">
+                    <span className="stage-readout-tag">
+                      {activeStageTab === "specs" && "SPECS:"}
+                      {activeStageTab === "focus" && "FOCUS:"}
+                      {activeStageTab === "roi" && "IMPACT:"}
+                    </span>
+                    <span className="stage-readout-text">
+                      {activeStageTab === "specs" && serviceStageData.specs}
+                      {activeStageTab === "focus" && serviceStageData.focus}
+                      {activeStageTab === "roi" && serviceStageData.roi}
+                    </span>
+                  </div>
+                </div>
               </div>
             </Col>
           </Row>

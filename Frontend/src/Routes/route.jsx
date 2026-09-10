@@ -9,6 +9,9 @@ import ContactPage from "../components/contact/contact";
 import   OurStory from "../components/OurStory/storymain";
 import Portfolio from "../components/Testimonials/whowe";
 import Career from "../components/Career/openings";
+import BlogList from "../components/blog/BlogList";
+import ServiceBlogLanding from "../components/blog/ServiceBlogLanding";
+import BlogDetail from "../components/blog/BlogDetail";
 import NotFound from "../components/NotFound";
 
 const MainLayout = () => (
@@ -32,6 +35,10 @@ const AppRoutes = () => {
         <Route path="/about" element={<OurStory />} />
         <Route path="/work" element={<Portfolio />} />
         <Route path="/career" element={<Career />} />
+        {/* Blog System Routes */}
+        <Route path="/blog" element={<BlogList />} />
+        <Route path="/blog/:serviceSlug" element={<ServiceBlogLanding />} />
+        <Route path="/blog/:serviceSlug/:articleSlug" element={<BlogDetail />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>

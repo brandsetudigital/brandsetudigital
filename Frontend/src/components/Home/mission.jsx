@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import "../../Style/Home.css";
 import "../../App.css";
 import vision from "../../assets/vision.png";
@@ -34,13 +37,13 @@ const MissionValues = () => {
   }, []);
 
   return (
-    <section className="py-5">
+    <section className="pt-2 pb-5">
       <div className="container text-center">
         <h2 className="fw-bold mb-3 text-brand">
           Our Mission <span className="text-danger">&</span> Vision
         </h2>
 
-        <p className="mb-5">
+        <p className="mb-4">
           At BrandSetu, we bridge the gap between businesses and branding through
           strategy, creativity, and technology driven solutions.
         </p>
@@ -81,6 +84,18 @@ const MissionValues = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="text-center mt-5">
+          <Link to="/work">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn btn-dark btn-lg fw-bold rounded-pill px-5 py-3 shadow"
+            >
+              Explore Full Portfolio <ArrowRight size={20} className="ms-1" />
+            </motion.button>
+          </Link>
         </div>
       </div>
     </section>

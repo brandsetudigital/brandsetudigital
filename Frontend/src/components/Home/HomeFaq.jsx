@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ChevronUp, ArrowRight, MessageCircle } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import "../../Style/Home.css";
 
 const homeFaqs = [
@@ -20,7 +19,6 @@ const homeFaqs = [
           <li>Google & Meta Ads</li>
           <li>Social Media Marketing</li>
           <li>Branding & Graphic Design</li>
-          <li>WhatsApp Marketing</li>
           <li>Marketing Automation</li>
         </ul>
       </>
@@ -37,7 +35,7 @@ const homeFaqs = [
         <ul className="ps-4 mb-0 d-flex flex-column gap-2 fs-5">
           <li>Strengthen their online presence</li>
           <li>Attract quality leads and customers</li>
-          <li>Use digital channels and technology more effectively</li>
+          <li>Leverage digital channels and modern technology for sustainable growth</li>
         </ul>
       </>
     ),
@@ -48,7 +46,7 @@ const homeFaqs = [
     answer: (
       <>
         <p className="mb-3 fs-5">
-          We don't believe in one-size-fits-all solutions. Our process starts with understanding your:
+          We don't believe in one-size-fits-all solutions. Our process starts with deeply understanding your:
         </p>
         <ul className="ps-4 mb-3 d-flex flex-column gap-2 fs-5">
           <li>Target audience</li>
@@ -56,7 +54,7 @@ const homeFaqs = [
           <li>Business goals and KPIs</li>
         </ul>
         <p className="mb-0 fs-5">
-          We then develop a data-informed strategy focused on the channels and activities most relevant to your objectives.
+          We then craft a data-driven strategy focused on the channels and activities that will yield the highest ROI for your specific objectives.
         </p>
       </>
     ),
@@ -66,7 +64,7 @@ const homeFaqs = [
     question: "Can you manage multiple aspects of our digital presence?",
     answer: (
       <p className="mb-0 fs-5">
-        Absolutely. Think of us as your extended digital team. We bring technology, creative, marketing, and automation expertise together under one roof, making it easier to manage your digital operations without coordinating with multiple freelancers or agencies.
+        Absolutely. Think of us as your extended digital team. We bring technology, creative design, marketing, and automation expertise together under one roof. This makes it seamless to manage your entire digital ecosystem without the hassle of coordinating with multiple freelancers or agencies.
       </p>
     ),
   },
@@ -76,15 +74,15 @@ const homeFaqs = [
     answer: (
       <>
         <p className="mb-3 fs-5">
-          Our branding and creative services help establish a clear and consistent identity across your customer touchpoints. These include:
+          Yes, our branding and creative services help establish a clear, memorable, and consistent identity across all customer touchpoints. These include:
         </p>
         <ul className="ps-4 mb-0 d-flex flex-column gap-2 fs-5">
           <li>Logo Design</li>
           <li>Visual Identity & Brand Guidelines</li>
           <li>Brand Strategy</li>
           <li>Social Media Creatives</li>
-          <li>Marketing Collateral (such as brochures, decks, and banners)</li>
-          <li>Other Brand Assets as needed</li>
+          <li>Marketing Collateral (brochures, pitch decks, banners)</li>
+          <li>Custom Brand Assets as needed</li>
         </ul>
       </>
     ),
@@ -102,7 +100,7 @@ const homeFaqs = [
             <strong>Paid Ads:</strong> Campaigns can begin generating performance data and potential leads soon after launch, depending on targeting, budget, and market conditions.
           </li>
           <li>
-            <strong>SEO & Organic Brand Building:</strong> These typically require consistent effort over several months to build meaningful and sustainable traction.
+            <strong>SEO & Organic Brand Building:</strong> These typically require consistent effort over 3 to 6 months to build meaningful and sustainable traction.
           </li>
         </ul>
         <p className="mb-0 fs-5">
@@ -116,7 +114,7 @@ const homeFaqs = [
     question: "Do you work with clients outside Indore?",
     answer: (
       <p className="mb-0 fs-5">
-        Yes. While we're based in Indore, we work with businesses across India and international markets. Strategy, communication, and project execution can all be managed remotely using calls, video meetings, email, WhatsApp, and project management tools.
+        Yes. While we're proudly based in Indore, we work with businesses across India and international markets. Strategy, communication, and project execution are seamlessly managed remotely using video meetings, email, WhatsApp, and robust project management tools.
       </p>
     ),
   },
@@ -125,7 +123,7 @@ const homeFaqs = [
     question: "Why should I choose BrandSetu Digital?",
     answer: (
       <p className="mb-0 fs-5">
-        We don't simply deliver individual services. We focus on solving business challenges through the right combination of technology, branding, creativity, marketing, and automation. Our solutions are tailored to each business rather than being built around rigid, one-size-fits-all packages.
+        Unlike traditional agencies, we don't just deliver isolated services. We focus on solving core business challenges through the perfect combination of technology, branding, creativity, marketing, and automation. Our solutions are tailor-made for your specific business needs rather than forcing you into rigid, one-size-fits-all packages.
       </p>
     ),
   },
@@ -133,14 +131,9 @@ const homeFaqs = [
     number: "09",
     question: "How do I get started?",
     answer: (
-      <>
-        <p className="mb-3 fs-5">Getting started is simple:</p>
-        <ol className="ps-4 mb-0 d-flex flex-column gap-2 fs-5">
-          <li>Share your business details and requirements through our contact form, email, or WhatsApp.</li>
-          <li>We'll have a quick discovery conversation to understand your current situation, challenges, and objectives.</li>
-          <li>From there, we'll recommend the most relevant approach and share a clear, customized proposal with the next steps.</li>
-        </ol>
-      </>
+      <p className="mb-0 fs-5">
+        Getting started is simple. Share your business details and requirements through our contact form, email, or WhatsApp. We'll set up a quick discovery conversation to understand your current situation, challenges, and objectives. From there, we'll recommend the most relevant approach and share a clear, customized proposal outlining the next steps.
+      </p>
     ),
   },
 ];
@@ -154,7 +147,7 @@ export default function HomeFaq() {
 
   return (
     <section className="home-faq-section py-5 pt-5 mt-5 position-relative z-1" id="faq-section">
-      <Container>
+        <Container>
         {/* SECTION HEADER - MATCHED WITH WHY CHOOSE / PROCESS HEADERS */}
         <div className="text-center mb-5 header-section">
           <motion.div
@@ -278,43 +271,6 @@ export default function HomeFaq() {
                 </motion.button>
               </div>
             )}
-
-            {/* BOTTOM HELP BANNER - FULL WIDTH MATCHED */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mt-5 p-4 p-md-5 rounded-4 bg-dark text-white text-center d-flex flex-column flex-md-row align-items-center justify-content-between gap-4 shadow-lg"
-            >
-              <div className="text-md-start">
-                <h3 className="fw-bold mb-2 text-warning fs-3">Still have questions?</h3>
-                <p className="mb-0 text-light opacity-90 fs-5">
-                  Let's discuss your business goals and find the right digital solution for your brand.
-                </p>
-              </div>
-              <div className="d-flex gap-3 flex-wrap justify-content-center">
-                <Link to="/contact">
-                  <button className="btn btn-warning rounded-pill px-4 py-3 fw-bold fs-5 d-inline-flex align-items-center gap-2 shadow-sm">
-                    Start Your Project <ArrowRight size={20} />
-                  </button>
-                </Link>
-                <button
-                  className="btn btn-outline-light rounded-pill px-4 py-3 fw-bold fs-5 d-inline-flex align-items-center gap-2"
-                  onClick={() =>
-                    window.open(
-                      "https://wa.me/917389824231?text=" +
-                        encodeURIComponent(
-                          "Hi BrandSetu Digital, Let's discuss our business goals and find the right digital solution for my brand."
-                        ),
-                      "_blank"
-                    )
-                  }
-                >
-                  <MessageCircle size={20} className="text-success" /> WhatsApp
-                </button>
-              </div>
-            </motion.div>
           </Col>
         </Row>
       </Container>

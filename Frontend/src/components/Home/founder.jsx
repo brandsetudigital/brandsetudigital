@@ -19,10 +19,11 @@ import {
 
 const FounderPage = () => {
   return (
-    <div className="founder-page position-relative overflow-hidden">
-      {/* ===== FOUNDER & CEO SECTION ===== */}
-      <section className="founder-section-wrapper">
-        <Container>
+    /* ===== FOUNDER & CEO SECTION ===== */
+    <section className="founder-section-wrapper py-5 my-5 position-relative overflow-hidden">
+      <div className="bg-blob blob-1"></div>
+      <div className="bg-blob blob-2"></div>
+      <Container className="position-relative z-2">
           {/* Header Top Tag with Lines */}
           <div className="founder-header-tag">
             <span className="tag-line"></span>
@@ -40,12 +41,8 @@ const FounderPage = () => {
             The vision behind BrandSetu Digital — to make digital marketing simple, effective, and business-focused for every brand.
           </p>
 
-          {/* Main Charcoal/Dark Card */}
-          <div className="founder-premium-card position-relative overflow-hidden">
-            {/* Blobs behind card content */}
-            <div className="bg-blob blob-1"></div>
-            <div className="bg-blob blob-2"></div>
-
+          {/* Main Content Area */}
+          <div className="founder-premium-card position-relative">
             <div className="founder-card-main-row position-relative z-2">
               {/* Left Side: Avatar + Bio + Quote */}
               <div className="founder-left-container">
@@ -55,8 +52,8 @@ const FounderPage = () => {
                     src={Founder1Img}
                     alt="Saumitra Bajpai, Founder & CEO of BrandSetu Digital"
                     className="founder-avatar-img"
-                    width="200"
-                    height="200"
+                    width="240"
+                    height="240"
                     loading="lazy"
                     decoding="async"
                   />
@@ -155,7 +152,6 @@ const FounderPage = () => {
           </div>
         </Container>
       </section>
-    </div>
   );
 };
 
