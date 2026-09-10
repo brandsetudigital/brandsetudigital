@@ -134,21 +134,17 @@ export const servicesData = [
     ],
     faqs: [
       {
-        question: "How do you choose influencers?",
-        answer: "We select creators based on audience relevance, engagement quality, content style, and brand compatibility rather than follower count alone."
+        question: "What is Influencer Marketing and how does it help?",
+        answer: "It connects your brand with content creators who have the trust of your target audience. It builds immediate brand credibility, increases product discovery, and drives engagement and conversions.",
       },
       {
-        question: "Which platforms do you support?",
-        answer: "We manage campaigns across Instagram, YouTube, LinkedIn, Facebook, and other relevant social media platforms."
+        question: "How do you select influencers for a campaign?",
+        answer: "We look beyond vanity metrics like follower counts. We select creators based on audience demographics, genuine engagement rates, visual quality, and high relevance to your industry.",
       },
       {
-        question: "Can influencer marketing generate sales?",
-        answer: "Yes. A well-planned campaign can improve brand awareness, increase engagement, drive website traffic, and support lead generation and direct sales."
+        question: "Is Influencer Marketing suitable for small businesses?",
+        answer: "Yes. For growing businesses, partnering with micro and niche creators is highly effective, as their focused audiences often deliver stronger engagement and relevance within a specific budget.",
       },
-      {
-        question: "Do you work with micro-influencers?",
-        answer: "Absolutely. Micro-influencers often have highly engaged niche communities and can deliver exceptional campaign ROI."
-      }
     ],
     bottomCTA: {
       title: "Ready to Grow Your Brand through Influencer Marketing?",
@@ -298,21 +294,17 @@ export const servicesData = [
     ],
     faqs: [
       {
-        question: "Can Google Ads help local businesses?",
-        answer: "Absolutely. Google Ads is highly effective for businesses looking to attract customers within specific cities, radius zones, or local neighborhoods."
+        question: "How can Google Ads help generate leads for my business?",
+        answer: "Google Ads places your business directly in front of high-intent users actively searching for your products or services. We target specific markets, locations, and search terms to turn that demand into qualified leads.",
       },
       {
-        question: "How quickly can I see results from Google Ads?",
-        answer: "Unlike SEO which builds compound growth over months, Google Ads can generate qualified phone calls, form enquiries, and sales immediately upon campaign launch."
+        question: "What types of Google Ads campaigns do you manage?",
+        answer: "We manage Search Ads, Display Ads, YouTube Ads, Performance Max, and Remarketing campaigns, selecting the best format based on your specific objectives.",
       },
       {
-        question: "How much should I spend on Google Ads?",
-        answer: "Budgets vary based on industry competition and growth targets. We help define an optimal starting budget that delivers measurable return on ad spend (ROAS)."
+        question: "How do you improve the quality of leads?",
+        answer: "We focus on attracting the right prospects by utilizing negative keywords, refining ad copy, improving landing page experiences, and constantly analyzing conversion data.",
       },
-      {
-        question: "Do you provide conversion tracking?",
-        answer: "Yes! We configure complete conversion tracking for phone calls, WhatsApp clicks, form leads, and transactions in Google Analytics & Tag Manager."
-      }
     ],
     bottomCTA: {
       title: "Ready to Turn Clicks Into Paying Customers?",
@@ -444,21 +436,17 @@ export const servicesData = [
     ],
     faqs: [
       {
-        question: "What graphic design services do you offer?",
-        answer: "We provide branding, social media creatives, advertising banners, packaging design, brochures, corporate profiles, and custom marketing collateral."
+        question: "What does your branding and design service include?",
+        answer: "We provide complete brand solutions ranging from logo design, typography, and brand guidelines to digital creatives like social media posts, banners, brochures, and advertisements.",
       },
       {
-        question: "Do you provide the source files?",
-        answer: "Yes, we provide all high-resolution export formats (PNG, JPG, PDF) along with open editable source files (AI, PSD, Figma) upon project completion."
+        question: "Can you build a brand identity from scratch or refresh an existing one?",
+        answer: "Yes to both. For startups, we build a complete visual identity. For established businesses, we can modernize your current branding while retaining the core elements that hold value.",
       },
       {
-        question: "Can you work according to our existing brand guidelines?",
-        answer: "Absolutely. We can strictly adhere to your existing brand assets or help refresh and modernize them if needed."
+        question: "How do you ensure creatives match our business?",
+        answer: "We strictly follow your brand guidelines (colors, typography, and visual style) to ensure complete consistency across all digital and printed communication.",
       },
-      {
-        question: "How long does a graphic design project take?",
-        answer: "Timelines vary depending on scope. Standard social media creatives take 24-48 hours, while full brand identity design typically takes 5-10 business days."
-      }
     ],
     bottomCTA: {
       title: "Ready to Elevate Your Brand's Visual Presence?",
@@ -589,21 +577,17 @@ export const servicesData = [
     ],
     faqs: [
       {
-        question: "How much does mobile app development cost?",
-        answer: "Costs vary based on features, platforms (iOS, Android, or both), backend complexity, and design requirements. We provide transparent, itemized quotes after understanding your specs."
+        question: "What type of mobile applications do you develop?",
+        answer: "We build customized, secure, and scalable mobile applications tailored to your business model, target users, and technical requirements.",
       },
       {
-        question: "Do you build apps for both Android and iOS?",
-        answer: "Yes, we develop native apps for Android and iOS, as well as cross-platform applications using Flutter and React Native to save time and budget."
+        question: "Can you build both Android and iOS applications?",
+        answer: "Yes, we develop for both platforms. The exact technology stack is selected based on your feature requirements, audience, and scalability needs.",
       },
       {
-        question: "Who owns the source code of the app?",
-        answer: "You do! 100% of the source code, intellectual property, and app store accounts remain your exclusive property upon project handover."
+        question: "Do you provide app maintenance after development?",
+        answer: "Yes, we provide ongoing technical support, bug fixes, performance improvements, and necessary updates after your app is launched.",
       },
-      {
-        question: "Do you assist with publishing the app to App Store and Google Play?",
-        answer: "Yes, we handle the complete deployment, policy compliance, app listing optimization, and submission process for both stores."
-      }
     ],
     bottomCTA: {
       title: "Have an App Idea You Want to Build?",
@@ -735,21 +719,17 @@ export const servicesData = [
     ],
     faqs: [
       {
-        question: "Where do the shoots take place?",
-        answer: "We offer shoots at our specialized studio, on-location at your office or warehouse, as well as outdoor lifestyle locations depending on your project needs."
+        question: "What types of shoots do you provide?",
+        answer: "We specialize in professional product photography, event coverage, videography, and promotional marketing shoots.",
       },
       {
-        question: "Do you provide models and styling props?",
-        answer: "Yes, we can arrange models, background sets, props, and stylists tailored to your brand's aesthetic."
+        question: "Can you create content specifically for social media and advertising?",
+        answer: "Yes, we plan and shoot content in formats specifically optimized for platforms like Instagram, Facebook, YouTube, and digital ads.",
       },
       {
-        question: "How long does it take to receive edited photos and videos?",
-        answer: "Initial proofs are shared within 2-3 business days. Final retouched photos and edited reels are delivered within 5-7 business days."
+        question: "Can you also promote the content after the shoot?",
+        answer: "Absolutely. We can integrate the visual content directly into our digital marketing and social media campaigns to ensure it reaches the right audience.",
       },
-      {
-        question: "Are the files delivered in formats suitable for Amazon and Instagram?",
-        answer: "Yes, we deliver files sized and formatted specifically for e-commerce platforms (white background, square) and social media (9:16 vertical 4K)."
-      }
     ],
     bottomCTA: {
       title: "Ready to Create Stunning Visuals for Your Brand?",
@@ -882,21 +862,17 @@ export const servicesData = [
     ],
     faqs: [
       {
-        question: "How much does website development cost?",
-        answer: "The cost depends on the type of website, number of pages, custom features, and design complexity. We offer customized packages tailored to startup, business, and enterprise needs."
+        question: "What type of websites do you develop?",
+        answer: "We develop customized, high-performance websites for businesses, startups, and service providers, focusing on responsive design, usability, and driving conversions.",
       },
       {
-        question: "How long will it take to build our website?",
-        answer: "A standard business website typically takes 2 to 3 weeks, while complex e-commerce or custom web portals may take 4 to 6 weeks."
+        question: "Will my website work properly on mobile devices?",
+        answer: "Yes, all our websites are built with responsive design to provide a seamless experience across mobile phones, tablets, laptops, and desktops.",
       },
       {
-        question: "Will our website be mobile-friendly and SEO-ready?",
-        answer: "Yes, 100%! Every website we build is fully responsive across all device sizes and structured with best-practice SEO architecture."
+        question: "Can you integrate forms, payment gateways, and other business tools?",
+        answer: "Absolutely. We seamlessly integrate the tools required for your business, including enquiry forms, payment systems, APIs, CRM platforms, and analytics.",
       },
-      {
-        question: "Can I easily edit content on the website myself?",
-        answer: "Yes, we build user-friendly admin panels and provide step-by-step training so you can easily update text, images, products, and blogs without technical knowledge."
-      }
     ],
     bottomCTA: {
       title: "Ready to Build a High-Performing Website?",
@@ -1029,21 +1005,17 @@ export const servicesData = [
     ],
     faqs: [
       {
-        question: "Which social platforms should my business focus on?",
-        answer: "It depends on your audience: B2C brands typically thrive on Instagram and YouTube, while B2B companies achieve the highest ROI on LinkedIn and Facebook."
+        question: "Which social media platforms do you manage?",
+        answer: "We manage platforms where your target audience is most active, including Instagram, Facebook, and LinkedIn.",
       },
       {
-        question: "Do you shoot videos and create reels?",
-        answer: "Yes! We have an in-house production crew that handles conceptualization, on-site shooting, voiceovers, and professional reel editing."
+        question: "What does your social media management include?",
+        answer: "Our comprehensive management includes content strategy, creative design, copywriting, posting schedules, audience engagement, and campaign performance analysis.",
       },
       {
-        question: "How do you measure social media success?",
-        answer: "We evaluate both awareness metrics (reach, impressions, follower growth) and business outcome metrics (profile visits, website clicks, DM enquiries, and leads)."
+        question: "How do you decide what content to create?",
+        answer: "We develop content based on your brand positioning, audience interests, industry trends, competitor analysis, and data-driven performance metrics.",
       },
-      {
-        question: "How often will you post on our accounts?",
-        answer: "Our customized monthly plans typically range from 12 to 25 high-quality posts and reels per month, alongside daily active stories."
-      }
     ],
     bottomCTA: {
       title: "Ready to Ignite Your Brand on Social Media?",
@@ -1175,21 +1147,17 @@ export const servicesData = [
     ],
     faqs: [
       {
-        question: "How often should a website be maintained?",
-        answer: "We recommend regular monthly maintenance to ensure software stays up to date, security patches are applied, and performance remains optimal."
+        question: "Why does my business website need regular maintenance?",
+        answer: "Regular maintenance ensures your website remains secure, functional, and compatible with the latest technologies and third-party updates, preventing downtime.",
       },
       {
-        question: "Do you maintain websites developed by other companies?",
-        answer: "Yes! We perform an initial code and security audit, and can take over maintenance for websites built on WordPress, Shopify, Laravel, React, or custom PHP."
+        question: "What does website maintenance include?",
+        answer: "Our maintenance plans cover software updates, security checks, backups, bug fixes, performance optimization, and content updates.",
       },
       {
-        question: "Do you provide emergency technical support?",
-        answer: "Yes, our maintenance retainers include priority emergency support to resolve sudden downtime, broken checkouts, or urgent security issues."
+        question: "Can you maintain a website developed by another company?",
+        answer: "Yes. We conduct a thorough technical review of your existing setup first, and then implement the appropriate maintenance and support strategy.",
       },
-      {
-        question: "Will my website be backed up regularly?",
-        answer: "Yes, automated daily/weekly backups are securely stored on encrypted cloud servers, allowing full restoration at any moment."
-      }
     ],
     bottomCTA: {
       title: "Keep Your Website Secure, Fast & Up to Date",
@@ -1322,21 +1290,17 @@ export const servicesData = [
     ],
     faqs: [
       {
-        question: "Which CRM platforms do you work with?",
-        answer: "We implement and customize leading CRM systems including Zoho, HubSpot, LeadSquared, Bitrix24, Salesforce, and custom CRM architectures based on your requirements."
+        question: "What is CRM and how can it help my business?",
+        answer: "A CRM (Customer Relationship Management) system organizes your leads and customer data in one centralized place. It makes tracking enquiries, managing sales, and following up significantly easier and more efficient.",
       },
       {
-        question: "Can you automate our WhatsApp and email follow-ups?",
-        answer: "Yes! We configure instant WhatsApp greetings, automated follow-up drips, payment reminders, and sales notifications connected directly to your CRM."
+        question: "What business processes can you automate?",
+        answer: "We automate repetitive tasks such as lead capture and assignment, follow-up reminders, task notifications, customer communication, and reporting.",
       },
       {
-        question: "Can CRM integrate with our website and ads?",
-        answer: "Absolutely. All leads generated from Google Ads, Facebook Ads, Instagram, and website forms will instantly populate into your CRM in real time."
+        question: "Can you connect a CRM with our existing tools?",
+        answer: "Yes, we integrate your CRM with your website forms, APIs, and communication platforms to create a seamless operational workflow.",
       },
-      {
-        question: "Do you provide training after implementation?",
-        answer: "Yes, we conduct comprehensive training sessions with your sales and operations teams, along with providing recorded video guides and support."
-      }
     ],
     bottomCTA: {
       title: "Work Smarter. Scale Faster with Smart Automation",
@@ -1480,21 +1444,17 @@ export const servicesData = [
     ],
     faqs: [
       {
+        question: "What is SEO and why does my business need it?",
+        answer: "SEO (Search Engine Optimization) improves your website's visibility on search engines, helping potential customers find you organically. It is essential for driving sustainable, long-term website traffic.",
+      },
+      {
+        question: "What is Local SEO?",
+        answer: "Local SEO optimizes your online presence for location-based searches, which is highly valuable for businesses targeting customers in specific cities or regions.",
+      },
+      {
         question: "How long does SEO take to show results?",
-        answer: "SEO is a long-term compound growth strategy. Initial ranking movements typically begin within 60 to 90 days, with significant organic traffic and lead growth occurring over 4 to 6 months."
+        answer: "SEO is a long-term strategy. The timeline varies based on your industry, competition, and existing website authority, but consistent optimization builds highly rewarding search visibility over time.",
       },
-      {
-        question: "Do you provide Local SEO and Google Maps optimization?",
-        answer: "Yes! We specialize in Local SEO to help businesses rank in the Google 3-Pack Maps results and capture nearby high-intent local customers."
-      },
-      {
-        question: "Do you guarantee #1 rankings on Google?",
-        answer: "No ethical SEO agency can guarantee a specific #1 spot because Google's algorithm changes constantly. However, our proven white-hat methodologies consistently achieve top page-1 rankings for target keywords."
-      },
-      {
-        question: "What reports will I receive?",
-        answer: "We provide comprehensive monthly reports detailing keyword position changes, organic traffic growth, top-ranking pages, backlinks gained, and completed action items."
-      }
     ],
     bottomCTA: {
       title: "Ready to Improve Your Google Rankings?",
@@ -1625,21 +1585,13 @@ export const servicesData = [
     ],
     faqs: [
       {
-        question: "What is FOOH (Fake Out of Home) CGI advertising?",
-        answer: "FOOH is a popular trend where photorealistic 3D animations are composited over real-world video footage of iconic buildings or streets to make it look like a massive real-world stunt is happening."
+        question: "What are CGI Ads?",
+        answer: "CGI (Computer-Generated Imagery) Ads use 3D elements, animation, and visual effects to create stunning, engaging product advertisements that might be impossible or too expensive to shoot in real life.",
       },
       {
-        question: "How long does a CGI ad project take?",
-        answer: "A 10-30 second high-quality CGI ad typically takes 2 to 4 weeks depending on 3D modeling complexity, physics simulation, and rendering requirements."
+        question: "Do I need to physically shoot my product for a CGI Ad?",
+        answer: "Not necessarily. While some projects use physical references, many CGI ads can be created entirely from digital assets, depending on the creative concept.",
       },
-      {
-        question: "Can CGI ads be used on Instagram and YouTube?",
-        answer: "Yes! We format and optimize CGI ads specifically for Instagram Reels, TikTok, YouTube Shorts, and paid ad placements."
-      },
-      {
-        question: "Do I need to send physical product samples?",
-        answer: "We can work directly from your 3D CAD files or blueprints. If you don't have 3D files, sending physical samples allows us to model and texture them accurately."
-      }
     ],
     bottomCTA: {
       title: "Ready to Create a Mind-Blowing CGI Ad?",
@@ -1770,21 +1722,17 @@ export const servicesData = [
     ],
     faqs: [
       {
-        question: "What is the difference between a logo and a brand identity?",
-        answer: "A logo is simply a visual mark. A brand identity is the complete ecosystem—including colors, typography, imagery, voice, and positioning—that shapes how people feel about your business."
+        question: "What does your branding and design service include?",
+        answer: "We provide complete brand solutions ranging from logo design, typography, and brand guidelines to digital creatives like social media posts, banners, brochures, and advertisements.",
       },
       {
-        question: "What does the Brand Guidelines document include?",
-        answer: "The brand guidelines include logo clear space rules, correct/incorrect usage, exact color codes (HEX, RGB, CMYK, Pantone), font pairings, photography guidelines, and sample applications."
+        question: "Can you build a brand identity from scratch or refresh an existing one?",
+        answer: "Yes to both. For startups, we build a complete visual identity. For established businesses, we can modernize your current branding while retaining the core elements that hold value.",
       },
       {
-        question: "How long does a full branding project take?",
-        answer: "A full branding and identity project typically takes 3 to 5 weeks from initial discovery and moodboards to final guideline delivery."
+        question: "How do you ensure creatives match our business?",
+        answer: "We strictly follow your brand guidelines (colors, typography, and visual style) to ensure complete consistency across all digital and printed communication.",
       },
-      {
-        question: "Do we get full copyright ownership of the brand assets?",
-        answer: "Yes. You receive 100% intellectual property ownership and commercial usage rights for all created logos, designs, and guidelines upon project completion."
-      }
     ],
     bottomCTA: {
       title: "Ready to Turn Your Business Into an Iconic Brand?",
