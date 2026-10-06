@@ -6,7 +6,11 @@ const fs = require("fs");
 const {
   submitApplication,
   getApplications,
+  getApplicationsAdmin,
+  updateApplicationStatus,
+  deleteApplication,
 } = require("../controllers/ApplyController");
+const { protectAdmin } = require("../middleware/authMiddleware");
 
 // Ensure uploads folder exists
 const uploadDir = path.join(__dirname, "../uploads");
@@ -40,19 +44,28 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({ storage, fileFilter });
 
-// POST application with file upload
-router.post("/", (req, res, next) => {
-  upload.single("resume")(req, res, function (err) {
-    if (err instanceof multer.MulterError) {
-      return res.status(400).json({ error: err.message });
-    } else if (err) {
-      return res.status(400).json({ error: err.message });
-    }
-    next();
-  });
-}, submitApplication);
+// Public POST application with file upload
+router.post(
+  "/",
+  (req, res, next) => {
+    upload.single("resume")(req, res, function (err) {
+      if (err instanceof multer.MulterError) {
+        return res.status(400).json({ success: false, error: err.message });
+      } else if (err) {
+        return res.status(400).json({ success: false, error: err.message });
+      }
+      next();
+    });
+  },
+  submitApplication
+);
 
-// GET all applications
+// Protected Admin Routes
+router.get("/admin", protectAdmin, getApplicationsAdmin);
+router.patch("/admin/:id/status", protectAdmin, updateApplicationStatus);
+router.delete("/admin/:id", protectAdmin, deleteApplication);
+
+// Legacy GET
 router.get("/", getApplications);
 
 module.exports = router;

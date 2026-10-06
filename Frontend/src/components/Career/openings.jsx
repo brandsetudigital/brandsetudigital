@@ -1,73 +1,99 @@
-import React, { useState } from "react";
-import { MapPin, Clock, ArrowUpRight } from "lucide-react";
-import { motion } from "framer-motion";
+import React, { useState, useMemo } from "react";
+import {
+  MapPin,
+  Clock,
+  Briefcase,
+  ArrowUpRight,
+  FileText,
+  Search,
+  Sparkles,
+  Mail,
+  HelpCircle,
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
-import ApplyJobModal from "../Career/contactmodal";
+import ApplyJobModal from "./contactmodal";
+import JobDetailModal from "./JobDetailModal";
+import InfluencerModal from "./InfluencerModal";
+import InfluencerCollab from "./InfluencerCollab";
 import CareerHero from "./careerHero";
 import Culture from "./culture";
+import { jobsData, jobCategories } from "../../data/jobsData";
 
+import "../../Style/Home.css";
 import "../../Style/Career.css";
 import Seo from "../Seo";
 
-const jobs = [
-  {
-    id: "1",
-    title: "Senior Product Designer",
-    department: "Design",
-    location: "Remote",
-    type: "Full-time",
-    description:
-      "Own product design from idea to execution with the core team.",
-  },
-  {
-    id: "2",
-    title: "Full Stack Developer",
-    department: "Engineering",
-    location: "Hybrid",
-    type: "Full-time",
-    description: "Build scalable systems that power real brands and users.",
-  },
-  {
-    id: "3",
-    title: "Marketing Manager",
-    department: "Marketing",
-    location: "On-site",
-    type: "Full-time",
-    description:
-      "Lead growth strategy and brand storytelling across channels.",
-  },
-  {
-    id: "4",
-    title: "DevOps Engineer",
-    department: "Engineering",
-    location: "Remote",
-    type: "Full-time",
-    description: "Design infrastructure that scales without chaos.",
-  },
-];
-
 export default function JobListings() {
-  const [showModal, setShowModal] = useState(false);
-  const [selectedJob, setSelectedJob] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const handleApply = (jobTitle) => {
-    setSelectedJob(jobTitle);
-    setShowModal(true);
+  // Modals state
+  const [showJDModal, setShowJDModal] = useState(false);
+  const [selectedJobForJD, setSelectedJobForJD] = useState(null);
+
+  const [showApplyModal, setShowApplyModal] = useState(false);
+  const [selectedJobForApply, setSelectedJobForApply] = useState("");
+  const [applyInitialMode, setApplyInitialMode] = useState("form");
+
+  const [showInfluencerModal, setShowInfluencerModal] = useState(false);
+
+  // Category counts
+  const categoryCounts = useMemo(() => {
+    const counts = { all: jobsData.length };
+    jobsData.forEach((j) => {
+      counts[j.category] = (counts[j.category] || 0) + 1;
+    });
+    return counts;
+  }, []);
+
+  // Handlers
+  const handleOpenJD = (job) => {
+    setSelectedJobForJD(job);
+    setShowJDModal(true);
   };
 
-  const floatingShapes = [...Array(30)].map(() => ({
-    size: Math.floor(Math.random() * 120 + 30),
-    left: Math.random() * 100,
-    top: Math.random() * 100,
-    duration: Math.random() * 15 + 10,
-    delay: Math.random() * 5,
-  }));
+  const handleOpenApply = (jobTitle, mode = "form") => {
+    setSelectedJobForApply(jobTitle);
+    setApplyInitialMode(mode);
+    setShowApplyModal(true);
+  };
+
+  // Filtered jobs
+  const filteredJobs = useMemo(() => {
+    return jobsData.filter((job) => {
+      const matchesCategory =
+        selectedCategory === "all" || job.category === selectedCategory;
+
+      const matchesSearch =
+        job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        job.department.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        job.shortDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        job.highlights.some((h) =>
+          h.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+
+      return matchesCategory && matchesSearch;
+    });
+  }, [selectedCategory, searchQuery]);
+
+  const floatingShapes = useMemo(
+    () =>
+      [...Array(20)].map(() => ({
+        size: Math.floor(Math.random() * 100 + 40),
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        duration: Math.random() * 15 + 10,
+        delay: Math.random() * 4,
+      })),
+    []
+  );
 
   return (
     <>
       <Seo
-        title="Careers at BrandSetu Digital — Digital Marketing Jobs in Indore"
-        description="Join BrandSetu Digital in Indore. Open roles in design, engineering, marketing, and DevOps. Build work that actually matters with a team that ships."
+        title="Careers at BrandSetu Digital — Digital Marketing & Tech Jobs in Indore"
+        description="Explore open positions in SEO, Performance Marketing, Influencer Partnerships, Video Editing, Graphic Design, and Web Dev at BrandSetu Digital in Indore. View detailed JDs and apply today."
         path="/career"
         jsonLd={{
           "@context": "https://schema.org",
@@ -88,14 +114,16 @@ export default function JobListings() {
           ],
         }}
       />
+
+      {/* Hero section */}
       <CareerHero />
 
-      {/* ================= JOB LISTINGS ================= */}
+      {/* ================= OPENINGS MAIN SECTION ================= */}
       <section
         id="jobs"
         className="job-section hero-section position-relative overflow-hidden py-5"
       >
-        {/* Floating Shapes */}
+        {/* Floating Background Shapes */}
         <div className="hero-background position-absolute w-100 h-100">
           {floatingShapes.map((shape, i) => (
             <motion.div
@@ -108,9 +136,9 @@ export default function JobListings() {
                 top: `${shape.top}%`,
               }}
               animate={{
-                y: [0, 40, 0],
-                x: [0, -40, 0],
-                scale: [1, 1.3, 1],
+                y: [0, 35, 0],
+                x: [0, -35, 0],
+                scale: [1, 1.25, 1],
               }}
               transition={{
                 duration: shape.duration,
@@ -123,107 +151,318 @@ export default function JobListings() {
         </div>
 
         <div className="container position-relative z-2">
-          <div className="row align-items-start g-5">
-            {/* LEFT EDITORIAL */}
-            <div className="col-lg-5 pt-5">
-              <div className="jobs-editorial">
-                <span className="jobs-eyebrow">CAREERS</span>
+          {/* SECTION HEADER */}
+          <div className="text-center mb-5">
+            <div className="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill bg-dark mb-3 shadow-sm">
+              <Sparkles size={16} className="text-warning" />
+              <span className="text-warning fw-bold small">
+                CAREERS AT BRANDSETU DIGITAL
+              </span>
+            </div>
+            <h2 className="display-5 fw-bold text-dark mb-3">
+              Build Work That <span className="text-black fst-italic">Actually Matters</span>
+            </h2>
+            <p
+              className="text-dark mx-auto mb-4"
+              style={{ maxWidth: "660px", fontSize: "1.05rem", fontWeight: "500", opacity: 0.88 }}
+            >
+              We’re not hiring cogs in a wheel. We’re building an agile, ambitious team
+              of digital craftsmen, creators, and marketers in Indore who take pride
+              in shipping high-impact work.
+            </p>
 
-                <h2 className="jobs-heading">
-                  Build Work <br />
-                  That <span className="text-danger">Actually Matters</span>
-                </h2>
-
-                <p className="jobs-lead fs-medium">
-                  We’re not hiring employees. We’re building a small, sharp team
-                  that ships meaningful work.
-                </p>
-
-                <ul className="jobs-points fs-larger">
-                  <li>Ownership over micromanagement</li>
-                  <li>Fast decisions, zero politics</li>
-                  <li>Direct impact on real brands</li>
-                  <li>Learn by building, not meetings</li>
-                </ul>
-
-                <div className="jobs-stats">
-                  <div>
-                    <strong>15+</strong>
-                    <span>Team Members</span>
+            {/* Executive Hiring Stats Banner */}
+            <div
+              className="hiring-stats-banner mx-auto p-3 p-md-3.5 bg-white rounded-4 shadow-sm border border-light-subtle"
+              style={{ maxWidth: "680px" }}
+            >
+              <div className="row g-0 align-items-center text-center">
+                <div className="col-4">
+                  <div className="hiring-stat-box border-end border-light-subtle">
+                    <div className="hiring-stat-num">15+</div>
+                    <div className="hiring-stat-label">Team Members</div>
                   </div>
-                  <div>
-                    <strong>40+</strong>
-                    <span>Brands Built</span>
+                </div>
+                <div className="col-4">
+                  <div className="hiring-stat-box border-end border-light-subtle">
+                    <div className="hiring-stat-num">40+</div>
+                    <div className="hiring-stat-label">Brands Built</div>
                   </div>
-                  <div>
-                    <strong>100%</strong>
-                    <span>Real Work</span>
+                </div>
+                <div className="col-4">
+                  <div className="hiring-stat-box">
+                    <div className="hiring-stat-num">100%</div>
+                    <div className="hiring-stat-label">Real Work</div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* RIGHT JOB RAIL */}
-            <div className="col-lg-7">
-              <div className="job-rail">
-                {jobs.map((job) => (
-                  <div
-                    key={job.id}
-                    className="job-rail-item"
-                    onClick={() => handleApply(job.title)}
-                  >
-                    <div className="job-rail-top">
-                      <h3 className="fs-5 mb-0">{job.title}</h3>
-                      <ArrowUpRight size={18} />
-                    </div>
-
-                    <p className="job-rail-desc">{job.description}</p>
-
-                    <div className="job-rail-meta">
-                      <span>
-                        <MapPin size={14} /> {job.location}
+          {/* FILTER BAR & SEARCH */}
+          <div
+            className="openings-filter-bar mb-4 p-3 rounded-4"
+            style={{
+              background: "rgba(0, 0, 0, 0.04)",
+              border: "1px solid rgba(0, 0, 0, 0.08)",
+            }}
+          >
+            <div className="row align-items-center g-3">
+              {/* Category Pills with Dynamic Role Counts */}
+              <div className="col-lg-8 col-md-12">
+                <div className="d-flex align-items-center gap-2 flex-wrap">
+                  {jobCategories.map((cat) => (
+                    <button
+                      key={cat.key}
+                      type="button"
+                      className={`job-filter-pill d-inline-flex align-items-center gap-1.5 ${
+                        selectedCategory === cat.key ? "active" : ""
+                      }`}
+                      onClick={() => setSelectedCategory(cat.key)}
+                    >
+                      <span>{cat.label}</span>
+                      <span
+                        className={`badge rounded-pill ${
+                          selectedCategory === cat.key
+                            ? "bg-warning text-dark"
+                            : "bg-light text-secondary border border-light-subtle"
+                        }`}
+                        style={{ fontSize: "0.72rem" }}
+                      >
+                        {categoryCounts[cat.key] || 0}
                       </span>
-                      <span>
-                        <Clock size={14} /> {job.type}
-                      </span>
-                    </div>
-                  </div>
-                ))}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Search Input */}
+              <div className="col-lg-4 col-md-12">
+                <div className="job-search-box position-relative">
+                  <Search
+                    size={17}
+                    className="position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"
+                  />
+                  <input
+                    type="text"
+                    className="form-control rounded-pill ps-5 pe-4 py-2 border-0 bg-white"
+                    placeholder="Search roles (e.g. SEO, Ads, Video, Dev)..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
+                  {searchQuery && (
+                    <button
+                      className="btn btn-sm btn-link position-absolute top-50 end-0 translate-middle-y me-2 text-muted text-decoration-none"
+                      onClick={() => setSearchQuery("")}
+                    >
+                      Clear
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ================= GENERAL APPLICATION ================= */}
-      <section className="general-apply-section">
-        <div className="container">
-          <div className="general-apply-box">
-            <div className="general-apply-content">
-              <h2>Don’t See Your Role?</h2>
-              <p>
-                We’re always looking for talented people. Send us your resume
-                and let’s talk.
+          {/* 3-COLUMN COMPACT JOB CARDS GRID */}
+          {filteredJobs.length === 0 ? (
+            <div className="text-center py-5 bg-dark rounded-4 p-4 p-md-5 border border-secondary border-opacity-25 shadow-sm text-light">
+              <Briefcase size={44} className="text-warning mb-3 mx-auto" />
+              <h4 className="fw-bold text-white mb-2">No matching positions found</h4>
+              <p className="text-muted small mb-4">
+                Try searching for another keyword or browse all open categories.
               </p>
+              <button
+                className="btn btn-warning rounded-pill px-4 fw-bold"
+                onClick={() => {
+                  setSelectedCategory("all");
+                  setSearchQuery("");
+                }}
+              >
+                Reset Filters
+              </button>
             </div>
+          ) : (
+            <div className="row g-4">
+              <AnimatePresence>
+                {filteredJobs.map((job) => (
+                  <motion.div
+                    layout
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.25 }}
+                    className="col-lg-4 col-md-6 col-12"
+                    key={job.id}
+                  >
+                    <div
+                      className="job-card-modern h-100 d-flex flex-column justify-content-between"
+                      onClick={() => handleOpenJD(job)}
+                    >
+                      <div>
+                        {/* Top Meta Bar */}
+                        <div className="d-flex align-items-center justify-content-between gap-2 mb-2.5">
+                          <span
+                            className={`job-badge-dept ${
+                              job.isCollab
+                                ? "bg-warning text-dark fw-bold border-warning"
+                                : ""
+                            }`}
+                          >
+                            {job.isCollab ? "★ CREATOR NETWORK" : job.department}
+                          </span>
+                          <span className="job-badge-type">
+                            <Clock size={11} className="me-1 text-warning" /> {job.type}
+                          </span>
+                        </div>
 
-            <button
-              className="general-apply-btn"
-              onClick={() => handleApply("General Application")}
-            >
-              Send General Application
-            </button>
-          </div>
+                        {/* Title */}
+                        <h4 className="job-card-title mb-2">{job.title}</h4>
+
+                        {/* Location & Experience Micro-pills */}
+                        <div className="d-flex align-items-center gap-2 mb-3">
+                          <span className="job-micro-pill">
+                            <MapPin size={12} className="text-warning" /> {job.location}
+                          </span>
+                          <span className="job-micro-pill">
+                            <Briefcase size={12} className="text-warning" /> {job.experience}
+                          </span>
+                        </div>
+
+                        {/* Short Description (2 Lines max) */}
+                        <p className="job-card-desc mb-3">
+                          {job.shortDescription}
+                        </p>
+
+                        {/* Skill Tags */}
+                        <div className="d-flex flex-wrap gap-1.5 mb-3">
+                          {job.highlights.slice(0, 3).map((tag, i) => (
+                            <span key={i} className="job-tag-chip">
+                              #{tag}
+                            </span>
+                          ))}
+                          {job.highlights.length > 3 && (
+                            <span className="job-tag-chip text-warning opacity-75">
+                              +{job.highlights.length - 3} more
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Footer Actions */}
+                      <div
+                        className="pt-3 border-top border-light-subtle d-flex align-items-center justify-content-between gap-2"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <button
+                          type="button"
+                          className="btn btn-sm btn-view-jd d-flex align-items-center gap-1.5"
+                          onClick={() => handleOpenJD(job)}
+                        >
+                          <FileText size={13} />
+                          <span>{job.isCollab ? "Collab Details" : "View JD"}</span>
+                        </button>
+
+                        <button
+                          type="button"
+                          className="btn btn-sm btn-quick-apply d-flex align-items-center gap-1.5"
+                          onClick={() => {
+                            if (job.isCollab) {
+                              setShowInfluencerModal(true);
+                            } else {
+                              handleOpenApply(job.title, "form");
+                            }
+                          }}
+                        >
+                          <span>{job.isCollab ? "Join Collab" : "Apply"}</span>
+                          <ArrowUpRight size={14} />
+                        </button>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+
+              {/* 9th Grid Card: Don't See Your Role */}
+              {selectedCategory === "all" && !searchQuery && (
+                <div className="col-lg-4 col-md-6 col-12">
+                  <div
+                    className="job-card-general-grid h-100"
+                    onClick={() => handleOpenApply("General Application", "form")}
+                  >
+                    <div className="general-grid-icon">
+                      <HelpCircle size={24} className="text-dark" />
+                    </div>
+                    <h4 className="fw-bold text-dark mb-2" style={{ fontSize: "1.18rem" }}>
+                      Don’t See Your Role?
+                    </h4>
+                    <p className="text-secondary small mb-4 px-2" style={{ lineHeight: "1.55" }}>
+                      We are always hunting for creative minds, builders, and marketers.
+                      Drop your resume and portfolio with us!
+                    </p>
+                    <div className="d-flex align-items-center justify-content-center gap-2">
+                      <button
+                        type="button"
+                        className="btn btn-sm btn-quick-apply px-3 py-1.5"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleOpenApply("General Application", "form");
+                        }}
+                      >
+                        General Apply
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-sm btn-view-jd px-3 py-1.5"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleOpenApply("General Application", "mail");
+                        }}
+                      >
+                        Direct Mail
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
-      {/* APPLY MODAL */}
-      <ApplyJobModal
-        show={showModal}
-        onHide={() => setShowModal(false)}
-        job={selectedJob}
+      {/* ================= MODALS ================= */}
+
+      {/* 1. Job Description Detail Modal */}
+      <JobDetailModal
+        show={showJDModal}
+        onHide={() => setShowJDModal(false)}
+        job={selectedJobForJD}
+        onApply={(title, mode) => {
+          if (mode === "collab" || selectedJobForJD?.isCollab) {
+            setShowInfluencerModal(true);
+          } else {
+            handleOpenApply(title, mode || "form");
+          }
+        }}
       />
 
+      {/* 2. Application Modal (Dual Form + Email) */}
+      <ApplyJobModal
+        show={showApplyModal}
+        onHide={() => setShowApplyModal(false)}
+        job={selectedJobForApply}
+        initialMode={applyInitialMode}
+      />
+
+      {/* 3. Dedicated Influencer & Creator Collaboration Showcase Section */}
+      <InfluencerCollab />
+
+      {/* 4. Influencer Collab Application Modal */}
+      <InfluencerModal
+        show={showInfluencerModal}
+        onHide={() => setShowInfluencerModal(false)}
+      />
+
+      {/* Culture Section */}
       <Culture />
     </>
   );

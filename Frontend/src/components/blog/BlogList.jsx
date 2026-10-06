@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -25,7 +25,9 @@ import {
   MessageSquare,
 } from "lucide-react";
 import { blogsData, blogCategories, serviceHubsData } from "../../data/blogsData";
+import { API_BASE_URL } from "../../config";
 import Seo from "../Seo";
+import brandSetuAvatar from "../../assets/brandsetu-avatar.png";
 import "../../Style/Blog.css";
 import "../../Style/Home.css";
 
@@ -121,26 +123,49 @@ export default function BlogList() {
   const [subscribed, setSubscribed] = useState(false);
   const [activeConsoleTab, setActiveConsoleTab] = useState("seo");
   const [visibleCount, setVisibleCount] = useState(9);
+  const [apiBlogs, setApiBlogs] = useState(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    fetch(`${API_BASE_URL}/api/blogs?limit=100`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (isMounted && data.success && data.blogs && data.blogs.length > 0) {
+          setApiBlogs(data.blogs);
+        }
+      })
+      .catch((err) => {
+        console.warn("Could not reach backend blogs API, using fallback data:", err);
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const allBlogs = useMemo(() => {
+    return apiBlogs || blogsData;
+  }, [apiBlogs]);
 
   // Filter blogs based on category & search query
   const filteredBlogs = useMemo(() => {
-    return blogsData.filter((blog) => {
+    return allBlogs.filter((blog) => {
       const matchesCategory =
         selectedCategory === "All" || blog.category === selectedCategory;
       const query = searchQuery.toLowerCase().trim();
+      const tags = Array.isArray(blog.tags) ? blog.tags : [];
       const matchesSearch =
         !query ||
-        blog.title.toLowerCase().includes(query) ||
-        blog.excerpt.toLowerCase().includes(query) ||
-        blog.tags.some((tag) => tag.toLowerCase().includes(query));
+        blog.title?.toLowerCase().includes(query) ||
+        blog.excerpt?.toLowerCase().includes(query) ||
+        tags.some((tag) => tag?.toLowerCase().includes(query));
       return matchesCategory && matchesSearch;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [allBlogs, selectedCategory, searchQuery]);
 
   // Featured article (first featured or first item)
   const featuredBlog = useMemo(() => {
-    return blogsData.find((b) => b.featured) || blogsData[0];
-  }, []);
+    return allBlogs.find((b) => b.featured) || allBlogs[0];
+  }, [allBlogs]);
 
   const floatingShapes = useMemo(
     () =>
@@ -518,7 +543,7 @@ export default function BlogList() {
             transition={{ duration: 0.6 }}
           >
             <Link
-              to={`/blog/${featuredBlog.serviceSlug || 'seo'}/${featuredBlog.slug}`}
+              to={`/blog/${featuredBlog.slug}`}
               className="text-decoration-none"
             >
               <div className="featured-blog-card">
@@ -526,10 +551,18 @@ export default function BlogList() {
                   <Col lg={6}>
                     <div className="featured-img-wrap">
                       <img
-                        src={featuredBlog.image}
+                        src={
+                          featuredBlog.featuredImage?.startsWith("/uploads/")
+                            ? `${API_BASE_URL}${featuredBlog.featuredImage}`
+                            : featuredBlog.featuredImage || featuredBlog.image || "/assets/SEO.jpg"
+                        }
                         alt={featuredBlog.title}
                         className="featured-img"
                         loading="eager"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = "/assets/SEO.jpg";
+                        }}
                       />
                     </div>
                   </Col>
@@ -552,23 +585,36 @@ export default function BlogList() {
                       <div className="blog-meta-row">
                         <div className="blog-author-info">
                           <img
-                            src={featuredBlog.author.avatar}
-                            alt={featuredBlog.author.name}
+                            src={
+                              featuredBlog.author?.avatar && !featuredBlog.author.avatar.includes("Founder-brandsetu-digital")
+                                ? (featuredBlog.author.avatar.startsWith("/uploads/")
+                                    ? `${API_BASE_URL}${featuredBlog.author.avatar}`
+                                    : featuredBlog.author.avatar)
+                                : brandSetuAvatar
+                            }
+                            alt={featuredBlog.author?.name || "BrandSetu Digital"}
                             className="blog-author-img"
+                            onError={(e) => {
+                              e.target.onerror = null;
+                              e.target.src = brandSetuAvatar;
+                            }}
+                            style={{ objectFit: "cover" }}
                           />
                           <div>
                             <div className="blog-author-name">
-                              {featuredBlog.author.name}
+                              {featuredBlog.author?.name || "BrandSetu Team"}
                             </div>
                             <div className="blog-author-role">
-                              {featuredBlog.publishDate}
+                              {featuredBlog.publishedAt
+                                ? new Date(featuredBlog.publishedAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })
+                                : (featuredBlog.publishDate || "September 2026")}
                             </div>
                           </div>
                         </div>
 
                         <span className="blog-read-time">
                           <Clock size={14} />
-                          {featuredBlog.readTime}
+                          {featuredBlog.readingTime || featuredBlog.readTime || "5 min read"}
                         </span>
                       </div>
                     </div>
@@ -584,36 +630,46 @@ export default function BlogList() {
           <>
             <Row className="g-4">
               <AnimatePresence>
-                {filteredBlogs.slice(0, visibleCount).map((blog, idx) => (
-                  <Col key={blog.id} lg={4} md={6}>
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: (idx % 9) * 0.06 }}
-                      className="h-100"
-                    >
-                      <Link
-                        to={`/blog/${blog.serviceSlug || 'seo'}/${blog.slug}`}
-                        className="text-decoration-none d-block h-100"
+                {filteredBlogs.slice(0, visibleCount).map((blog, idx) => {
+                  const cardImg = blog.featuredImage?.trim() || blog.image?.trim() || "/assets/SEO.jpg";
+                  const resolvedCardImg = cardImg.startsWith("/uploads/")
+                    ? `${API_BASE_URL}${cardImg}`
+                    : cardImg;
+
+                  return (
+                    <Col key={blog._id || blog.id} lg={4} md={6}>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: (idx % 9) * 0.06 }}
+                        className="h-100"
                       >
-                        <article className="blog-grid-card">
-                          <div className="card-img-container">
-                            <img
-                              src={blog.image}
-                              alt={blog.title}
-                              className="card-post-img"
-                              loading="lazy"
-                            />
-                          </div>
+                        <Link
+                          to={`/blog/${blog.slug}`}
+                          className="text-decoration-none d-block h-100"
+                        >
+                          <article className="blog-grid-card">
+                            <div className="card-img-container">
+                              <img
+                                src={resolvedCardImg}
+                                alt={blog.title}
+                                className="card-post-img"
+                                loading="lazy"
+                                onError={(e) => {
+                                  e.target.onerror = null;
+                                  e.target.src = "/assets/SEO.jpg";
+                                }}
+                              />
+                            </div>
 
-                          <div className="card-content-area">
-                            <h3 className="card-post-title">{blog.title}</h3>
-                            <p className="card-post-excerpt">{blog.excerpt}</p>
+                            <div className="card-content-area">
+                              <h3 className="card-post-title">{blog.title}</h3>
+                              <p className="card-post-excerpt">{blog.excerpt}</p>
 
-                            <div className="card-footer-meta">
+                              <div className="card-footer-meta">
                               <span className="blog-read-time">
-                                <Clock size={13} /> {blog.readTime}
+                                <Clock size={13} /> {blog.readingTime || blog.readTime || "5 min read"}
                               </span>
                               <span className="card-read-link">
                                 Read Article <ArrowRight size={14} />
@@ -623,8 +679,9 @@ export default function BlogList() {
                         </article>
                       </Link>
                     </motion.div>
-                  </Col>
-                ))}
+                      </Col>
+                    );
+                  })}
               </AnimatePresence>
             </Row>
 

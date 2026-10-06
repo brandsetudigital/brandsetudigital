@@ -23,22 +23,22 @@ export const servicesData = [
     seo: {
       primaryKeyword: "Influencer Marketing Agency in Indore",
       secondaryKeywords: [
-        "Influencer Marketing Services",
+        "Influencer Campaigns",
         "Influencer Marketing Company in Indore",
         "Creator Marketing Agency",
         "Instagram Influencer Marketing",
-        "Social Media Influencer Marketing"
+        "Influencer Marketing Company"
       ],
       metaTitle: "Influencer Marketing Agency in Indore | Brandsetu Digital",
       metaDescription: "Build authentic trust and brand growth with Brandsetu Digital's Influencer Marketing Agency in Indore. Connect with top creators across Instagram, YouTube and LinkedIn.",
       h1: "Influencer Marketing Agency in Indore That Builds Trust, Engagement & Brand Growth",
-      subHeading: "People trust creators more than traditional advertisements. At Brandsetu Digital, we help businesses collaborate with the right influencers to create authentic campaigns that increase brand awareness, engage the right audience, and deliver measurable business results.",
+      subHeading: "Build a strong brand presence with an effective Influencer Marketing Strategy that connects your business with the right audience. From influencer selection and campaign planning to content creation and performance tracking, create impactful campaigns that increase engagement, build trust, and drive meaningful results.",
     },
     heroCTA: "Talk to an Influencer Marketing Expert",
     overview: {
       title: "What is Influencer Marketing?",
-      description: "Influencer marketing helps your brand connect with people through trusted creators instead of traditional advertising. By collaborating with influencers whose audience matches your business, you can build credibility, reach potential customers naturally, and create content that people genuinely engage with.",
-      whyNeeded: "Today's customers trust recommendations from creators more than promotional ads. Whether you're launching a new product, growing your brand, or increasing sales, influencer marketing helps you reach the right audience through authentic storytelling."
+      description: "Influencer marketing is a powerful way for brands to connect with their target audience through trusted creators. Our Influencer Marketing Services help businesses choose the right influencers, create effective campaigns, increase brand awareness, and drive meaningful engagement and conversions.",
+      whyNeeded: "Choosing the Best Influencer Marketing Agency can help your business reach the right audience, build trust, and strengthen your online presence. With the right strategy and creators, influencer marketing can increase engagement, brand awareness, and customer conversions."
     },
     challenges: {
       title: "Common Challenges Businesses Face",

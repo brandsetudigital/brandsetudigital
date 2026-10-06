@@ -9,6 +9,12 @@ const enquirySchema = new mongoose.Schema(
     domain: String,
     service: String,
     message: String,
+    status: {
+      type: String,
+      enum: ["New", "Contacted", "Qualified", "Closed"],
+      default: "New",
+      index: true,
+    },
   },
   { timestamps: true }
 );

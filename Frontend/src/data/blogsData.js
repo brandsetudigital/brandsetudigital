@@ -14,7 +14,7 @@ import brandingImg from "../assets/branding.jpg";
 import webDevImg from "../assets/website-development-company.webp";
 import socialImg from "../assets/social-media.jpg";
 import aiImg from "../assets/Ai-automation-services.png";
-import founderImg from "../assets/Founder-brandsetu-digital.webp";
+import founderImg from "../assets/brandsetu-avatar.png";
 import perfImg from "../assets/Performance-marketing-agency.jpg";
 import digitalGrowthImg from "../assets/digital-growth-solutions.jpg";
 import strategicGrowthImg from "../assets/strategic-digital-growth-brandsetu.png";

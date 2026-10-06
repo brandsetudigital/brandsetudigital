@@ -1,8 +1,31 @@
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import { Quote } from "lucide-react";
+import { Quote, Award, ShieldCheck, TrendingUp, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import "../../Style/Career.css";
+
+const valuesData = [
+  {
+    title: "Ownership",
+    desc: "You own your work & impact",
+    icon: <Award size={26} className="text-warning mb-2" />,
+  },
+  {
+    title: "Transparency",
+    desc: "Clear goals, honest feedback",
+    icon: <ShieldCheck size={26} className="text-warning mb-2" />,
+  },
+  {
+    title: "Growth",
+    desc: "Learning is non-negotiable",
+    icon: <TrendingUp size={26} className="text-warning mb-2" />,
+  },
+  {
+    title: "Respect",
+    desc: "People over processes",
+    icon: <Users size={26} className="text-warning mb-2" />,
+  },
+];
 
 const testimonials = [
   {
@@ -90,17 +113,13 @@ export default function Culture() {
 
           {/* VALUES */}
           <Row className="g-4 mb-5">
-            {[
-              { title: "Ownership", desc: "You own your work & impact" },
-              { title: "Transparency", desc: "Clear goals, honest feedback" },
-              { title: "Growth", desc: "Learning is non-negotiable" },
-              { title: "Respect", desc: "People over processes" },
-            ].map((item, i) => (
+            {valuesData.map((item, i) => (
               <Col md={3} key={i}>
-                <Card className="culture-card text-center h-100">
-                  <Card.Body>
-                    <h3 className="fs-5">{item.title}</h3>
-                    <p>{item.desc}</p>
+                <Card className="culture-card text-center h-100 p-2">
+                  <Card.Body className="d-flex flex-column align-items-center justify-content-center">
+                    <div className="value-icon-box mb-2">{item.icon}</div>
+                    <h3 className="fs-5 text-warning fw-bold mb-2">{item.title}</h3>
+                    <p className="culture-card-desc mb-0">{item.desc}</p>
                   </Card.Body>
                 </Card>
               </Col>
@@ -111,12 +130,14 @@ export default function Culture() {
           <Row className="g-4">
             {testimonials.map((t, i) => (
               <Col md={4} key={i}>
-                <Card className="testimonial-card h-100">
-                  <Card.Body>
-                    <Quote size={28} className="quote-icon" />
-                    <p className="testimonial-text">"{t.quote}"</p>
-                    <p className="mt-3 mb-0 fw-bold">{t.name}</p>
-                    <small>{t.role}</small>
+                <Card className="testimonial-card h-100 p-3">
+                  <Card.Body className="d-flex flex-column">
+                    <Quote size={32} className="quote-icon mb-3" />
+                    <p className="testimonial-text flex-grow-1">"{t.quote}"</p>
+                    <div className="testimonial-author mt-3 pt-2 border-top border-secondary border-opacity-25">
+                      <p className="author-name mb-0 fw-bold text-white fs-6">{t.name}</p>
+                      <small className="author-role text-warning">{t.role}</small>
+                    </div>
                   </Card.Body>
                 </Card>
               </Col>

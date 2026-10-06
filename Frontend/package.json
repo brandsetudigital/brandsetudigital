@@ -61,8 +61,10 @@
       "--no-sandbox",
       "--disable-setuid-sandbox"
     ],
+    "puppeteerExecutablePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
     "skipThirdPartyRequests": true,
     "port": 45680,
+    "concurrency": 2,
     "puppeteer": {
       "timeout": 60000
     }

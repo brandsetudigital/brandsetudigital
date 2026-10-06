@@ -3,18 +3,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import "../../App.css";
 import "../../Style/Home.css";
 
-import BlueLeaf from "../../assets/Sage.png";
-import BrightPath from "../../assets/brightpath.png";
-import UrbanSpice from "../../assets/urbanspices.png";
-import SparkLab from "../../assets/sparklab.png";
-import GreenBasket from "../../assets/greenbasket.png";
-import HillView from "../../assets/hillview.png";
-import Craftory from "../../assets/craftory.png";
-import LocalRoot from "../../assets/localroot.png";
-import PixelNest from "../../assets/PixelNest.png";
-import MotionFit from "../../assets/motionfit.png";
-import NextWave from "../../assets/nextwave.png";
-import Bakery24 from "../../assets/bakery24.png";
+import BlueLeaf from "../../assets/Sage.webp";
+import BrightPath from "../../assets/brightpath.webp";
+import UrbanSpice from "../../assets/urbanspices.webp";
+import SparkLab from "../../assets/sparklab.webp";
+import GreenBasket from "../../assets/greenbasket.webp";
+import HillView from "../../assets/hillview.webp";
+import Craftory from "../../assets/craftory.webp";
+import LocalRoot from "../../assets/localroot.webp";
+import PixelNest from "../../assets/PixelNest.webp";
+import MotionFit from "../../assets/motionfit.webp";
+import NextWave from "../../assets/nextwave.webp";
+import Bakery24 from "../../assets/bakery24.webp";
 
 export const reviews = [
   {

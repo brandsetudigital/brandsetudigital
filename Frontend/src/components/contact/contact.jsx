@@ -23,6 +23,21 @@ import emailjs from "emailjs-com";
 import { API_BASE_URL } from "../../config";
 import Seo from "../Seo";
 
+const brandSetuServices = [
+  "Google Ads & Lead Generation",
+  "Influencer Marketing",
+  "Search Engine Optimization (SEO)",
+  "Website Design & Development",
+  "Social Media Marketing & Brand Promotion",
+  "Graphics Design",
+  "App Development",
+  "Event / Product Shoot & Promotion",
+  "Website Maintenance & Technical Support",
+  "CRM Setup & Business Automation",
+  "CGI Ads & 3D Animation",
+  "Branding & Visual Identity",
+];
+
 const ContactPage = () => {
   const location = useLocation();
 
@@ -39,22 +54,6 @@ const ContactPage = () => {
 
   const [subscribeEmail, setSubscribeEmail] = useState("");
   const [showFollowModal, setShowFollowModal] = useState(false);
-
-  /* ===================== CONSTANT DATA ===================== */
-  const brandSetuServices = [
-    "Google Ads & Lead Generation",
-    "Influencer Marketing",
-    "Search Engine Optimization (SEO)",
-    "Website Design & Development",
-    "Social Media Marketing & Brand Promotion",
-    "Graphics Design",
-    "App Development",
-    "Event / Product Shoot & Promotion",
-    "Website Maintenance & Technical Support",
-    "CRM Setup & Business Automation",
-    "CGI Ads & 3D Animation",
-    "Branding & Visual Identity",
-  ];
 
   /* ===================== EFFECTS ===================== */
   useEffect(() => {

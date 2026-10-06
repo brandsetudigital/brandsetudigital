@@ -142,8 +142,8 @@ export default function WhoAreWe() {
                 We help brands grow through clear strategy, smart execution, and
                 measurable results. Our focus is on building long-term value by
                 understanding your business goals and delivering solutions that
-               truly work.  <br /> 
-               Founded with the goal of transforming bold
+                truly work.  <br />
+                Founded with the goal of transforming bold
                 ideas into reality, we are a passionate team committed to
                 innovation.
               </p>
@@ -338,14 +338,14 @@ export default function WhoAreWe() {
                   {
                     title: "Zouk",
                     tag: "Lifestyle Brand",
-                    img: "https://images.unsplash.com/photo-1585386959984-a41552262f3b?auto=format&fit=crop&w=600&q=75",
+                    img: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=600&q=75",
                     desc: "Vegan lifestyle bags with strong D2C presence.",
                     link: "https://zouk.co.in",
                   },
                   {
                     title: "Suta",
                     tag: "Fashion & Textiles",
-                    img: "https://images.unsplash.com/photo-1520974735194-6c9f63c45e91?auto=format&fit=crop&w=600&q=75",
+                    img: "https://i.pinimg.com/736x/27/c0/7d/27c07de1ee97bc6b1172df802045be1c.jpg",
                     desc: "Handwoven saree brand with community storytelling.",
                     link: "https://suta.in",
                   },
@@ -375,7 +375,7 @@ export default function WhoAreWe() {
                   {
                     title: "The Whole Truth",
                     tag: "Clean Nutrition",
-                    img: "https://images.unsplash.com/photo-1551024709-8f23befc6cf7?auto=format&fit=crop&w=600&q=75",
+                    img: "https://i.pinimg.com/736x/06/b5/63/06b56325fc159c27d1412c85890728c7.jpg",
                     desc: "Clean-label food brand with transparent ingredients.",
                     link: "https://thewholetruthfoods.com",
                   },
@@ -398,7 +398,7 @@ export default function WhoAreWe() {
                   {
                     title: "Slurrp Farm",
                     tag: "Kids Nutrition",
-                    img: "https://images.unsplash.com/photo-1604908177522-402f07c7f3a4?auto=format&fit=crop&w=600&q=75",
+                    img: "https://i.pinimg.com/736x/40/e5/25/40e52593e59b17ae4d9e91fd1cff2b12.jpg",
                     desc: "Wholesome nutrition brand for children.",
                     link: "https://slurrpfarm.com",
                   },

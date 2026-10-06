@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Button } from "react-bootstrap";
 import { ArrowRight, Sparkles } from "lucide-react";
+import "../../Style/Home.css";
 import "../../Style/Career.css";
 
 export default function CareerHero() {
@@ -21,7 +22,7 @@ export default function CareerHero() {
 
   return (
     <>
-      <section className="services-section py-5">
+      <section className="services-section py-5 position-relative overflow-hidden">
         <div className="bg-blob blob-1"></div>
         <div className="bg-blob blob-2"></div>
 

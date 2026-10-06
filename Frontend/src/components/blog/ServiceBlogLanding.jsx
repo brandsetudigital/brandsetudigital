@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { serviceHubsData, blogsData } from "../../data/blogsData";
 import Seo from "../Seo";
+import BlogDetail from "./BlogDetail";
 import "../../Style/Blog.css";
 import "../../Style/Home.css";
 
@@ -60,18 +61,9 @@ export default function ServiceBlogLanding() {
     []
   );
 
-  // If service doesn't exist in registry, check if it's an article slug for backward compatibility
+  // If service doesn't exist in registry, render BlogDetail for /blog/:slug
   if (!service) {
-    const legacyArticle = blogsData.find((b) => b.slug === serviceSlug);
-    if (legacyArticle) {
-      return (
-        <Navigate
-          to={`/blog/${legacyArticle.serviceSlug || "seo"}/${legacyArticle.slug}`}
-          replace
-        />
-      );
-    }
-    return <Navigate to="/blog" replace />;
+    return <BlogDetail />;
   }
 
   // Generate FAQ Schema for Google Rich Snippets

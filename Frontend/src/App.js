@@ -4,6 +4,7 @@ import AppRoutes from "./Routes/route";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ScrollToTop from "../src/components/ScrollToTop";
+import { AuthProvider } from "./context/AuthContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./App.css";
@@ -14,10 +15,12 @@ function App() {
   }, []);
 
   return (
-      <BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>
         <ScrollToTop />
         <AppRoutes />
-      </BrowserRouter>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 

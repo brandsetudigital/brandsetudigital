@@ -1,23 +1,25 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Play, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroVideo from "../../assets/digital-marketing-agency.mp4";
+import Seo from "../Seo";
 import "../../App.css";
 import "../../Style/Home.css";
 
-// 02 to 11 Homepage Sequence Components
+// First-fold components
 import Brands from "./brands";
 import Services from "./HomeServices";
-import WhySetu from "./whyus";
-import ProcessSection from "./ProcessSection";
-import HomeWork from "./HomeWork";
-import MissionValues from "./mission";
-import FounderPage from "./founder";
-import Reviews from "./review";
-import HomeFaq from "./HomeFaq";
-import HomeCTA from "./HomeCTA";
-import Seo from "../Seo";
+
+// Below-the-fold components lazy loaded for speed & responsiveness
+const WhySetu = lazy(() => import("./whyus"));
+const ProcessSection = lazy(() => import("./ProcessSection"));
+const HomeWork = lazy(() => import("./HomeWork"));
+const MissionValues = lazy(() => import("./mission"));
+const FounderPage = lazy(() => import("./founder"));
+const Reviews = lazy(() => import("./review"));
+const HomeFaq = lazy(() => import("./HomeFaq"));
+const HomeCTA = lazy(() => import("./HomeCTA"));
 
 export function Hero() {
   const stats = [
@@ -279,29 +281,17 @@ export function Hero() {
           {/* ================= 03. OUR SERVICES ================= */}
           <Services />
 
-          {/* ================= 04. WHY CHOOSE BRANDSETU? ================= */}
-          <WhySetu />
-
-          {/* ================= 05. OUR EXECUTION PROCESS ================= */}
-          <ProcessSection />
-          
-           {/* ================= 06. OUR WORK / CASE STUDIES ================= */}
-          <HomeWork />
-
-          {/* ================= 07. MISSION & VISION ================= */}
-          <MissionValues />
-
-          {/* ================= 08. FOUNDER & CEO ================= */}
-          <FounderPage />
-
-          {/* ================= 09. CLIENT LOVE (TESTIMONIALS) ================= */}
-          <Reviews />
-
-          {/* ================= 10. FAQ ================= */}
-          <HomeFaq />
-
-          {/* ================= 11. FINAL CTA ================= */}
-          <HomeCTA />
+          {/* ================= 04 TO 11. BELOW-THE-FOLD LAZY LOADED ================= */}
+          <Suspense fallback={<div style={{ minHeight: "60px" }} />}>
+            <WhySetu />
+            <ProcessSection />
+            <HomeWork />
+            <MissionValues />
+            <FounderPage />
+            <Reviews />
+            <HomeFaq />
+            <HomeCTA />
+          </Suspense>
         </div>
       </section>
     </>

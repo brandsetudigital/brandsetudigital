@@ -16,27 +16,65 @@ import {
 } from "lucide-react";
 import { FaLinkedinIn, FaTwitter, FaWhatsapp, FaFacebookF } from "react-icons/fa";
 import { blogsData, serviceHubsData } from "../../data/blogsData";
+import { API_BASE_URL } from "../../config";
 import Seo from "../Seo";
+import brandSetuAvatar from "../../assets/brandsetu-avatar.png";
 import "../../Style/Blog.css";
 import "../../Style/Home.css";
 
 export default function BlogDetail() {
-  const { articleSlug, slug } = useParams();
-  const activeSlug = articleSlug || slug;
-  const [openFaq, setOpenFaq] = useState(null);
+  const { articleSlug, slug, serviceSlug } = useParams();
+  const activeSlug = articleSlug || slug || serviceSlug;
 
-  // Scroll to top on load
+  const [openFaq, setOpenFaq] = useState(null);
+  const [apiBlog, setApiBlog] = useState(null);
+  const [apiRelated, setApiRelated] = useState([]);
+  const [isFetching, setIsFetching] = useState(true);
+
+  // Scroll to top on slug change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [activeSlug]);
 
-  // Find article by slug
-  const blog = useMemo(() => {
-    return blogsData.find((item) => item.slug === activeSlug);
+  // Fetch article dynamically from Backend API
+  useEffect(() => {
+    let isMounted = true;
+    setIsFetching(true);
+
+    fetch(`${API_BASE_URL}/api/blogs/${activeSlug}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (isMounted) {
+          if (data.success && data.blog) {
+            setApiBlog(data.blog);
+            if (data.relatedBlogs && data.relatedBlogs.length > 0) {
+              setApiRelated(data.relatedBlogs);
+            }
+          } else {
+            setApiBlog(null);
+          }
+          setIsFetching(false);
+        }
+      })
+      .catch((err) => {
+        console.warn("Backend API not reachable, falling back to local dataset:", err);
+        if (isMounted) setIsFetching(false);
+      });
+
+    return () => {
+      isMounted = false;
+    };
   }, [activeSlug]);
 
-  // Related articles (matching same service first)
+  // Primary blog resolution: API data first, local blogsData fallback
+  const blog = useMemo(() => {
+    if (apiBlog) return apiBlog;
+    return blogsData.find((item) => item.slug === activeSlug);
+  }, [apiBlog, activeSlug]);
+
+  // Related articles
   const relatedBlogs = useMemo(() => {
+    if (apiRelated.length > 0) return apiRelated;
     if (!blog) return [];
     const sameService = blogsData.filter(
       (item) => item.id !== blog.id && item.serviceSlug === blog.serviceSlug
@@ -46,12 +84,16 @@ export default function BlogDetail() {
       (item) => item.id !== blog.id && item.serviceSlug !== blog.serviceSlug
     );
     return [...sameService, ...otherBlogs].slice(0, 3);
-  }, [blog]);
+  }, [apiRelated, blog]);
 
-  // Frequently asked questions relevant to this service hub
-  const serviceFaqs = useMemo(() => {
-    if (!blog || !blog.serviceSlug) return [];
-    return serviceHubsData[blog.serviceSlug]?.faqs || [];
+  // Combined FAQs (model FAQs + service hub FAQs)
+  const combinedFaqs = useMemo(() => {
+    if (!blog) return [];
+    const modelFaqs = blog.faqs || [];
+    const hubFaqs = blog.serviceSlug && serviceHubsData[blog.serviceSlug]
+      ? serviceHubsData[blog.serviceSlug].faqs || []
+      : [];
+    return [...modelFaqs, ...hubFaqs];
   }, [blog]);
 
   // Ambient floating background particles
@@ -67,23 +109,71 @@ export default function BlogDetail() {
     []
   );
 
-  if (!blog) {
+  // 404 State if blog doesn't exist
+  if (!blog && !isFetching) {
     return (
-      <div className="blog-detail-wrapper text-center py-5">
+      <div className="blog-detail-wrapper text-center py-5 min-vh-100 d-flex align-items-center justify-content-center">
         <Container className="py-5">
-          <h2 className="display-5 fw-bold text-dark mb-3">Article Not Found</h2>
-          <p className="text-dark opacity-75 mb-4">
-            The article you are looking for does not exist or has been relocated.
-          </p>
-          <Link to="/blog" className="btn btn-dark text-warning rounded-pill px-4 py-2 fw-bold">
-            ← Back to Blog
-          </Link>
+          <div
+            className="p-5 rounded-4 mx-auto text-center shadow-2xl"
+            style={{
+              maxWidth: "640px",
+              backgroundColor: "#161d2f",
+              border: "1.5px solid rgba(250, 204, 21, 0.3)",
+            }}
+          >
+            <span className="badge bg-warning bg-opacity-20 text-warning border border-warning border-opacity-30 rounded-pill px-3 py-1 text-uppercase fw-semibold mb-3">
+              404 • Not Found
+            </span>
+            <h1 className="h2 fw-bold text-white mb-3">Article Not Found</h1>
+            <p className="text-light opacity-75 mb-4">
+              The article you are looking for may have been unpublished, relocated, or removed.
+            </p>
+            <Link
+              to="/blog"
+              className="btn btn-warning rounded-pill px-4 py-2.5 fw-bold text-dark d-inline-flex align-items-center gap-2"
+            >
+              ← Return to All Articles
+            </Link>
+          </div>
         </Container>
       </div>
     );
   }
 
-  const currentUrl = typeof window !== "undefined" ? window.location.href : "";
+  // Loading state
+  if (!blog) {
+    return (
+      <div className="blog-detail-wrapper text-center py-5 min-vh-100 d-flex align-items-center justify-content-center">
+        <div className="spinner-border text-warning" role="status" style={{ width: "3rem", height: "3rem" }}>
+          <span className="visually-hidden">Loading Article...</span>
+        </div>
+      </div>
+    );
+  }
+
+  const defaultFeaturedImage = "/assets/SEO.jpg";
+  const rawFeatured = blog.featuredImage?.trim() || blog.image?.trim();
+  const featuredImage = rawFeatured
+    ? (rawFeatured.startsWith("/uploads/") ? `${API_BASE_URL}${rawFeatured}` : rawFeatured)
+    : defaultFeaturedImage;
+
+  const authorName = blog.author?.name || "BrandSetu Editorial Team";
+  const authorRole = blog.author?.role || "Digital Marketing Strategist";
+  const defaultAvatar = brandSetuAvatar || "/assets/brandsetu-avatar.png";
+  const rawAvatar = blog.author?.avatar?.trim();
+  const authorAvatar = (rawAvatar && !rawAvatar.includes("Founder-brandsetu-digital") && rawAvatar !== "")
+    ? (rawAvatar.startsWith("/uploads/") ? `${API_BASE_URL}${rawAvatar}` : rawAvatar)
+    : defaultAvatar;
+  const readingTime = blog.readingTime || blog.readTime || "5 min read";
+  const publishDateStr = blog.publishedAt
+    ? new Date(blog.publishedAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })
+    : (blog.publishDate || "September 2026");
+
+  const canonicalUrl = `https://brandsetudigital.com/blog/${blog.slug}`;
+  const currentUrl = typeof window !== "undefined" && window.location?.href
+    ? window.location.href
+    : canonicalUrl;
 
   const handleShare = (platform) => {
     const title = encodeURIComponent(blog.title);
@@ -109,12 +199,13 @@ export default function BlogDetail() {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": blog.title,
-    "description": blog.excerpt,
-    "image": blog.image,
-    "datePublished": blog.publishDate,
+    "description": blog.metaDescription || blog.excerpt,
+    "image": featuredImage.startsWith("http") ? featuredImage : `https://brandsetudigital.com${featuredImage}`,
+    "datePublished": blog.publishedAt || blog.publishDate,
+    "dateModified": blog.updatedAt || blog.updatedDate || blog.publishedAt || blog.publishDate,
     "author": {
       "@type": "Person",
-      "name": blog.author.name,
+      "name": authorName,
     },
     "publisher": {
       "@type": "Organization",
@@ -130,16 +221,57 @@ export default function BlogDetail() {
     },
   };
 
+  // Breadcrumb schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://brandsetudigital.com/",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://brandsetudigital.com/blog",
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": blog.title,
+        "item": currentUrl,
+      },
+    ],
+  };
+
+  // FAQ schema if FAQs are present
+  const faqSchema = combinedFaqs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": combinedFaqs.map((f) => ({
+      "@type": "Question",
+      "name": f.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.answer,
+      },
+    })),
+  } : null;
+
   return (
     <div className="blog-detail-wrapper position-relative">
       <Seo
         title={blog.metaTitle || blog.title}
         description={blog.metaDescription || blog.excerpt}
         path={`/blog/${blog.slug}`}
-        jsonLd={articleSchema}
+        image={featuredImage.startsWith("http") ? featuredImage : `https://brandsetudigital.com${featuredImage}`}
+        jsonLd={[articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : [])]}
       />
 
-      {/* Ambient Floating Shapes (translucent on yellow) */}
+      {/* Ambient Floating Shapes */}
       <div className="position-absolute w-100 h-100 overflow-hidden" style={{ top: 0, left: 0, pointerEvents: "none", zIndex: 0 }}>
         {floatingShapes.map((shape, i) => (
           <motion.div
@@ -197,7 +329,7 @@ export default function BlogDetail() {
             <span className="featured-pill-tag">{blog.category}</span>
             <span className="text-dark opacity-50 small">•</span>
             <span className="blog-read-time">
-              <Clock size={13} /> {blog.readTime}
+              <Clock size={13} /> {readingTime}
             </span>
           </div>
 
@@ -207,16 +339,21 @@ export default function BlogDetail() {
           <div className="article-meta-bar">
             <div className="blog-author-info">
               <img
-                src={blog.author.avatar}
-                alt={blog.author.name}
+                src={authorAvatar}
+                alt={authorName || "BrandSetu Digital"}
                 className="blog-author-img"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = defaultAvatar;
+                }}
+                style={{ objectFit: "cover" }}
               />
               <div>
-                <div className="blog-author-name">{blog.author.name}</div>
+                <div className="blog-author-name">{authorName}</div>
                 <div className="blog-author-role d-flex align-items-center flex-wrap gap-2">
-                  <span>{blog.author.role}</span>
+                  <span>{authorRole}</span>
                   <span className="opacity-50">•</span>
-                  <span>Published: {blog.publishDate}</span>
+                  <span>Published: {publishDateStr}</span>
                   {blog.updatedDate && (
                     <span className="badge bg-dark text-warning border border-warning border-opacity-25 rounded-pill px-2 py-0.5">
                       Updated: {blog.updatedDate}
@@ -270,18 +407,22 @@ export default function BlogDetail() {
         {/* HERO FEATURED IMAGE */}
         <div className="article-featured-media">
           <img
-            src={blog.image}
+            src={featuredImage}
             alt={blog.title}
             className="article-hero-img"
             loading="eager"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = defaultFeaturedImage;
+            }}
           />
         </div>
 
         {/* CONTENT ROW */}
         <Row className="justify-content-center">
           <Col lg={10}>
-            {/* KEY TAKEAWAYS BOX */}
-            {blog.content?.keyTakeaways && (
+            {/* KEY TAKEAWAYS BOX (IF STRUCTURED CONTENT AVAILABLE) */}
+            {blog.structuredContent?.keyTakeaways && (
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -293,7 +434,7 @@ export default function BlogDetail() {
                   <span>Key Executive Takeaways</span>
                 </div>
                 <ul className="takeaways-list">
-                  {blog.content.keyTakeaways.map((item, idx) => (
+                  {blog.structuredContent.keyTakeaways.map((item, idx) => (
                     <li key={idx} className="takeaways-item">
                       <CheckCircle2 size={16} className="takeaways-check" />
                       <span>{item}</span>
@@ -304,7 +445,7 @@ export default function BlogDetail() {
             )}
 
             {/* TABLE OF CONTENTS */}
-            {blog.content?.sections && blog.content.sections.length > 0 && (
+            {blog.structuredContent?.sections && blog.structuredContent.sections.length > 0 && (
               <div
                 className="blog-toc-card mb-4 p-4 rounded-4"
                 style={{
@@ -320,7 +461,7 @@ export default function BlogDetail() {
                   </span>
                 </div>
                 <ul className="list-unstyled mb-0 d-flex flex-column gap-2">
-                  {blog.content.sections.map((sec, idx) => (
+                  {blog.structuredContent.sections.map((sec, idx) => (
                     <li key={idx}>
                       <a
                         href={`#section-${idx}`}
@@ -349,29 +490,39 @@ export default function BlogDetail() {
 
             {/* ARTICLE BODY */}
             <article className="article-content-body">
-              <p className="lead fw-bold text-dark mb-4">
-                {blog.content?.intro}
-              </p>
+              {/* If content is an HTML string, render cleanly */}
+              {typeof blog.content === "string" ? (
+                <div
+                  className="rich-article-html"
+                  dangerouslySetInnerHTML={{ __html: blog.content }}
+                />
+              ) : (
+                <>
+                  {blog.content?.intro && (
+                    <p className="lead fw-bold text-dark mb-4">{blog.content.intro}</p>
+                  )}
 
-              {blog.content?.sections?.map((sec, idx) => (
-                <section key={idx} id={`section-${idx}`} className="mb-4 pt-2">
-                  <h2 className="article-section-title">{sec.heading}</h2>
-                  <p style={{ color: "#1f2937", lineHeight: "1.85", fontSize: "1.08rem" }}>{sec.body}</p>
-                </section>
-              ))}
+                  {blog.content?.sections?.map((sec, idx) => (
+                    <section key={idx} id={`section-${idx}`} className="mb-4 pt-2">
+                      <h2 className="article-section-title">{sec.heading}</h2>
+                      <p style={{ color: "#1f2937", lineHeight: "1.85", fontSize: "1.08rem" }}>
+                        {sec.body}
+                      </p>
+                    </section>
+                  ))}
 
-              {blog.content?.conclusion && (
-                <div className="mt-5 p-4 p-md-5 rounded-4 bg-dark text-white border border-warning border-opacity-40 shadow-lg">
-                  <h3 className="h5 fw-bold text-warning mb-2">Final Verdict</h3>
-                  <p className="mb-0 text-light opacity-90">
-                    {blog.content.conclusion}
-                  </p>
-                </div>
+                  {blog.content?.conclusion && (
+                    <div className="mt-5 p-4 p-md-5 rounded-4 bg-dark text-white border border-warning border-opacity-40 shadow-lg">
+                      <h3 className="h5 fw-bold text-warning mb-2">Final Verdict</h3>
+                      <p className="mb-0 text-light opacity-90">{blog.content.conclusion}</p>
+                    </div>
+                  )}
+                </>
               )}
 
               {/* TAGS */}
-              {blog.tags && (
-                <div className="article-tags-cloud">
+              {blog.tags && blog.tags.length > 0 && (
+                <div className="article-tags-cloud mt-4">
                   <span className="text-dark fw-bold small me-2">Tags:</span>
                   {blog.tags.map((tag) => (
                     <span key={tag} className="article-tag-chip">
@@ -384,18 +535,18 @@ export default function BlogDetail() {
               {/* AUTHOR BIO CARD */}
               <div className="article-author-card">
                 <img
-                  src={blog.author.avatar}
-                  alt={blog.author.name}
+                  src={authorAvatar}
+                  alt={authorName}
                   className="rounded-circle border border-warning"
                   width="70"
                   height="70"
                 />
                 <div>
                   <h3 className="h6 fw-bold text-white mb-1">
-                    Written by {blog.author.name}
+                    Written by {authorName}
                   </h3>
                   <p className="small text-light opacity-75 mb-2">
-                    {blog.author.role} at BrandSetu Digital. Driving performance marketing,
+                    {authorRole} at BrandSetu Digital. Driving performance marketing,
                     high-converting web architectures, and strategic branding for high-growth brands.
                   </p>
                   <Link
@@ -408,7 +559,7 @@ export default function BlogDetail() {
               </div>
 
               {/* FAQ ACCORDION SECTION */}
-              {serviceFaqs && serviceFaqs.length > 0 && (
+              {combinedFaqs && combinedFaqs.length > 0 && (
                 <div
                   className="blog-faq-section my-5 p-4 p-md-5 rounded-4"
                   style={{
@@ -427,7 +578,7 @@ export default function BlogDetail() {
                     Common Questions About {blog.category}
                   </h3>
                   <div className="d-flex flex-column gap-3">
-                    {serviceFaqs.map((faq, idx) => {
+                    {combinedFaqs.map((faq, idx) => {
                       const isOpen = openFaq === idx;
                       return (
                         <div
@@ -467,8 +618,14 @@ export default function BlogDetail() {
             </article>
 
             {/* IN-ARTICLE CTA BOX */}
-            <div className="p-4 p-md-5 my-5 rounded-4 text-center text-white position-relative overflow-hidden"
-                 style={{ background: "radial-gradient(circle, rgba(250,204,21,0.18) 0%, rgba(30,31,26,0.95) 70%)", border: "1.5px solid rgba(250,204,21,0.35)" }}>
+            <div
+              className="p-4 p-md-5 my-5 rounded-4 text-center text-white position-relative overflow-hidden"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(250,204,21,0.18) 0%, rgba(30,31,26,0.95) 70%)",
+                border: "1.5px solid rgba(250,204,21,0.35)",
+              }}
+            >
               <span className="badge bg-warning text-dark fw-bold rounded-pill px-3 py-1 mb-3">
                 READY TO SCALE YOUR BRAND?
               </span>
@@ -521,12 +678,15 @@ export default function BlogDetail() {
 
             <Row className="g-4">
               {relatedBlogs.map((item) => (
-                <Col key={item.id} lg={4} md={6}>
-                  <Link to={`/blog/${item.serviceSlug || 'seo'}/${item.slug}`} className="text-decoration-none d-block h-100">
+                <Col key={item._id || item.id} lg={4} md={6}>
+                  <Link
+                    to={`/blog/${item.slug}`}
+                    className="text-decoration-none d-block h-100"
+                  >
                     <article className="blog-grid-card">
                       <div className="card-img-container">
                         <img
-                          src={item.image}
+                          src={item.featuredImage || item.image || "/assets/SEO.jpg"}
                           alt={item.title}
                           className="card-post-img"
                           loading="lazy"
@@ -537,7 +697,7 @@ export default function BlogDetail() {
                         <p className="card-post-excerpt">{item.excerpt}</p>
                         <div className="card-footer-meta">
                           <span className="blog-read-time">
-                            <Clock size={13} /> {item.readTime}
+                            <Clock size={13} /> {item.readingTime || item.readTime || "5 min read"}
                           </span>
                           <span className="card-read-link">
                             Read <ArrowRight size={13} />
