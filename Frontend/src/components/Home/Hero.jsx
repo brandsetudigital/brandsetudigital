@@ -126,7 +126,7 @@ export function Hero() {
     <span className="d-block">BRAND</span>
 
     <span className="visually-hidden">
-      With BrandSetu Digital
+      With BrandSetu Digital 
     </span>
   </h1>
 
@@ -140,11 +140,9 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="hero-description ms-1"
-              >
-                We help businesses grow with result-driven digital marketing,
-                branding, SEO, social media marketing, and performance-focused
-                online strategies.
+                className="hero-description ms-1 mt-3 mt-md-4"
+              > 
+              Our Brandsetu Digital Marketing in Indore . We provide  digital marketing solutions, including SEO, Google Ads, Meta Ads, Social Media Marketing, Content Marketing, and Online Advertising.
               </motion.p>
 
               {/* Navigation Buttons */}

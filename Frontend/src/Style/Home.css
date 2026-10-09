@@ -202,6 +202,7 @@
 .hero-description {
   font-size: clamp(1rem, 2.5vw, 1.5rem);
   max-width: 36rem;
+  margin-top: 1.25rem;
 }
 
 /* Right Section (Stacked Cards + Image) */

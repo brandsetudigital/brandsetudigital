@@ -67,27 +67,27 @@ export const servicesData = [
       items: [
         {
           title: "Influencer Discovery",
-          desc: "We identify creators who genuinely align with your brand, audience, and campaign goals."
+          desc: "Influencer Discovery helps brands find the right creators based on their audience, niche, reach, and engagement. It ensures your brand collaborates with relevant influencers who can effectively connect with your target audience and deliver better campaign results."
         },
         {
           title: "Campaign Strategy",
-          desc: "Every campaign starts with clear objectives, audience research, and a tailored content plan."
+          desc: "A strong Campaign Strategy helps your brand plan effective influencer campaigns, reach the right audience, increase engagement, and achieve measurable marketing goals."
         },
         {
           title: "Creator Outreach",
-          desc: "From communication to negotiations, we manage every influencer partnership professionally."
+          desc: "Creator Outreach helps brands connect with the right influencers and creators to build valuable collaborations, expand audience reach, and create impactful marketing campaigns."
         },
         {
           title: "Content Planning",
-          desc: "We help create authentic campaign ideas that connect with your audience while maintaining your brand identity."
+          desc: "Effective Content Planning helps brands create relevant and engaging content that connects with the target audience, supports campaign goals, and builds a strong online presence."
         },
         {
-          title: "Campaign Management",
-          desc: "Our team handles timelines, approvals, publishing, and coordination from start to finish."
+          title: "Influencer Campaign",
+          desc: "An effective Influencer Campaign helps brands reach the right audience, increase engagement, build trust, and boost brand awareness through authentic creator collaborations."
         },
         {
-          title: "Performance Reporting",
-          desc: "Track campaign reach, engagement, clicks, and overall performance with transparent reporting."
+          title: "Influencer Marketing Company",
+          desc: "Best Influencer Marketing company helps your brand connect with the right audience, build trust, increase engagement, and drive meaningful results through effective creator collaborations."
         }
       ]
     },
