@@ -180,20 +180,21 @@ export const servicesData = [
         "Performance Max Agency",
         "Lead Generation Agency"
       ],
-      metaTitle: "Google Ads Agency in Indore | Generate More Leads | Brandsetu Digital",
+      metaTitle: "Google Ads Agency Services | Generate More Leads | Brandsetu Digital",
       metaDescription: "Generate qualified leads with Brandsetu Digital's Google Ads Agency in Indore. We manage Search, Display, YouTube, Shopping & Performance Max campaigns that maximize ROI and grow your business.",
-      h1: "Google Ads Agency in Indore That Turns Clicks Into Customers",
-      subHeading: "Stop Paying for Clicks. Start Investing in Customers. Every day, people search Google for products and services like yours. The real opportunity isn't getting more clicks. It's attracting the right customers at the exact moment they're ready to buy.",
+      h1: "Google Ads Agency Services",
+      heroHeading: "Turn Clicks Into Customers with Google Ads",
+      subHeading: "Looking for the Best <b>Google Ads Agency</b> in Indore to grow your business online? Our strategic Google Ads solutions help businesses reach potential customers, generate quality leads, increase website traffic, and improve conversions. We create customized advertising campaigns based on your business goals, target audience, industry, and budget to help you get the most value from your advertising investment. From Google Ads Business Google Search Ads and Display Ads to YouTube Ads, Shopping Ads, and Performance Max campaigns, we help your business connect with the right audience at the right time. Our services include keyword research, compelling ad copy creation, audience targeting, campaign setup, budget optimization, and conversion tracking. We continuously monitor campaign performance and make data-driven improvements to reduce wasted ad spend and maximize results.",
     },
     heroCTA: "Talk to a Google Ads Expert",
     overview: {
       title: "Why Google Ads Delivers the Fastest Business Growth",
-      description: "When someone searches for a product or service on Google, they're already looking for a solution. Google Ads places your business in front of these high-intent customers exactly when they're ready to take action. Unlike traditional advertising, Google Ads gives you complete control over your budget, audience, locations, devices, and campaign performance.",
-      whyNeeded: "Every click, enquiry, phone call, and conversion can be tracked, helping you understand exactly how your advertising investment is performing. At Brandsetu Digital, we create high-performing Google Ads campaigns that help businesses generate qualified leads, increase conversions, and maximize every advertising budget."
+      description: "Our data-driven ads are made to increase your return on investment. We optimize advertisements to drive business growth by increasing visibility, clicks, and conversions. With the right <b>PPC Advertising</b> strategy, businesses can appear in relevant search results, attract high-intent audiences, generate quality leads, and increase conversions. Unlike marketing methods that may take time to deliver results, Google Ads can start driving targeted traffic as soon as your campaigns become eligible to serve.",
+      whyNeeded: "<b>Google Ads app promotion</b> helps businesses reach potential users and encourage them to download and engage with their mobile applications. With targeted campaigns, your app can reach the right audience across Google Search, YouTube, Google Play, and other eligible placements. Whether you want to increase app installs, attract new users, or improve engagement, a well-planned strategy can help your business expand its reach and grow its app audience.pay-Per-Click, Easiest way to get more Traffic, Sales, Reach, Impression or Clicks.A Our Google ads and Meta ads experts deploy tried and tested campaign methods to generate demand for your service and subsequent well-targeted leads."
     },
     challenges: {
       title: "Is Your Google Ads Budget Delivering Real Results?",
-      description: "Many businesses invest in Google Ads expecting immediate success, only to see their advertising budget disappear without generating quality leads.",
+      description: "Investing in online advertising is only valuable when it delivers measurable results for your business. Choosing the <b>best Google Ads agency in Indore</b> can help you make the most of your advertising budget through strategic campaign planning, targeted keyword research, and continuous performance optimization. Instead of spending money on clicks that do not convert, a well-managed Google Ads campaign focuses on reaching potential customers who are genuinely interested in your products or services.",
       items: [
         {
           title: "Clicks But No Leads",
@@ -213,43 +214,45 @@ export const servicesData = [
         },
         {
           title: "Landing Pages Don't Convert",
-          desc: "Even top-tier ads fail when visitors land on slow, confusing pages with unclear calls to action."
+          desc: "Landing pages that fail to convert can waste your advertising budget and reduce the effectiveness of your Google Ads campaigns. A well-optimized landing page should have a clear headline, relevant content, a strong call to action, and a simple user experience. By improving page speed, matching landing page content with your ads, and making enquiry forms easy to complete, you can turn more visitors into quality leads and increase conversions."
         },
         {
-          title: "Don't Know What's Working",
-          desc: "Without accurate conversion tracking and reporting, identifying winning keywords is guesswork."
+          title: "Are Your Google Ads Campaigns Working Effectively?",
+          desc: "Are your Google Ads campaigns delivering the results your business needs? A successful campaign requires the right keywords, targeted audience, compelling ad copy, and effective budget management. By regularly monitoring campaign performance, tracking conversions, and optimizing underperforming ads, you can reduce wasted spending and improve your advertising results. Our data-driven Google Ads strategies help businesses attract potential customers, generate quality leads, increase sales, and achieve better returns on their advertising investment."
         }
       ]
     },
     servicesOffered: {
       title: "Our Google Ads Services",
+      description: "Our <b>Google Ads services</b> are designed to help businesses reach the right audience, generate quality leads, and increase conversions. We provide complete advertising solutions, including Google Search Ads, Display Ads, YouTube Ads, Shopping Ads, App Promotion, keyword research, campaign setup, ad copy creation, audience targeting, conversion tracking, and budget optimization. With continuous performance monitoring and data-driven strategies, we help you maximize your advertising budget, improve campaign performance, and achieve measurable business growth.",
       items: [
         {
           title: "Search Ads",
-          desc: "Appear at the top of Google Search when potential customers are actively searching for your products or services."
+          desc: "Search Ads Reach potential customers on Google Search when they look for your products or services. Our Search Ads help drive targeted traffic, generate quality leads, and increase conversions."
         },
         {
-          title: "Performance Max Campaigns",
-          desc: "Expand your reach across Search, YouTube, Display, Gmail, Discover, and Maps through AI-powered optimization."
+          title: "Lead  Generation",
+          desc: "Generate quality leads through targeted Google Ads campaigns that connect your business with potential customers and turn clicks into valuable enquiries."
         },
         {
           title: "Display Advertising",
-          desc: "Increase brand awareness with visually engaging banner ads across Google's network of millions of websites."
+          desc: "Increase brand visibility with eye-catching display ads that reach your target audience across relevant websites and apps, helping attract potential customers and drive engagement."
         },
         {
           title: "YouTube Ads",
-          desc: "Connect with prospective customers through engaging video ads that drive brand recall and direct conversions."
+          desc: "Promote your business through engaging YouTube video ads to reach the right audience, increase brand awareness, and attract potential customers"
         },
         {
           title: "Shopping Ads",
-          desc: "Feature your products with pricing and images directly in Google Shopping results to attract ready buyers."
+          desc: "Showcase your products with Google Shopping Ads featuring images, prices, and product details to attract potential buyers and increase online sales."
         },
         {
           title: "Remarketing Campaigns",
-          desc: "Re-engage past visitors and abandoned carts to bring high-intent prospects back to complete purchases."
+          desc: "Re-engage with previous visitors who showed interest in your offerings and nudge them closer to conversion with carefully planned campaigns."
         }
       ]
     },
+    processDescription: "We deliver results through strategic planning, targeted keyword research, and data-driven Google Ads campaigns. By optimizing ad performance, managing budgets effectively, and tracking conversions, we help businesses generate quality leads, increase sales, and achieve measurable growth.",
     process: [
       {
         step: "01",

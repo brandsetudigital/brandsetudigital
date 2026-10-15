@@ -65,6 +65,7 @@ const AppRoutes = () => {
           <Route path="/services/:slug" element={<ServiceDetail />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<OurStory />} />
+          <Route path="/our-story" element={<Navigate to="/about" replace />} />
           <Route path="/work" element={<Portfolio />} />
           <Route path="/career" element={<Career />} />
           {/* Blog System Routes */}

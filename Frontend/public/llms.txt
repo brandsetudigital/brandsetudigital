@@ -6,7 +6,7 @@
 - [Home](https://brandsetudigital.com/): Overview of services, brands, and the BrandSetu approach to digital growth.
 - [Services](https://brandsetudigital.com/services): SEO, branding, social media marketing, web design & development, performance ads, and shoot/editing.
 - [Our Work](https://brandsetudigital.com/work): Portfolio of brands we've helped grow, plus team members and case studies.
-- [About / Our Story](https://brandsetudigital.com/about): Mission, vision, leadership, and the values driving our work.
+- [About / About Us](https://brandsetudigital.com/about): Mission, vision, leadership, and the values driving our work.
 - [Careers](https://brandsetudigital.com/career): Open roles in design, engineering, marketing, and DevOps.
 - [Contact](https://brandsetudigital.com/contact): Email, phone, location, and an enquiry form.
 

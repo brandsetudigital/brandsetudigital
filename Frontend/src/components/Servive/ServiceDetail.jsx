@@ -43,6 +43,34 @@ const challengeConfig = [
   { icon: ZapOff, color: "#34d399", bg: "rgba(52, 211, 153, 0.15)", border: "rgba(52, 211, 153, 0.35)", tag: "Problem 06" },
 ];
 
+const renderFormattedText = (text) => {
+  if (!text || typeof text !== "string") return text;
+  const regex = /<(b|strong)>(.*?)<\/\1>|\*\*(.*?)\*\*/g;
+  if (!regex.test(text)) return text;
+
+  regex.lastIndex = 0;
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.substring(lastIndex, match.index));
+    }
+    const boldContent = match[2] || match[3];
+    parts.push(
+      <strong key={match.index} className="fw-bold">
+        {boldContent}
+      </strong>
+    );
+    lastIndex = regex.lastIndex;
+  }
+  if (lastIndex < text.length) {
+    parts.push(text.substring(lastIndex));
+  }
+  return parts;
+};
+
 const ServiceDetail = () => {
   const { slug } = useParams();
   const [openFaq, setOpenFaq] = useState(0);
@@ -239,8 +267,12 @@ const ServiceDetail = () => {
                 {service.seo.h1 || service.title}
               </h1>
 
+              {service.seo.heroHeading && (
+                <h2 className="service-hero-heading">{service.seo.heroHeading}</h2>
+              )}
+
               <p className="service-hero-subtitle">
-                {service.seo.subHeading || service.shortDesc}
+                {renderFormattedText(service.seo.subHeading || service.shortDesc)}
               </p>
 
               {/* Dynamic Service Deliverables (Pill Matrix, Not Cards) */}
@@ -323,7 +355,7 @@ const ServiceDetail = () => {
                 <div className="service-stage-visual-wrap">
                   <img
                     src={service.img}
-                    alt={service.seo.h1 || service.title}
+                    alt={service.imgAlt || service.seo?.primaryKeyword || service.seo?.h1 || service.title}
                     className="service-stage-img"
                     loading="eager"
                     width="600"
@@ -333,7 +365,7 @@ const ServiceDetail = () => {
 
                   {/* Top Floating Badge */}
                   <div className="service-stage-badge-top">
-                    <span className="stage-live-dot" /> Live {service.title} Framework
+                    <span className="stage-live-dot" /> Live {service.stageBadge || service.title} Framework
                   </div>
 
                   {/* Floating Metric Pill */}
@@ -402,14 +434,14 @@ const ServiceDetail = () => {
                 <div className="overview-card">
                   <span className="section-tag">Understanding The Value</span>
                   <h2 className="section-main-title">{service.overview.title}</h2>
-                  <p className="section-desc mb-0">{service.overview.description}</p>
+                  <p className="section-desc mb-0">{renderFormattedText(service.overview.description)}</p>
                 </div>
               </Col>
               <Col lg={6} data-aos="fade-up" data-aos-delay="100">
                 <div className="overview-card accent">
                   <span className="section-tag">Business Impact</span>
                   <h2 className="section-main-title">Why Your Business Needs This</h2>
-                  <p className="section-desc mb-0">{service.overview.whyNeeded}</p>
+                  <p className="section-desc mb-0">{renderFormattedText(service.overview.whyNeeded)}</p>
                 </div>
               </Col>
             </Row>
@@ -425,7 +457,7 @@ const ServiceDetail = () => {
               <span className="section-tag">Real Challenges We Solve</span>
               <h2 className="section-main-title">{service.challenges.title}</h2>
               <p className="section-desc max-w-700 mx-auto">
-                {service.challenges.description}
+                {renderFormattedText(service.challenges.description)}
               </p>
             </div>
 
@@ -478,7 +510,7 @@ const ServiceDetail = () => {
               <span className="section-tag">Comprehensive Capabilities</span>
               <h2 className="section-main-title">{service.servicesOffered.title}</h2>
               <p className="section-desc max-w-700 mx-auto">
-                Engineered for maximum ROI, consistency, and brand elevation.
+                {renderFormattedText(service.servicesOffered.description || "Engineered for maximum ROI, consistency, and brand elevation.")}
               </p>
             </div>
 
@@ -488,7 +520,7 @@ const ServiceDetail = () => {
                   <div className="service-offer-card">
                     <div className="offer-number">0{idx + 1}</div>
                     <h3 className="offer-title">{offer.title}</h3>
-                    <p className="offer-desc">{offer.desc}</p>
+                    <p className="offer-desc">{renderFormattedText(offer.desc)}</p>
                   </div>
                 </Col>
               ))}
@@ -505,7 +537,7 @@ const ServiceDetail = () => {
               <span className="section-tag">Our Execution Framework</span>
               <h2 className="section-main-title">How We Deliver Results</h2>
               <p className="section-desc max-w-700 mx-auto">
-                A structured, data-informed methodology from inception to post-launch optimization.
+                {renderFormattedText(service.processDescription || "A structured, data-informed methodology from inception to post-launch optimization.")}
               </p>
             </div>
 
@@ -515,7 +547,7 @@ const ServiceDetail = () => {
                   <div className="process-card">
                     <div className="process-step-badge">{step.step}</div>
                     <h3 className="process-title">{step.title}</h3>
-                    <p className="process-desc">{step.desc}</p>
+                    <p className="process-desc">{renderFormattedText(step.desc)}</p>
                   </div>
                 </Col>
               ))}

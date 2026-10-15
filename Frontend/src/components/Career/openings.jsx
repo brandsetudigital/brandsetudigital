@@ -7,7 +7,6 @@ import {
   FileText,
   Search,
   Sparkles,
-  Mail,
   HelpCircle,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";

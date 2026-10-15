@@ -16,17 +16,13 @@ function TravelSolutionPage() {
             The Real Problem
           </span>
           <h2 className="display-4 fw-bold mb-3 gradient-text">
-            Plan Should be <span className="text-danger">Simple</span>.
-            <br />
-            But It&apos;s Not.
+             Digital  Marketing <span className="text-danger">Agency</span>
           </h2>
           <p
             className="lead text-muted fw-semibold mx-auto"
             style={{ maxWidth: 700 }}
           >
-            Millions of Businessman face the same frustration every day - a
-            fragmented experience that turns planning a Business into a
-            stressful puzzle.
+            The <strong> Best Digital Marketing  Agency in Indore</strong>, our goal is to help businesses improve search engine rankings, generate quality leads, increase brand awareness, and boost conversions through effective digital strategies. From creating professional websites and engaging visual content to managing targeted advertising campaigns, we deliver solutions tailored to your business goals.
           </p>
         </div>
 
@@ -35,7 +31,8 @@ function TravelSolutionPage() {
           <Col lg={6} className="text-center mb-4 mb-lg-0">
             <img
               src={scatteredJourneyImage}
-              alt="Fragmented Brand Journey — illustration of disconnected branding tools"
+              alt="Best Digital Marketing Services in Indore — Digital Marketing Agency in Indore BrandSetu Digital"
+              title="Best Digital Marketing Services in Indore"
               className="img-fluid rounded-4"
               width="800"
               height="600"
@@ -45,18 +42,14 @@ function TravelSolutionPage() {
           </Col>
           <Col lg={6}>
             <h3 className="fw-bold mb-3 text-brand">
-              The Incomplete Brand Journey
+              Why is Digital Marketing Important? 
             </h3>
             <p className="text-muted text-justify fs-5 fw-semibold">
-              Today’s businesses struggle to manage branding, marketing,
-              automation, and digital growth across multiple disconnected
-              agencies, tools, and platforms.
+             <strong>At BrandSetu Digital</strong>, we help businesses strengthen their online presence, connect with potential customers, and achieve sustainable growth. The right digital marketing strategy allows businesses to build brand awareness, generate quality leads, improve customer engagement, and stay ahead of competitors
             </p>
-            <p className="fw-bold fs-4 mb-1">The result?</p>
+            <p className="fw-bold fs-4 mb-1"> Best Digital Marketing Services</p>
             <p className="text-muted fs-5 text-justify fw-semibold">
-              Inconsistent brand identity, higher costs, delayed execution, and
-              the constant uncertainty of whether efforts are actually driving
-              growth.
+              With the <strong>Best Digital Marketing Services in Indore</strong>, businesses can reach their target audience more effectively, measure marketing performance, and turn potential customers into loyal clients. <strong>At BrandSetu Digital</strong>, our focus is on creating result-oriented strategies that support your business goals and help your brand grow in today's competitive digital world.
             </p>
           </Col>
         </Row>
@@ -108,43 +101,38 @@ function TravelSolutionPage() {
             Our Solution
           </span>
           <h2 className="display-4 fw-bold gradient-text">
-            One Beautiful <span className="text-danger"> Platform</span>.
+          Why Choose Digital Marketing for Your Business <span className="text-danger"> Growth?</span>
           </h2>
           <p
             className="lead text-muted fw-semibold mx-auto"
             style={{ maxWidth: 700 }}
           >
-            Everything you need for Business - unified, intelligent, and simple.
+          <strong>At BrandSetu Digital</strong>, we help businesses build a strong social media presence, connect with their target audience, and increase brand awareness. Our <strong>Social Media Marketing in Indore</strong> strategies focus on creating engaging content, improving audience interaction, and attracting potential customers. We help your brand stand out, build customer trust, and achieve long-term business growth through effective social media promotion.   Looking to Grow Your Brand with Digital Marketing?
           </p>
         </div>
 
         <Row className="align-items-center">
           <Col lg={6}>
-            <h3 className="fw-bold mb-3 text-brand">Simplicity at Scale</h3>
+            <h3 className="fw-bold mb-3 text-brand">Looking to Grow Your Brand with Digital Marketing?</h3>
 
             <p className="text-muted fs-5 text-justify fw-semibold mb-3">
-              Growing a brand shouldn’t mean managing multiple agencies,
-              scattered tools, or disconnected strategies. BrandSetu brings
-              everything together into one unified digital ecosystem.
+              <strong>At BrandSetu Digital</strong>, we provide complete digital solutions to help businesses strengthen their online presence and achieve growth. As a <strong>Best SEO Agency in Indore</strong>, we focus on improving search engine rankings, increasing website traffic, and helping businesses reach their target audience.
             </p>
 
             <p className="text-muted fs-5 text-justify fw-semibold mb-3">
-              From brand identity and creative design to performance marketing,
-              automation, and technology, every service works in alignment to
-              deliver clarity, consistency, and measurable growth.
+            Our SEO services include On-Page SEO, Off-Page SEO, Link Building, Guest Posting, Business Submission, and Local SEO to improve online visibility and support better search rankings.
             </p>
 
             <p className="fw-semibold fs-5 text-justify fw-semibold text-muted">
-              As your business scales, BrandSetu scales with you - ensuring your
-              brand stays strong, your messaging stays consistent, and your
-              growth stays sustainable.
+              We also provide Social Media Optimization (SMO) for platforms like Facebook, Instagram, YouTube, and LinkedIn. Our strategies focus on increasing reach, improving impressions, boosting engagement, generating quality leads, and building a strong social media presence.
             </p>
           </Col>
 
           <Col lg={6} className="text-center">
             <img
               src={solutionPlatformImage}
-              alt="BrandSetu Digital growth platform — unified branding, marketing, and automation"
+              alt="Best SEO Agency in Indore & Social Media Marketing Indore — BrandSetu Digital Platform"
+              title="Best SEO Agency in Indore & Social Media Marketing Indore"
               className="img-fluid rounded-4"
               width="800"
               height="600"

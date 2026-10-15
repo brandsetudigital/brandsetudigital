@@ -122,6 +122,14 @@
   margin-bottom: 18px;
 }
 
+.service-hero-heading {
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #0b0f19 !important;
+  margin: -6px 0 18px;
+}
+
 .service-hero-subtitle {
   font-size: clamp(1.05rem, 1.35vw, 1.22rem);
   line-height: 1.65;
@@ -129,6 +137,12 @@
   font-weight: 500;
   max-width: 680px;
   margin-bottom: 24px;
+}
+
+.service-hero-subtitle strong,
+.service-hero-subtitle b {
+  color: #0f172a !important;
+  font-weight: 800 !important;
 }
 
 /* Capability Matrix (Pills - Not Cards) */
@@ -463,6 +477,18 @@
   color: #cbd5e1 !important;
   text-align: left;
   line-height: 1.65;
+}
+
+.overview-card .section-desc strong,
+.overview-card .section-desc b {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+}
+
+.section-desc strong,
+.section-desc b {
+  color: #0f172a !important;
+  font-weight: 800 !important;
 }
 
 .overview-card:hover {
@@ -871,4 +897,3 @@
     font-size: 1.85rem;
   }
 }
-

@@ -45,8 +45,8 @@ export function Hero() {
   return (
     <>
       <Seo
-        title="Digital Marketing & SEO Agency in Indore"
-        description="BrandSetu Digital is a top digital marketing agency in Indore offering SEO, branding, social media marketing, web development, and performance ads to help businesses grow online."
+        title="Digital Marketing Agency in Indore"
+        description="BrandSetu Digital helps businesses grow with SEO, social media marketing, Google Ads, website development and AI automation services."
         path="/"
       />
       <section
@@ -142,7 +142,7 @@ export function Hero() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="hero-description ms-1 mt-3 mt-md-4"
               > 
-              Our Brandsetu Digital Marketing in Indore . We provide  digital marketing solutions, including SEO, Google Ads, Meta Ads, Social Media Marketing, Content Marketing, and Online Advertising.
+                <strong>At BrandSetu Digital</strong>, we provide the <strong>Best Digital Marketing Company in Indore</strong>, helping businesses build a strong online presence, improve search engine rankings, generate quality leads, and increase brand awareness through effective digital strategies. Our services include Search Engine Optimization (SEO), Search Media Marketing (SMM), Pay-Per-Click (PPC), Social Media Marketing (SMM), Local SEO, Website Development, Graphic Designing, Video Editing & Production, and YouTube SEO.
               </motion.p>
 
               {/* Navigation Buttons */}

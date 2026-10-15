@@ -12,12 +12,13 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", path: "/" },
+    { name: "About Us", path: "/about" },
     { name: "Services", path: "/services" },
     { name: "Work ", path: "/work" },
-    { name: "Enquiry", path: "/contact" },
-    { name: "Our Story", path: "/about" },
+     { name: "Careers", path: "/career" },
+    { name: "Contact", path: "/contact" },
     { name: "Blog", path: "/blog" },
-    { name: "Future", path: "/career" },
+   
   ];
 
   // Lock scroll when menu open

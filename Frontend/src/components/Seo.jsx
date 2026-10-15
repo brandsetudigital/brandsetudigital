@@ -12,11 +12,14 @@ export default function Seo({
   image = DEFAULT_OG_IMAGE,
   noindex = false,
   jsonLd,
+  keywords,
 }) {
   const url = `${SITE_URL}${path}`;
   const fullTitle = title.includes(SITE_NAME)
     ? title
     : `${title} | ${SITE_NAME}`;
+  const defaultKeywords =
+    "digital marketing agency Indore, SEO services Indore, branding agency Indore, social media marketing, web development, performance marketing, BrandSetu, BrandSetu Digital";
 
   return (
     <Helmet prioritizeSeoTags>
@@ -24,7 +27,7 @@ export default function Seo({
       <meta name="description" content={description} />
       <meta
         name="keywords"
-        content="digital marketing agency Indore, SEO services Indore, branding agency Indore, social media marketing, web development, performance marketing, BrandSetu, BrandSetu Digital"
+        content={keywords || defaultKeywords}
       />
       <meta name="author" content={SITE_NAME} />
       <link rel="canonical" href={url} />

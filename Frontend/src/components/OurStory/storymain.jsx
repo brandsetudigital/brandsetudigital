@@ -24,16 +24,19 @@ const values = [
   {
     title: "Strategic Digital Growth",
     img: Strategy,
+    alt: "Strategic Digital Growth — Best SEO Agency in Indore",
     desc: "BrandSetu helps businesses grow purposefully online by combining creativity, technology, and data-driven strategies. Every action is aligned with measurable results and long-term brand success.",
   },
   {
     title: "Innovative Solutions",
     img: innovation,
+    alt: "Innovative Solutions — Best Digital Marketing Services in Indore",
     desc: "From branding, marketing automation, to cutting-edge web and app development, BrandSetu leverages innovative technologies to make brands stand out in a crowded digital landscape.",
   },
   {
     title: "Trusted & Impactful Experiences",
     img: Feature,
+    alt: "Trusted & Impactful Experiences — Social Media Marketing Indore",
     desc: "They deliver authentic digital experiences that build trust, authority, and engagement. BrandSetu ensures that every client interaction translates into meaningful business growth.",
   },
 ];
@@ -103,8 +106,9 @@ const About = () => {
   return (
     <>
       <Seo
-        title="About BrandSetu Digital — Digital Marketing Experts in Indore"
-        description="Learn the BrandSetu Digital story: an Indore-based digital marketing agency. Our mission, vision, leadership, and the values driving our work in branding and SEO."
+        title="Best Digital Marketing Agency in Indore | SEO & Social Media Services"
+        description="BrandSetu Digital is the best Digital Marketing Agency in Indore offering the best SEO agency in Indore, best digital marketing services in Indore, and social media marketing Indore to grow your business online."
+        keywords="Digital marketing Agency in indore, best Digital marketing Agency in indore, Best SEO agency in indore, Best Digital marketing services in indore, social media marketing indore, digital marketing company Indore, BrandSetu Digital"
         path="/about"
         jsonLd={[
           {
@@ -120,7 +124,7 @@ const About = () => {
               {
                 "@type": "ListItem",
                 position: 2,
-                name: "Our Story",
+                name: "About Us",
                 item: "https://brandsetudigital.com/about",
               },
             ],
@@ -130,9 +134,36 @@ const About = () => {
             "@type": "AboutPage",
             "@id": "https://brandsetudigital.com/about#webpage",
             url: "https://brandsetudigital.com/about",
-            name: "About BrandSetu Digital",
+            name: "Best Digital Marketing Agency in Indore — BrandSetu Digital",
+            description: "BrandSetu Digital is the best Digital Marketing Agency in Indore offering the best SEO agency in Indore, best digital marketing services in Indore, and social media marketing Indore.",
             isPartOf: { "@id": "https://brandsetudigital.com/#organization" },
             mainEntity: { "@id": "https://brandsetudigital.com/#organization" },
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            name: "BrandSetu Digital - Best Digital Marketing Agency in Indore",
+            image: "https://brandsetudigital.com/favicon-512x512.png",
+            url: "https://brandsetudigital.com/about",
+            telephone: "+91-7389824231",
+            priceRange: "₹₹",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Office No.103, Orange Business Park, Bhawarkua",
+              addressLocality: "Indore",
+              addressRegion: "Madhya Pradesh",
+              postalCode: "452014",
+              addressCountry: "IN",
+            },
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: 22.7196,
+              longitude: 75.8577,
+            },
+            sameAs: [
+              "https://www.instagram.com/brandsetudigital",
+              "https://www.linkedin.com/company/brandsetudigital",
+            ],
           },
           {
             "@context": "https://schema.org",
@@ -176,6 +207,8 @@ const About = () => {
         <div className="about-hero position-relative z-2">
           <video
             ref={videoRef}
+            title="Best Digital Marketing Agency in Indore - BrandSetu Digital"
+            aria-label="Best Digital Marketing Agency in Indore - BrandSetu Digital"
             className="w-100 pt-0 mt-0 about-banner-img"
             src={typeof navigator !== "undefined" && navigator.userAgent === "ReactSnap" ? undefined : StoryHero}
             autoPlay={typeof navigator === "undefined" || navigator.userAgent !== "ReactSnap"}
@@ -222,7 +255,8 @@ const About = () => {
               <div className="about-img-wrap rounded-4 shadow overflow-hidden">
                 <img
                   src={StartImg}
-                  alt="BrandSetu Digital — building digital brands in Indore"
+                  alt="Digital Marketing Agency in Indore — Best Digital Marketing Agency in Indore BrandSetu Digital"
+                  title="Digital Marketing Agency in Indore | Best Digital Marketing Agency in Indore"
                   className="w-100"
                   width="800"
                   height="600"
@@ -234,26 +268,11 @@ const About = () => {
 
             <div className="col-md-6 ps-md-5" data-aos="fade-left">
               <h1 className="fw-bold display-6 mb-4 text-center text-md-start">
-                Building <span className="text-danger"> BEST </span>Digital Brands
+                Your Trusted <span className="text-danger">Digital Marketing Agency</span> in Indore 
               </h1>
 
               <p className="text-dark text-justify" style={{ lineHeight: 1.8 }}>
-                <span className="text-danger fw-bold fs-4">BrandSetu</span> is a Top digital growth partner that helps brands
-                establish a powerful and purposeful online presence. We blend
-                creativity, strategy, and technology to craft digital solutions
-                that are visually compelling, performance-driven, and built for
-                long-term impact. With a sharp focus on innovation and excellence,
-                BrandSetu connects ideas with results and brands with their true
-                potential.
-              </p>
-
-              <p
-                className="text-dark text-justify mb-3"
-                style={{ lineHeight: 1.8 }}
-              >
-                BrandSetu is a strategic digital agency transforming ideas into
-                impactful brand experiences through design, technology, and
-                growth-focused marketing.
+                <span className="text-danger fw-bold fs-4">We Are Brandsetu Digital</span>, the <strong>Best Digital Marketing Agency in Indore</strong> dedicated to building a strong online presence, reaching the right audience, and achieving sustainable business growth. As the <strong>Best SEO Agency in Indore</strong>, we provide the <strong>Best Digital Marketing Services in Indore</strong> including Search Engine Optimization (SEO), Google Ads, Meta Ads, <strong>Social Media Marketing Indore</strong>, Influencer Marketing, Graphic Design, Website Development, App Development, Content Marketing, Branding, Video Production, and Website Maintenance.
               </p>
 
               <p
@@ -291,7 +310,8 @@ const About = () => {
                       >
                         <img
                           src={item.img}
-                          alt={`${item.title} — BrandSetu Digital`}
+                          alt={item.alt || `${item.title} — BrandSetu Digital`}
+                          title={item.alt || item.title}
                           className="card-img-top p-3"
                           width="180"
                           height="180"
