@@ -1,7 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import StartImg from "../../assets/digital-marketing-services.jpg";
 // import CEO from "../OurStory/ceo";
@@ -281,6 +283,27 @@ const About = () => {
               >
                 Success that feels Real, Personal, and Unforgettable.
               </p>
+
+              <div className="mt-4 pt-2 d-flex flex-wrap gap-3 justify-content-center justify-content-md-start">
+                <Link to="/contact#setu-enquiry-form">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="btn btn-dark btn-lg rounded-pill px-4 py-3 fw-bold shadow-sm d-inline-flex align-items-center gap-2"
+                  >
+                    Setu Enquiry Form <ArrowRight size={18} />
+                  </motion.button>
+                </Link>
+                <Link to="/services">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="btn btn-outline-dark btn-lg rounded-pill px-4 py-3 fw-bold d-inline-flex align-items-center gap-2"
+                  >
+                    Our Services
+                  </motion.button>
+                </Link>
+              </div>
             </div>
           </div>
           <div className="pt-4 mt-4">

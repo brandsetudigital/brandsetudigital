@@ -5,7 +5,26 @@ const ScrollToTop = () => {
   const { pathname, search, hash } = useLocation();
 
   useEffect(() => {
-    // Immediate scroll to top
+    // If a hash anchor is provided (e.g. #setu-enquiry-form), scroll to it
+    if (hash) {
+      const targetId = hash.replace("#", "");
+      const scrollToElement = () => {
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          return true;
+        }
+        return false;
+      };
+
+      if (!scrollToElement()) {
+        const timer = setTimeout(scrollToElement, 150);
+        return () => clearTimeout(timer);
+      }
+      return;
+    }
+
+    // Immediate scroll to top when navigating to regular pages
     window.scrollTo(0, 0);
     if (document.documentElement) {
       document.documentElement.scrollTop = 0;

@@ -430,23 +430,26 @@ export default function AdminLeads() {
         <div
           className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center p-3"
           style={{
-            backgroundColor: "rgba(15, 23, 42, 0.5)",
+            backgroundColor: "rgba(15, 23, 42, 0.55)",
             backdropFilter: "blur(6px)",
             zIndex: 1060,
           }}
+          onClick={() => setSelectedLead(null)}
         >
           <div
-            className="rounded-4 overflow-hidden w-100 shadow-2xl"
+            className="rounded-4 overflow-hidden w-100 shadow-2xl d-flex flex-column"
             style={{
-              maxWidth: "600px",
+              maxWidth: "640px",
+              maxHeight: "90vh",
               backgroundColor: "#ffffff",
               border: "1px solid #e2e8f0",
               boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
             }}
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
             <div
-              className="p-3 px-4 d-flex align-items-center justify-content-between border-bottom"
+              className="p-3 px-4 d-flex align-items-center justify-content-between border-bottom flex-shrink-0 bg-white"
               style={{ borderColor: "#f1f5f9" }}
             >
               <div className="d-flex align-items-center gap-2">
@@ -457,13 +460,14 @@ export default function AdminLeads() {
                 type="button"
                 className="btn btn-link text-secondary p-1"
                 onClick={() => setSelectedLead(null)}
+                aria-label="Close modal"
               >
                 <X size={20} />
               </button>
             </div>
 
-            {/* Content */}
-            <div className="p-4">
+            {/* Scrollable Content */}
+            <div className="p-4 overflow-y-auto" style={{ flexGrow: 1 }}>
               <div className="d-flex align-items-start justify-content-between gap-3 mb-3">
                 <div>
                   <h3 className="h5 fw-bold mb-1" style={{ color: "#0f172a" }}>{selectedLead.name}</h3>
@@ -493,7 +497,7 @@ export default function AdminLeads() {
                     {selectedLead.email ? (
                       <a
                         href={`mailto:${selectedLead.email}`}
-                        className="text-decoration-none fw-semibold"
+                        className="text-decoration-none fw-semibold text-break"
                         style={{ color: "#0284c7" }}
                       >
                         {selectedLead.email}
@@ -521,7 +525,7 @@ export default function AdminLeads() {
                   {selectedLead.domain && (
                     <div className="col-12 col-sm-6 mt-2">
                       <span className="d-block mb-0.5" style={{ color: "#64748b" }}>Company / Domain:</span>
-                      <span className="fw-medium" style={{ color: "#0f172a" }}>{selectedLead.domain}</span>
+                      <span className="fw-medium text-break" style={{ color: "#0f172a" }}>{selectedLead.domain}</span>
                     </div>
                   )}
 
@@ -542,32 +546,40 @@ export default function AdminLeads() {
               </div>
 
               {/* Message */}
-              <div className="mb-3">
+              <div className="mb-2">
                 <label className="small fw-semibold mb-1 d-block" style={{ color: "#334155" }}>
                   Message / Requirements:
                 </label>
                 <div
-                  className="p-3 rounded-3 small"
+                  className="p-3 rounded-3 small overflow-y-auto"
                   style={{
                     backgroundColor: "#f8fafc",
                     border: "1px solid #e2e8f0",
                     color: "#0f172a",
                     lineHeight: "1.7",
                     whiteSpace: "pre-wrap",
+                    maxHeight: "260px",
+                    wordBreak: "break-word",
                   }}
                 >
                   {selectedLead.message || "No message provided."}
                 </div>
               </div>
+            </div>
 
-              {/* Quick Status Bar */}
-              <div className="d-flex align-items-center justify-content-between gap-2 pt-2 border-top" style={{ borderColor: "#f1f5f9" }}>
-                <span className="small" style={{ color: "#64748b" }}>Update Status:</span>
+            {/* Sticky Footer Status Bar */}
+            <div
+              className="d-flex align-items-center justify-content-between gap-2 p-3 px-4 border-top flex-shrink-0 bg-white"
+              style={{ borderColor: "#f1f5f9" }}
+            >
+              <span className="small fw-semibold" style={{ color: "#64748b" }}>Update Status:</span>
+              <div className="d-flex align-items-center gap-2">
                 <div className="btn-group btn-group-sm">
                   {["New", "Contacted", "Qualified", "Closed"].map((st) => (
                     <button
                       key={st}
                       type="button"
+                      disabled={updatingId === selectedLead._id}
                       onClick={() => handleStatusChange(selectedLead._id, st)}
                       className={`btn ${
                         selectedLead.status === st
@@ -580,6 +592,13 @@ export default function AdminLeads() {
                     </button>
                   ))}
                 </div>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-outline-secondary px-3"
+                  onClick={() => setSelectedLead(null)}
+                >
+                  Close
+                </button>
               </div>
             </div>
           </div>

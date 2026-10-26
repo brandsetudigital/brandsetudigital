@@ -1,5 +1,7 @@
 import React from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { ArrowRight } from "lucide-react";
 import "../../Style/OurStory.css";
 import "../../App.css";
 
@@ -123,9 +125,17 @@ function TravelSolutionPage() {
             Our SEO services include On-Page SEO, Off-Page SEO, Link Building, Guest Posting, Business Submission, and Local SEO to improve online visibility and support better search rankings.
             </p>
 
-            <p className="fw-semibold fs-5 text-justify fw-semibold text-muted">
+            <p className="fw-semibold fs-5 text-justify fw-semibold text-muted mb-4">
               We also provide Social Media Optimization (SMO) for platforms like Facebook, Instagram, YouTube, and LinkedIn. Our strategies focus on increasing reach, improving impressions, boosting engagement, generating quality leads, and building a strong social media presence.
             </p>
+
+            <div className="mt-4 pt-1">
+              <Link to="/contact#setu-enquiry-form">
+                <Button className="btn btn-danger btn-lg rounded-pill px-4 py-3 fw-bold shadow d-inline-flex align-items-center gap-2">
+                  Setu Enquiry Form <ArrowRight size={18} />
+                </Button>
+              </Link>
+            </div>
           </Col>
 
           <Col lg={6} className="text-center">

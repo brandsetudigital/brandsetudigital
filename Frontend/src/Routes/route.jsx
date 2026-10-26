@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import Navbar from "../common/Navbar";
 import Footer from "../common/Footer";
+import WhatsAppButton from "../common/WhatsAppButton";
 import ProtectedRoute from "./ProtectedRoute";
 
 // Lazy load public routes
@@ -51,6 +52,7 @@ const MainLayout = () => (
       <Outlet />
     </main>
     <Footer />
+    <WhatsAppButton />
   </>
 );
 

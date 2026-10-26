@@ -341,7 +341,7 @@ const ContactPage = () => {
             </Col>
 
             {/* FORM */}
-            <Col lg={6} data-aos="fade-left">
+            <Col lg={6} id="setu-enquiry-form" data-aos="fade-left">
               <Card className="shadow-lg border-0 rounded-4 founder-card bg-dark contact-card position-relative overflow-hidden">
                 <Card.Body
                   className="p-4 position-relative"
